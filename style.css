@@ -27,6 +27,10 @@
     --spacing-md: 2rem;
     --spacing-lg: 4rem;
     --spacing-xl: 6rem;
+
+    /* Brand Gradient */
+    --brand-gradient: linear-gradient(90deg, #fce38a 0%, #f38181 50%, #95e1d3 100%);
+    --top-banner-gradient: var(--brand-gradient);
 }
 
 /* Reset & Global */
@@ -648,8 +652,8 @@ h3 {
 
 /* --- COUNTDOWN TIMER --- */
 .countdown-container {
-    background: var(--accent-color);
-    color: #fff;
+    background: var(--brand-gradient);
+    color: #333; /* Darker text for better contrast on light gradient */
     padding: 10px 0;
     text-align: center;
     font-weight: 700;
