@@ -652,8 +652,8 @@ h3 {
 
 /* --- COUNTDOWN TIMER --- */
 .countdown-container {
-    background: var(--brand-gradient);
-    color: #333; /* Darker text for better contrast on light gradient */
+    background: #ff4d4d; /* Solid Red */
+    color: #fff; /* White Text */
     padding: 10px 0;
     text-align: center;
     font-weight: 700;
@@ -670,7 +670,7 @@ h3 {
     font-family: var(--font-heading);
     font-size: 1.2rem;
     margin-left: 10px;
-    background: rgba(0,0,0,0.1);
+    background: rgba(255,255,255,0.2);
     padding: 2px 8px;
     border-radius: 4px;
 }
