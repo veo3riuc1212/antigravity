@@ -173,8 +173,8 @@ h3 {
     display: flex;
     gap: var(--spacing-md);
     margin-top: var(--spacing-sm);
-    color: #fff;
-    font-weight: 600;
+    color: #333;
+    font-weight: 700;
     font-size: 0.9rem;
     flex-wrap: wrap;
     justify-content: center;
@@ -230,7 +230,7 @@ h3 {
 .scroll-down-arrow {
     margin-top: var(--spacing-md);
     font-size: 1.5rem;
-    color: #fff;
+    color: #333;
     animation: bounce 2s infinite;
 }
 
