@@ -4,18 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reset Femenino - Elimina la hinchazón en 48 horas</title>
+    <title>Reset Femenino | Elimina la hinchazón en 48 horas</title>
     <meta name="description"
-        content="Recupera tu brillo y siéntete ligera en solo 48 horas con el Protocolo de Micronutrientes de Absorción Rápida.">
-    <!-- Google Fonts: Poppins (Clean modern sans-serif) -->
+        content="Recupera tu vitalidad y siéntete ligera en solo 48 horas. El Protocolo de Micronutrientes de Absorción Rápida diseñado para el cuerpo femenino.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://antigravity-hazel-nine.vercel.app/">
+    <meta property="og:title" content="Reset Femenino | Elimina la hinchazón en 48 horas">
+    <meta property="og:description" content="Recupera tu vitalidad y siéntete ligera en solo 48 horas. Sin dietas extremas.">
+    <meta property="og:image" content="uploaded_image_1768442742710.png">
+
+    <!-- Google Fonts: Outfit & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+    <!-- COUNTDOWN TIMER -->
+    <div class="countdown-container">
+        ⚡ OFERTA ESPECIAL TERMINA EN: <span id="timer" class="countdown-timer">00:00:00</span>
+    </div>
+
 
     <!-- SECTION 1: HERO (Image 4) -->
     <!-- Contains the top gradient banner and the main question -->
@@ -175,8 +188,74 @@
                     <span>🔒 Pago 100% seguro</span>
                 </div>
             </div>
+    </section>
+
+    <!-- SECTION 6: TESTIMONIALS -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title text-center">Lo que dicen nuestras alumnas</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-user">
+                        <img src="uploaded_image_0_1768338314253.jpg" alt="Ana García" class="user-img">
+                        <div class="user-info">
+                            <h4>Ana García</h4>
+                            <span>Perdió 3kg en una semana</span>
+                        </div>
+                    </div>
+                    <p>"No podía creer lo rápido que funcionó. Al segundo día ya no sentía esa pesadez constante. ¡Altamente recomendado!"</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-user">
+                        <img src="uploaded_image_1_1768338314253.jpg" alt="María Lopez" class="user-img">
+                        <div class="user-info">
+                            <h4>María Lopez</h4>
+                            <span>Más energía durante el día</span>
+                        </div>
+                    </div>
+                    <p>"El recetario de snacks es lo mejor. Me ayudó a controlar la ansiedad por el dulce mientras mi cuerpo se reseteaba."</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-user">
+                        <img src="uploaded_image_2_1768338314253.jpg" alt="Elena Ruiz" class="user-img">
+                        <div class="user-info">
+                            <h4>Elena Ruiz</h4>
+                            <span>Desinflamación abdominal</span>
+                        </div>
+                    </div>
+                    <p>"Por fin algo que entiende el cuerpo de la mujer. Me siento ligera y con la mente mucho más clara."</p>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!-- SECTION 7: FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title text-center">Preguntas Frecuentes</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">¿Es seguro para cualquier edad?</button>
+                    <div class="faq-answer">
+                        <p>Sí, el protocolo utiliza ingredientes naturales y nutritivos. Sin embargo, siempre recomendamos consultar con su médico si tiene alguna condición preexistente.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">¿Necesito comprar suplementos caros?</button>
+                    <div class="faq-answer">
+                        <p>Absolutamente no. Todos los ingredientes se encuentran fácilmente en cualquier supermercado o mercado local.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">¿Cuánto tiempo tardaré en ver resultados?</button>
+                    <div class="faq-answer">
+                        <p>La mayoría de nuestras usuarias reportan una disminución notable de la hinchazón en las primeras 48 horas del protocolo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <footer class="site-footer">
         <div class="container">
@@ -214,8 +293,41 @@
     </footer>
 
     <script>
+        // Countdown Timer Logic
+        function startTimer(duration, display) {
+            var timer = duration, hours, minutes, seconds;
+            setInterval(function () {
+                hours = parseInt(timer / 3600, 10);
+                minutes = parseInt((timer % 3600) / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                hours = hours < 10 ? "0" + hours : hours;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = hours + ":" + minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    timer = duration;
+                }
+            }, 1000);
+        }
+
+        // FAQ Accordion Logic
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+
         // Scroll Animation Observer
         document.addEventListener('DOMContentLoaded', () => {
+            // Start countdown for 24 hours
+            var twentyFourHours = 24 * 60 * 60;
+            var display = document.querySelector('#timer');
+            startTimer(twentyFourHours, display);
+
             const observerOptions = {
                 threshold: 0.1
             };
@@ -230,7 +342,7 @@
             }, observerOptions);
 
             // Add animation class to major sections elements
-            const animatedElements = document.querySelectorAll('.intro-section h2, .comparison-card, .features-grid, .offer-card');
+            const animatedElements = document.querySelectorAll('.intro-section h2, .comparison-card, .features-grid, .offer-card, .testimonial-card, .faq-item');
             animatedElements.forEach(el => {
                 el.classList.add('animate-on-scroll');
                 observer.observe(el);
