@@ -1,7 +1,7 @@
 :root {
     /* Colors - More sophisticated palette */
-    --primary-color: #FFD700; /* Gold */
-    --primary-hover: #FFC000;
+    --primary-color: #FF6B00; /* Vibrant Orange */
+    --primary-hover: #E05E00;
     --secondary-color: #00A896; /* Modern Teal */
     --accent-color: #FF6B6B; /* Soft Coral */
     --text-dark: #1A1A1A;
@@ -119,7 +119,7 @@ h3 {
 
 .primary-btn {
     background-color: var(--primary-color);
-    color: #000;
+    color: #ffffff;
     font-size: 1.1rem;
 }
 
@@ -131,7 +131,7 @@ h3 {
 
 .secondary-btn {
     background-color: var(--primary-color);
-    color: #000;
+    color: #ffffff;
 }
 
 /* Animation */
