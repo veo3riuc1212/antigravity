@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finanzly | Gestión Financiera Inteligente</title>
+    <meta name="description" content="Plataforma financiera personal y para profesionales offline con sincronización en Google Drive.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Identity Services for Drive Sync -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar / Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="logo-icon">⚡</div>
+                <h1>Finanzly</h1>
+            </div>
+            
+            <nav class="nav-menu">
+                <button class="nav-btn active" data-tab="dashboard">
+                    <span class="icon">📊</span> Resumen
+                </button>
+                <button class="nav-btn" data-tab="movements">
+                    <span class="icon">💸</span> Movimientos
+                </button>
+                <button class="nav-btn" data-tab="accounts">
+                    <span class="icon">💳</span> Cuentas y Saldos
+                </button>
+                <button class="nav-btn" data-tab="budgets">
+                    <span class="icon">🎯</span> Presupuesto
+                </button>
+                <button class="nav-btn" data-tab="reports">
+                    <span class="icon">📁</span> Reportes y Datos
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sync-status-card">
+                    <div class="sync-info">
+                        <span class="status-indicator offline"></span>
+                        <span class="status-text">Modo Local (Autoguardado)</span>
+                    </div>
+                    <button id="btn-drive-sync" class="btn btn-sm btn-outline-primary">☁️ Sincronizar Drive</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="app-header">
+                <div class="header-title">
+                    <h2 id="page-title">Resumen General</h2>
+                    <p id="page-subtitle" class="text-muted">Vista rápida de tu estado financiero</p>
+                </div>
+                <div class="header-actions">
+                    <div class="currency-select-container">
+                        <label for="global-currency">Moneda Base:</label>
+                        <select id="global-currency" class="form-select">
+                            <option value="PEN">Soles (S/.)</option>
+                            <option value="USD">Dólares ($)</option>
+                            <option value="EUR">Euros (€)</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" id="btn-quick-transaction">+ Nuevo Registro</button>
+                </div>
+            </header>
+
+            <!-- Notification Toast -->
+            <div id="toast" class="toast hidden">
+                <span id="toast-message">Guardado automáticamente</span>
+            </div>
+
+            <!-- Tab content: Dashboard -->
+            <section id="tab-dashboard" class="tab-content active">
+                <div class="metrics-grid">
+                    <div class="metric-card balance">
+                        <div class="metric-header">
+                            <span class="metric-label">Saldo Total Neto</span>
+                            <span class="metric-icon">💰</span>
+                        </div>
+                        <div class="metric-value" id="dash-total-balance">S/. 0.00</div>
+                        <p class="metric-desc">Suma de todas tus cuentas activas</p>
+                    </div>
+                    <div class="metric-card income">
+                        <div class="metric-header">
+                            <span class="metric-label">Ingresos del Mes</span>
+                            <span class="metric-icon">📈</span>
+                        </div>
+                        <div class="metric-value text-success" id="dash-total-income">S/. 0.00</div>
+                        <p class="metric-desc" id="dash-income-desc">Este mes</p>
+                    </div>
+                    <div class="metric-card expenses">
+                        <div class="metric-header">
+                            <span class="metric-label">Gastos del Mes</span>
+                            <span class="metric-icon">📉</span>
+                        </div>
+                        <div class="metric-value text-danger" id="dash-total-expenses">S/. 0.00</div>
+                        <p class="metric-desc" id="dash-expenses-desc">Este mes</p>
+                    </div>
+                    <div class="metric-card savings">
+                        <div class="metric-header">
+                            <span class="metric-label">Resultado del Mes</span>
+                            <span class="metric-icon">⚖️</span>
+                        </div>
+                        <div class="metric-value" id="dash-net-result">S/. 0.00</div>
+                        <p class="metric-desc" id="dash-result-desc">Ingresos - Gastos</p>
+                    </div>
+                </div>
+
+                <!-- Alerts Panel -->
+                <div id="dashboard-alerts" class="alerts-container hidden">
+                    <h3>🔔 Alertas Financieras</h3>
+                    <div id="alerts-list" class="alerts-list">
+                        <!-- Dynamic alerts go here -->
+                    </div>
+                </div>
+
+                <div class="dashboard-charts-grid">
+                    <div class="chart-container-card">
+                        <h3>Tendencia Histórica (Mes a Mes)</h3>
+                        <div class="canvas-wrapper">
+                            <canvas id="chart-history"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-container-card">
+                        <h3>Distribución de Gastos por Categoría</h3>
+                        <div class="canvas-wrapper">
+                            <canvas id="chart-categories"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-details-grid">
+                    <div class="table-card">
+                        <div class="card-header">
+                            <h3>Últimos Movimientos</h3>
+                            <button class="btn btn-link btn-sm btn-go-tab" data-target="movements">Ver todos</button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Categoría</th>
+                                        <th>Cuenta</th>
+                                        <th>Descripción</th>
+                                        <th class="text-right">Monto</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dash-recent-transactions">
+                                    <!-- Dynamic rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="accounts-summary-card">
+                        <h3>Resumen de Cuentas</h3>
+                        <div class="accounts-summary-list" id="dash-accounts-list">
+                            <!-- Dynamic summary -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab content: Movements -->
+            <section id="tab-movements" class="tab-content">
+                <div class="toolbar">
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="Buscar por descripción, tag, referencia...">
+                    </div>
+                    <div class="filters-container">
+                        <select id="filter-type" class="form-select">
+                            <option value="all">Todos los Tipos</option>
+                            <option value="income">Ingresos</option>
+                            <option value="expense">Gastos</option>
+                        </select>
+                        <select id="filter-category" class="form-select">
+                            <option value="all">Todas las Categorías</option>
+                        </select>
+                        <select id="filter-account" class="form-select">
+                            <option value="all">Todas las Cuentas</option>
+                        </select>
+                        <input type="date" id="filter-date-start" class="form-select" placeholder="Fecha inicio">
+                        <input type="date" id="filter-date-end" class="form-select" placeholder="Fecha fin">
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-outline-secondary" id="btn-clear-filters">Limpiar</button>
+                    </div>
+                </div>
+
+                <div class="table-card">
+                    <div class="table-responsive">
+                        <table class="table" id="movements-table">
+                            <thead>
+                                <tr>
+                                    <th data-sort="date" class="sortable">Fecha <span>⇅</span></th>
+                                    <th>Tipo</th>
+                                    <th>Categoría</th>
+                                    <th>Cuenta</th>
+                                    <th>Descripción</th>
+                                    <th>Método</th>
+                                    <th data-sort="amount" class="sortable text-right">Monto <span>⇅</span></th>
+                                    <th class="text-center">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="movements-list">
+                                <!-- Dynamic rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-empty hidden" id="movements-empty">
+                        <p>No se encontraron movimientos con los filtros aplicados.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab content: Accounts -->
+            <section id="tab-accounts" class="tab-content">
+                <div class="accounts-grid">
+                    <div class="left-panel">
+                        <div class="card">
+                            <h3>Nueva Cuenta / Bolsillo</h3>
+                            <form id="form-account">
+                                <input type="hidden" id="account-id">
+                                <div class="form-group">
+                                    <label for="account-name">Nombre de la Cuenta *</label>
+                                    <input type="text" id="account-name" placeholder="Ej: BCP, Billetera Efectivo, Interbank USD" required>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col">
+                                        <label for="account-type">Tipo *</label>
+                                        <select id="account-type" required>
+                                            <option value="efectivo">Efectivo</option>
+                                            <option value="banco">Banco / Cuenta Corriente</option>
+                                            <option value="billetera">Billetera Digital (Yape/Plin)</option>
+                                            <option value="otro">Otro</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col">
+                                        <label for="account-currency">Moneda *</label>
+                                        <select id="account-currency" required>
+                                            <option value="PEN">Soles (S/.)</option>
+                                            <option value="USD">Dólares ($)</option>
+                                            <option value="EUR">Euros (€)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col">
+                                        <label for="account-initial-balance">Saldo Inicial *</label>
+                                        <input type="number" step="0.01" id="account-initial-balance" value="0.00" required>
+                                    </div>
+                                    <div class="form-group col">
+                                        <label for="account-min-alert">Saldo Mínimo Alerta</label>
+                                        <input type="number" step="0.01" id="account-min-alert" placeholder="Ej: 50.00">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100" id="btn-save-account">Guardar Cuenta</button>
+                                <button type="button" class="btn btn-secondary w-100 hidden" id="btn-cancel-account">Cancelar Edición</button>
+                            </form>
+                        </div>
+
+                        <div class="card mt-4">
+                            <h3>Realizar Transferencia</h3>
+                            <form id="form-transfer">
+                                <div class="form-group">
+                                    <label for="transfer-from">Desde la Cuenta *</label>
+                                    <select id="transfer-from" required>
+                                        <option value="">Selecciona origen</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="transfer-to">Hacia la Cuenta *</label>
+                                    <select id="transfer-to" required>
+                                        <option value="">Selecciona destino</option>
+                                    </select>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col">
+                                        <label for="transfer-amount">Monto *</label>
+                                        <input type="number" step="0.01" id="transfer-amount" required>
+                                    </div>
+                                    <div class="form-group col">
+                                        <label for="transfer-date">Fecha *</label>
+                                        <input type="date" id="transfer-date" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="transfer-note">Nota / Comentario</label>
+                                    <input type="text" id="transfer-note" placeholder="Ej: Recarga de billetera digital">
+                                </div>
+                                <button type="submit" class="btn btn-outline-primary w-100">Registrar Transferencia</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="right-panel">
+                        <div class="card">
+                            <h3>Cuentas Activas</h3>
+                            <div class="accounts-list" id="accounts-cards-container">
+                                <!-- Dynamic cards of accounts -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab content: Budgets -->
+            <section id="tab-budgets" class="tab-content">
+                <div class="budget-header-controls">
+                    <div class="form-group">
+                        <label for="budget-month-select">Seleccionar Mes:</label>
+                        <input type="month" id="budget-month-select" class="form-select">
+                    </div>
+                    <div class="budget-helper-actions">
+                        <button class="btn btn-outline-secondary" id="btn-calc-required-budget">⚡ Calcular Presupuesto Requerido</button>
+                        <button class="btn btn-outline-secondary" id="btn-copy-budget-summary">📋 Copiar Resumen</button>
+                    </div>
+                </div>
+
+                <div class="budget-layout">
+                    <div class="budget-setup-card card">
+                        <h3>Ajustar Presupuesto</h3>
+                        <p class="text-muted text-sm">Fija límites mensuales para tus categorías de gastos.</p>
+                        <form id="form-budget">
+                            <div class="form-group">
+                                <label for="budget-category">Categoría de Gasto *</label>
+                                <select id="budget-category" required>
+                                    <!-- Dynamic options -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="budget-amount">Monto Límite Presupuestado *</label>
+                                <input type="number" step="0.01" id="budget-amount" required placeholder="Ej: 500.00">
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Guardar Límite</button>
+                        </form>
+
+                        <hr class="my-4">
+
+                        <h3>Crear Nueva Categoría</h3>
+                        <form id="form-new-category">
+                            <div class="form-group">
+                                <label for="new-cat-type">Tipo de Categoría *</label>
+                                <select id="new-cat-type" required>
+                                    <option value="expense">Gasto</option>
+                                    <option value="income">Ingreso</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="new-cat-name">Nombre de Categoría *</label>
+                                <input type="text" id="new-cat-name" placeholder="Ej: Suscripciones, Delivery, Freelance" required>
+                            </div>
+                            <button type="submit" class="btn btn-outline-secondary w-100">Agregar Categoría</button>
+                        </form>
+                    </div>
+
+                    <div class="budget-list-card card">
+                        <h3>Gasto Real vs Presupuesto</h3>
+                        <p class="text-muted text-sm">Lista de consumos del mes comparados con tus objetivos presupuestados.</p>
+                        <div class="budget-progress-container" id="budget-progress-list">
+                            <!-- Dynamic progress indicators -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab content: Reports & Data -->
+            <section id="tab-reports" class="tab-content">
+                <div class="reports-layout">
+                    <!-- Left: Google Drive and Import/Export Configurations -->
+                    <div class="reports-config-panel">
+                        <div class="card">
+                            <h3>☁️ Sincronización Google Drive (OAuth2)</h3>
+                            <p class="text-muted text-sm">Guarda y descarga tus datos automáticamente utilizando tu cuenta de Google Drive de manera privada.</p>
+                            
+                            <div class="form-group mt-3">
+                                <label for="drive-client-id">Client ID de Google Cloud *</label>
+                                <input type="text" id="drive-client-id" placeholder="Ingresa tu Client ID de Google">
+                            </div>
+                            <div class="form-group">
+                                <label for="drive-api-key">API Key de Google (Opcional)</label>
+                                <input type="text" id="drive-api-key" placeholder="Ingresa tu API Key de Google (opcional)">
+                            </div>
+                            
+                            <div class="drive-actions">
+                                <button class="btn btn-primary" id="btn-drive-connect">Conectar y Sincronizar</button>
+                                <button class="btn btn-danger hidden" id="btn-drive-disconnect">Desconectar cuenta</button>
+                            </div>
+
+                            <details class="guide-details mt-3">
+                                <summary>🤔 ¿Cómo conseguir mis credenciales gratis?</summary>
+                                <div class="guide-content text-sm text-muted">
+                                    <ol>
+                                        <li>Entra a la <a href="https://console.cloud.google.com/" target="_blank">Google Cloud Console</a>.</li>
+                                        <li>Crea un proyecto nuevo.</li>
+                                        <li>Busca la sección <strong>Pantalla de consentimiento de OAuth</strong>, configúrala como "Externa" y añade tu correo. Añade el alcance (scope) <code>.../auth/drive.file</code>.</li>
+                                        <li>Ve a <strong>Credenciales</strong>, haz clic en <strong>Crear credenciales</strong> -> <strong>ID de cliente de OAuth</strong>. Selecciona "Aplicación web".</li>
+                                        <li>En Orígenes de JavaScript autorizados añade <code>http://localhost:5173</code> o tu dominio local.</li>
+                                        <li>Copia el Client ID generado y pégalo arriba. ¡Listo!</li>
+                                    </ol>
+                                </div>
+                            </details>
+                        </div>
+
+                        <div class="card mt-4">
+                            <h3>💾 Copias de Seguridad y Datos</h3>
+                            <div class="backup-actions">
+                                <button class="btn btn-outline-primary" id="btn-export-json">📤 Exportar Base de Datos (JSON)</button>
+                                <button class="btn btn-outline-secondary" id="btn-export-csv">📄 Descargar Movimientos (CSV)</button>
+                            </div>
+                            
+                            <hr class="my-4">
+                            
+                            <h4>Importar Datos</h4>
+                            <div class="form-group">
+                                <label for="import-file-input">Selecciona archivo JSON exportado:</label>
+                                <input type="file" id="import-file-input" accept=".json">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label for="import-strategy">Estrategia:</label>
+                                    <select id="import-strategy" class="form-select">
+                                        <option value="merge">Fusionar (Añadir nuevos sin duplicar)</option>
+                                        <option value="overwrite">Sobrescribir todo (Reemplazar local)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button class="btn btn-success w-100" id="btn-import-data">📥 Importar Datos</button>
+                        </div>
+                    </div>
+
+                    <!-- Right: Shareable Reports & Statistics -->
+                    <div class="reports-stats-panel">
+                        <div class="card">
+                            <h3>📋 Generador de Reporte en Texto</h3>
+                            <p class="text-muted text-sm">Genera un resumen formateado del mes seleccionado para copiar y enviar rápidamente.</p>
+                            <div class="form-row align-items-end">
+                                <div class="form-group col">
+                                    <label for="report-month-select">Mes del Reporte:</label>
+                                    <input type="month" id="report-month-select" class="form-select">
+                                </div>
+                                <div class="form-group col-auto">
+                                    <button class="btn btn-primary" id="btn-generate-text-report">Generar Reporte</button>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <textarea id="text-report-output" rows="10" class="form-control text-mono" readonly placeholder="El reporte se generará aquí..."></textarea>
+                            </div>
+                            <button class="btn btn-outline-primary w-100 mt-2" id="btn-copy-text-report">📋 Copiar Reporte al Portapapeles</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal for adding/editing transaction -->
+    <div id="modal-transaction" class="modal hidden">
+        <div class="modal-content card">
+            <span class="modal-close" id="modal-close-btn">&times;</span>
+            <h3 id="modal-title">Registrar Movimiento</h3>
+            <form id="form-transaction">
+                <input type="hidden" id="trans-id">
+                
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="trans-type">Tipo *</label>
+                        <select id="trans-type" required>
+                            <option value="expense">Gasto</option>
+                            <option value="income">Ingreso</option>
+                        </select>
+                    </div>
+                    <div class="form-group col">
+                        <label for="trans-amount">Monto *</label>
+                        <input type="number" step="0.01" id="trans-amount" required placeholder="0.00">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="trans-date">Fecha *</label>
+                        <input type="date" id="trans-date" required>
+                    </div>
+                    <div class="form-group col">
+                        <label for="trans-category">Categoría *</label>
+                        <select id="trans-category" required>
+                            <!-- Dynamic categories -->
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="trans-account">Cuenta Asociada *</label>
+                        <select id="trans-account" required>
+                            <!-- Dynamic accounts -->
+                        </select>
+                    </div>
+                    <div class="form-group col">
+                        <label for="trans-method">Método de Pago</label>
+                        <select id="trans-method">
+                            <option value="efectivo">Efectivo</option>
+                            <option value="transferencia">Transferencia Bancaria</option>
+                            <option value="tarjeta">Tarjeta de Crédito / Débito</option>
+                            <option value="billetera">Yape / Plin</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="trans-desc">Descripción *</label>
+                    <input type="text" id="trans-desc" required placeholder="Ej: Compra de insumos, Pago de honorarios">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="trans-reference">Documento / Referencia</label>
+                        <input type="text" id="trans-reference" placeholder="Ej: Boleta B-103">
+                    </div>
+                    <div class="form-group col">
+                        <label for="trans-tags">Etiquetas (separadas por coma)</label>
+                        <input type="text" id="trans-tags" placeholder="Ej: oficina, mensual, urgente">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="btn-cancel-modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" id="btn-save-transaction">Guardar Registro</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JS Logic -->
+    <script src="script.js"></script>
+</body>
+</html>
