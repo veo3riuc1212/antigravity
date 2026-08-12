@@ -62,19 +62,19 @@
                     
                     <div class="hero-bullets">
                         <div class="bullet-item">
-                            <span class="bullet-icon-check">✓</span>
+                            <span class="bullet-icon-check" style="color: #16c60c;">✓</span>
                             <span>Evaluación de cumplimiento integral</span>
                         </div>
                         <div class="bullet-item">
-                            <span class="bullet-icon-check">✓</span>
+                            <span class="bullet-icon-check" style="color: #16c60c;">✓</span>
                             <span>Protección radiológica certificada</span>
                         </div>
                         <div class="bullet-item">
-                            <span class="bullet-icon-check">✓</span>
+                            <span class="bullet-icon-check" style="color: #16c60c;">✓</span>
                             <span>Blindaje y materiales certificados</span>
                         </div>
                         <div class="bullet-item">
-                            <span class="bullet-icon-check">✓</span>
+                            <span class="bullet-icon-check" style="color: #16c60c;">✓</span>
                             <span>Documentación y soporte técnico ante IPEN/DIRIS</span>
                         </div>
                     </div>
@@ -261,7 +261,7 @@
                                         <option value="Necesito EPP/materiales">Necesito EPP / Materiales certificados</option>
                                     </select>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-glow btn-full" style="margin-top: 0.5rem; padding: 0.75rem;">
+                                <button type="submit" class="btn btn-primary btn-glow btn-full btn-critical-color btn-critical-glow" style="margin-top: 0.5rem; padding: 0.75rem;">
                                     Ver mi resultado y recomendaciones →
                                 </button>
                             </form>
@@ -352,7 +352,7 @@
                 </div>
                 <div class="text-center" style="margin-bottom: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
                     <p style="color: var(--text-secondary); font-size: 1.05rem; font-weight: 500;">¿No estás seguro de si alguno de estos puntos afecta a tu instalación?</p>
-                    <a href="#diagnostico" class="btn btn-primary btn-glow">Haz el autodiagnóstico gratuito →</a>
+                    <a href="#diagnostico" class="btn btn-primary btn-glow btn-evaluar-color btn-evaluar-glow">Haz el autodiagnóstico gratuito →</a>
                 </div>
             </div>
         </section>
@@ -944,7 +944,7 @@
                                 <label for="lm-phone">Teléfono / WhatsApp</label>
                                 <input type="tel" id="lm-phone" class="form-control" placeholder="Ej. 987654321" required>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-glow btn-full">
+                            <button type="submit" class="btn btn-primary btn-glow btn-full btn-evaluar-color btn-evaluar-glow">
                                 Descargar Kit de Cumplimiento
                             </button>
                         </form>
@@ -1156,6 +1156,17 @@
         </div>
         <a href="#diagnostico" class="btn btn-primary btn-glow sticky-btn btn-evaluar-color btn-evaluar-glow">Evaluar Mi Sala</a>
     </div>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://api.whatsapp.com/send?phone=51933666362&text=Hola%20UF%20Corp%2C%20deseo%20m%C3%A1s%20informaci%C3%B3n%20sobre%20protecci%C3%B3n%20radiol%C3%B3gica%20y%20blindaje." 
+       class="whatsapp-float-btn" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 11.966.01c3.178.001 6.169 1.24 8.424 3.496 2.254 2.256 3.491 5.252 3.491 8.43 0 6.613-5.338 11.952-11.907 11.952-2.005-.001-3.973-.507-5.729-1.476L0 24zm6.59-4.846c1.6.95 2.72 1.48 4.793 1.48 5.4 0 9.79-4.386 9.79-9.774 0-5.388-4.39-9.774-9.79-9.774-5.402 0-9.792 4.386-9.792 9.774 0 2.222.569 3.87 1.637 5.634l-.993 3.634 3.755-.974zM17.15 14.18c-.287-.144-1.696-.838-1.958-.934-.262-.096-.453-.144-.644.144-.191.288-.74.934-.906 1.127-.167.192-.334.216-.62.072-.288-.143-1.21-.446-2.308-1.428-.854-.763-1.432-1.704-1.6-1.99-.166-.288-.018-.444.126-.587.13-.13.287-.336.43-.504.143-.168.19-.288.286-.48.096-.192.048-.36-.024-.504-.072-.144-.644-1.554-.882-2.13-.232-.559-.467-.483-.64-.492-.167-.008-.36-.01-.553-.01-.193 0-.507.072-.77.36-.264.288-1.008.986-1.008 2.404 0 1.417 1.031 2.784 1.175 2.976.144.192 2.03 3.1 4.916 4.347.686.297 1.222.474 1.639.607.69.219 1.319.188 1.815.114.553-.082 1.696-.694 1.934-1.365.238-.671.238-1.246.167-1.366-.07-.12-.262-.192-.549-.336z"/>
+        </svg>
+    </a>
 
     <!-- Scripts -->
     <script src="js/diagnostic.js"></script>

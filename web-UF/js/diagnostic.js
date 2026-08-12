@@ -59,9 +59,57 @@ document.addEventListener('DOMContentLoaded', () => {
             state.leadInstitution = document.getElementById('wiz-institution').value;
             state.leadCity = document.getElementById('wiz-city').value;
             state.leadPhone = document.getElementById('wiz-phone').value;
-            state.leadRoomType = document.getElementById('wiz-room-type').value;
-            state.leadSituation = document.getElementById('wiz-situation').value;
             
+            const roomTypeSelect = document.getElementById('wiz-room-type');
+            state.leadRoomType = roomTypeSelect.value;
+            const roomTypeText = roomTypeSelect.options[roomTypeSelect.selectedIndex]?.text || state.leadRoomType;
+            
+            const situationSelect = document.getElementById('wiz-situation');
+            state.leadSituation = situationSelect.value;
+            const situationText = situationSelect.options[situationSelect.selectedIndex]?.text || state.leadSituation;
+            
+            // Build WhatsApp message
+            const answersMap = {
+                licencia_ipen: {
+                    si: 'Sí, está vigente',
+                    tramite: 'Está vencida / En trámite',
+                    no: 'No, operamos sin licencia'
+                },
+                dosimetria: {
+                    si: 'Sí, todos tienen lectura mensual',
+                    incompleto: 'Solo algunos / Compartimos dosímetro',
+                    no: 'No tenemos servicio de dosimetría'
+                },
+                control_calidad: {
+                    si: 'Sí, al día',
+                    vencido: 'Vencido / Más de 1 año',
+                    no: 'No tenemos certificado QC'
+                },
+                blindaje_memoria: {
+                    si: 'Sí, contamos con ella',
+                    no_medida: 'Solo baritina/plomo, sin memoria firmada',
+                    no: 'No sabemos / No tenemos blindaje'
+                },
+                opr: {
+                    si: 'Sí, contratado',
+                    tramite: 'En proceso de contratación',
+                    no: 'No tenemos OPR'
+                }
+            };
+
+            const ans1 = answersMap.licencia_ipen[state.answers.licencia_ipen] || state.answers.licencia_ipen || 'No especificado';
+            const ans2 = answersMap.dosimetria[state.answers.dosimetria] || state.answers.dosimetria || 'No especificado';
+            const ans3 = answersMap.control_calidad[state.answers.control_calidad] || state.answers.control_calidad || 'No especificado';
+            const ans4 = answersMap.blindaje_memoria[state.answers.blindaje_memoria] || state.answers.blindaje_memoria || 'No especificado';
+            const ans5 = answersMap.opr[state.answers.opr] || state.answers.opr || 'No especificado';
+
+            const message = `Hola UF Corp, acabo de completar el Autodiagnóstico de Cumplimiento IPEN.\n\n*Datos de Contacto:*\n- Nombre: ${state.leadName}\n- Establecimiento: ${state.leadInstitution}\n- Ciudad/Provincia: ${state.leadCity}\n- Teléfono: ${state.leadPhone}\n- Tipo de Instalación: ${roomTypeText}\n- Situación: ${situationText}\n\n*Respuestas del Autodiagnóstico:*\n1. Licencia IPEN: ${ans1}\n2. Dosimetría: ${ans2}\n3. Control de Calidad QC: ${ans3}\n4. Blindaje y Memoria: ${ans4}\n5. Oficial de Protección (OPR): ${ans5}`;
+            
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=51933666362&text=${encodeURIComponent(message)}`;
+            
+            // Open WhatsApp in new window/tab
+            window.open(whatsappUrl, '_blank');
+
             // Advance to show results
             nextStep();
         });

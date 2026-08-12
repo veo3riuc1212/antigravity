@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <h3>¡Suscripción Exitosa!</h3>
                     <p>Hola <strong>${name}</strong>, hemos registrado tus datos. El Kit de Cumplimiento IPEN IR.001.2026 ha sido enviado a <strong>${email}</strong>.</p>
-                    <a href="${downloadUrl}" class="btn btn-primary btn-glow btn-full" id="btn-download-pdf-direct">
+                    <a href="${downloadUrl}" class="btn btn-primary btn-glow btn-full btn-evaluar-color btn-evaluar-glow" id="btn-download-pdf-direct">
                         Descargar PDF Directo
                     </a>
                 </div>
