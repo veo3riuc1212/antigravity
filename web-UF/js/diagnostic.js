@@ -6,9 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // State management
     const state = {
         currentStep: 1,
-        totalSteps: 5,
+        totalSteps: 6,
         answers: {},
-        institutionName: 'Establecimiento sin especificar'
+        leadName: '',
+        leadInstitution: '',
+        leadCity: '',
+        leadPhone: '',
+        leadRoomType: '',
+        leadSituation: ''
     };
 
     // DOM Elements
@@ -22,8 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const riskRingBar = document.getElementById('risk-ring-bar');
     const btnRestart = document.getElementById('btn-restart-diag');
     const btnWhatsApp = document.getElementById('btn-whatsapp-diag');
+    const leadForm = document.getElementById('wizard-lead-form');
 
-    // Questions key mapping
+    // Questions key mapping (Steps 1 to 5)
     const questionsKeys = {
         1: 'licencia_ipen',
         2: 'dosimetria',
@@ -32,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         5: 'opr'
     };
 
-    // Wire up option buttons
+    // Wire up option buttons for Steps 1-5
     steps.forEach(step => {
         const options = step.querySelectorAll('.btn-option');
         options.forEach(option => {
@@ -43,6 +49,23 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+
+    // Wire up Lead Form submission (Step 6)
+    if (leadForm) {
+        leadForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Capture lead info
+            state.leadName = document.getElementById('wiz-name').value;
+            state.leadInstitution = document.getElementById('wiz-institution').value;
+            state.leadCity = document.getElementById('wiz-city').value;
+            state.leadPhone = document.getElementById('wiz-phone').value;
+            state.leadRoomType = document.getElementById('wiz-room-type').value;
+            state.leadSituation = document.getElementById('wiz-situation').value;
+            
+            // Advance to show results
+            nextStep();
+        });
+    }
 
     // Reset button handler
     if (btnRestart) {
@@ -79,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateProgressBar() {
-        const percent = ((state.currentStep - 1) / (state.totalSteps)) * 100;
+        const percent = ((state.currentStep - 1) / state.totalSteps) * 100;
         if (progressFill) {
             progressFill.style.width = `${percent}%`;
         }
@@ -98,6 +121,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function resetWizard() {
         state.currentStep = 1;
         state.answers = {};
+        state.leadName = '';
+        state.leadInstitution = '';
+        state.leadCity = '';
+        state.leadPhone = '';
+        state.leadRoomType = '';
+        state.leadSituation = '';
+        
+        if (leadForm) {
+            leadForm.reset();
+        }
         
         // Reset indicators
         stepNums.forEach(num => {
@@ -109,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Reset progress bar
         if (progressFill) {
-            progressFill.style.width = '20%';
+            progressFill.style.width = '16.6%';
         }
 
         // Reset step content
@@ -148,10 +181,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Question 5: Oficial Proteccion Radiologica OPR (Max 15)
-        if (state.answers.opr === 'no') {
+        if (state.answers.opr === 'no' || state.answers.opr === 'encargado') {
             riskScore += 15;
-        } else if (state.answers.opr === 'encargado') {
-            riskScore += 5;
         }
 
         return Math.min(riskScore, 100);
@@ -168,8 +199,8 @@ document.addEventListener('DOMContentLoaded', () => {
             num.classList.add('completed');
         });
 
-        // Activate result slide (which is data-step 6)
-        showStep(6);
+        // Activate result slide (which is data-step 7)
+        showStep(7);
 
         const risk = calculateRisk();
         animateRiskGauge(risk);
@@ -345,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 5. OPR
         if (state.answers.opr === 'no' || state.answers.opr === 'encargado') {
-            whatsappProblems.push('Falta de OPR formal');
+            whatsappProblems.push('Falta de OPR formal o licencia individual');
             breakdownHTML += `
                 <div class="breakdown-card warning-alert">
                     <div class="alert-indicator-dot warning"></div>
@@ -373,18 +404,28 @@ document.addEventListener('DOMContentLoaded', () => {
         resultsBreakdown.innerHTML = breakdownHTML;
 
         // Customise WhatsApp Link
-        // Fetch institution from visual form if typed, or general
-        const typedInstitution = document.getElementById('contact-institution')?.value;
-        const institution = typedInstitution ? typedInstitution : 'nuestra clínica';
-        
+        const name = state.leadName || 'Interesado';
+        const institution = state.leadInstitution || 'Establecimiento';
+        const city = state.leadCity || 'Sin especificar';
+        const phone = state.leadPhone || '';
+        const roomType = state.leadRoomType || 'Sin especificar';
+        const situation = state.leadSituation || 'Sin especificar';
+
         let message = `Hola UF Corporation, he realizado el Autodiagnóstico IPEN en su web.\n\n`;
+        message += `*DATOS DE LA INSTALACIÓN:*\n`;
+        message += `- *Contacto:* ${name}\n`;
+        message += `- *Establecimiento:* ${institution}\n`;
+        message += `- *Ciudad:* ${city}\n`;
+        message += `- *Teléfono:* ${phone}\n`;
+        message += `- *Tipo de Sala:* ${roomType}\n`;
+        message += `- *Situación Actual:* ${situation}\n\n`;
         message += `*Nivel de Riesgo:* ${risk}%\n`;
         if (whatsappProblems.length > 0) {
             message += `*Problemas Detectados:*\n`;
             whatsappProblems.forEach(p => {
                 message += `- ${p}\n`;
             });
-            message += `\nNecesitamos asesoría y cotización para regularizar esta situación para ${institution} bajo la nueva norma IR.001.2026.`;
+            message += `\nSolicito asesoría y cotización para regularizar mi instalación bajo la nueva norma IR.001.2026.`;
         } else {
             message += `Cumplimos las normativas pero deseamos cotizar servicios de control de calidad/dosimetría continua.`;
         }

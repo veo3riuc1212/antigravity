@@ -57,7 +57,7 @@
                     </div>
                     <h1>Evita la <span class="text-glow-red">Clausura</span> de tu Sala de Rayos X o Tomografía</h1>
                     <p class="hero-lead">
-                        Verifica el cumplimiento de tu instalación, identifica las deficiencias y recibe una ruta clara para corregirlas antes de una inspección.
+                        Evalúa el cumplimiento de tu instalación, identifica posibles deficiencias y descubre qué necesitas corregir antes de una inspección.
                     </p>
                     
                     <div class="hero-bullets">
@@ -90,27 +90,22 @@
                     <div class="glass-card hero-glass-card">
                         <div class="card-header">
                             <div class="card-status-dot warning"></div>
-                            <h3>🛡️ Diagnóstico de cumplimiento</h3>
+                            <h3>DIAGNÓSTICO PRELIMINAR</h3>
                         </div>
                         <div class="card-body">
-                            <p class="warning-text" style="margin-bottom: 1rem;">
-                                <strong>Evalúa tu instalación en minutos</strong>
+                            <p class="warning-text" style="margin-bottom: 1rem; font-weight: 600; color: #ffffff;">
+                                Estado de tu instalación:
                             </p>
-                            <div class="mini-checklist" style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.9rem; color: var(--text-secondary);">
-                                <div>✓ Documentación IPEN</div>
-                                <div>✓ Protección radiológica</div>
-                                <div>✓ Blindaje de sala</div>
-                                <div>✓ Requisitos de la norma IR.001.2026</div>
+                            <div class="mini-checklist" style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.95rem; color: var(--text-secondary);">
+                                <div><span style="color: var(--color-success);">🟢</span> Documentación</div>
+                                <div><span style="color: var(--color-warning);">🟡</span> Protección radiológica</div>
+                                <div><span style="color: var(--color-warning);">🟡</span> Blindaje</div>
+                                <div><span style="color: var(--color-critical);">🔴</span> Requisitos pendientes</div>
                             </div>
                             <div class="status-result-box" style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.8rem; margin-bottom: 1.5rem;">
-                                <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.3rem;">Resultado preliminar</div>
-                                <div style="display: flex; flex-direction: column; gap: 0.3rem; font-weight: 500; font-size: 0.9rem;">
-                                    <span style="color: var(--color-success);">🟢 Cumplimiento detectado</span>
-                                    <span style="color: var(--color-warning);">🟡 Puntos a revisar</span>
-                                    <span style="color: var(--color-critical);">🔴 Posibles deficiencias</span>
-                                </div>
+                                <span style="font-size: 0.85rem; color: var(--text-primary); font-weight: 500;">¿Quieres conocer tu resultado?</span>
                             </div>
-                            <a href="#diagnostico" class="btn btn-primary btn-glow btn-full" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">Comenzar evaluación →</a>
+                            <a href="#diagnostico" class="btn btn-primary btn-glow btn-full" style="padding: 0.7rem 1.2rem; font-size: 0.95rem;">Evaluar mi sala →</a>
                         </div>
                     </div>
                 </div>
@@ -124,7 +119,7 @@
                 <div class="section-title-wrapper text-center">
                     <h2 class="section-title">¿Tu sala cumple con los requisitos?</h2>
                     <p class="section-subtitle">
-                        Haz una evaluación inicial gratuita en menos de 2 minutos.
+                        Comprueba en menos de 2 minutos si existen puntos que deberías revisar en tu instalación.
                     </p>
                     <div class="diag-highlights" style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 1.5rem; color: var(--text-secondary); font-size: 0.95rem; font-weight: 500;">
                         <span>✓ Evaluación inicial</span>
@@ -137,13 +132,14 @@
                 <div class="glass-card diagnostic-wizard-container">
                     <!-- Progress Bar -->
                     <div class="wizard-progress">
-                        <div class="progress-bar-fill" id="progress-fill" style="width: 20%;"></div>
+                        <div class="progress-bar-fill" id="progress-fill" style="width: 16.6%;"></div>
                         <div class="steps-indicator">
                             <span class="step-num active">1</span>
                             <span class="step-num">2</span>
                             <span class="step-num">3</span>
                             <span class="step-num">4</span>
                             <span class="step-num">5</span>
+                            <span class="step-num">6</span>
                         </div>
                     </div>
 
@@ -215,8 +211,64 @@
                             </div>
                         </div>
 
+                        <!-- Step 6: Lead Capture & Segmentation -->
+                        <div class="wizard-step" data-step="6">
+                            <h3 class="step-question" style="text-align: center; margin-bottom: 0.5rem;">📊 Completa tus datos para ver tu Diagnóstico de Cumplimiento</h3>
+                            <p class="step-description" style="text-align: center; margin-bottom: 1.5rem; color: var(--text-secondary);">
+                                Registra los datos de tu instalación para calcular el porcentaje de riesgo y obtener las recomendaciones personalizadas del Físico Médico.
+                            </p>
+                            <form id="wizard-lead-form" style="max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem;">
+                                <div class="form-group">
+                                    <label for="wiz-name" style="font-weight: 500; font-size: 0.9rem; color: #ffffff;">Nombre Completo</label>
+                                    <input type="text" id="wiz-name" class="form-control" placeholder="Ej. Dr. Carlos Soto" required style="width: 100%; padding: 0.65rem; border-radius: 6px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); color: #fff;">
+                                </div>
+                                <div class="form-group">
+                                    <label for="wiz-institution" style="font-weight: 500; font-size: 0.9rem; color: #ffffff;">Establecimiento / Clínica</label>
+                                    <input type="text" id="wiz-institution" class="form-control" placeholder="Ej. Clínica Dental Luz" required style="width: 100%; padding: 0.65rem; border-radius: 6px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); color: #fff;">
+                                </div>
+                                <div class="form-row-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                    <div class="form-group">
+                                        <label for="wiz-city" style="font-weight: 500; font-size: 0.9rem; color: #ffffff;">Ciudad / Provincia</label>
+                                        <input type="text" id="wiz-city" class="form-control" placeholder="Ej. Lima" required style="width: 100%; padding: 0.65rem; border-radius: 6px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); color: #fff;">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="wiz-phone" style="font-weight: 500; font-size: 0.9rem; color: #ffffff;">Teléfono / WhatsApp</label>
+                                        <input type="tel" id="wiz-phone" class="form-control" placeholder="Ej. 987654321" required style="width: 100%; padding: 0.65rem; border-radius: 6px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); color: #fff;">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="wiz-room-type" style="font-weight: 500; font-size: 0.9rem; color: #ffffff;">¿Qué tipo de instalación tienes?</label>
+                                    <select id="wiz-room-type" class="form-control" required style="width: 100%; padding: 0.65rem; border-radius: 6px; background: #111827; border: 1px solid var(--border-color); color: #fff;">
+                                        <option value="" disabled selected>Selecciona una opción</option>
+                                        <option value="Rayos X Convencional">Rayos X Convencional / Arco en C</option>
+                                        <option value="Tomografía">Tomógrafo Multicorte</option>
+                                        <option value="Mamografía">Mamógrafo Digital</option>
+                                        <option value="Odontología">Sala Dental (Periapical / Panorámico)</option>
+                                        <option value="Veterinaria">Veterinaria</option>
+                                        <option value="Otro">Otro tipo de ambiente</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="wiz-situation" style="font-weight: 500; font-size: 0.9rem; color: #ffffff;">¿En qué situación estás?</label>
+                                    <select id="wiz-situation" class="form-control" required style="width: 100%; padding: 0.65rem; border-radius: 6px; background: #111827; border: 1px solid var(--border-color); color: #fff;">
+                                        <option value="" disabled selected>Selecciona una opción</option>
+                                        <option value="Instalar equipo nuevo">Voy a instalar un equipo nuevo</option>
+                                        <option value="Instalación funcionando">Ya tengo una instalación funcionando</option>
+                                        <option value="Inspección próxima">Tengo una inspección próxima</option>
+                                        <option value="Deficiencias detectadas">Me han detectado deficiencias</option>
+                                        <option value="Necesito documentación">Necesito documentación / Licencia IPEN</option>
+                                        <option value="Necesito blindaje">Necesito blindaje (plomo o baritina)</option>
+                                        <option value="Necesito EPP/materiales">Necesito EPP / Materiales certificados</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-glow btn-full" style="margin-top: 0.5rem; padding: 0.75rem;">
+                                    Ver mi resultado y recomendaciones →
+                                </button>
+                            </form>
+                        </div>
+
                         <!-- Results Step (Dynamically injected contents) -->
-                        <div class="wizard-step results-step" data-step="6">
+                        <div class="wizard-step results-step" data-step="7">
                             <div class="results-header text-center">
                                 <div class="risk-gauge-container">
                                     <svg class="risk-ring" viewBox="0 0 120 120">
@@ -262,53 +314,100 @@
                 </div>
                 <div class="risk-cards-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
                     <div class="glass-card risk-card" style="border-top: 3px solid var(--color-critical);">
-                        <h3 style="font-size: 1.25rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem; color: var(--color-critical);">
-                            <span>❌</span> Documentación incompleta
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.8rem; display: flex; flex-direction: column; gap: 0.3rem; color: var(--color-critical);">
+                            <span style="font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-critical); opacity: 0.8;">🔴 Documentación</span>
+                            <span>¿Tienes toda la documentación necesaria y actualizada?</span>
                         </h3>
                         <p style="color: var(--text-secondary); font-size: 0.95rem;">
                             Carecer de manuales de seguridad, resoluciones vigentes o licencias individuales actualizadas del personal técnico.
                         </p>
                     </div>
                     <div class="glass-card risk-card" style="border-top: 3px solid var(--color-critical);">
-                        <h3 style="font-size: 1.25rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem; color: var(--color-critical);">
-                            <span>❌</span> Blindaje insuficiente
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.8rem; display: flex; flex-direction: column; gap: 0.3rem; color: var(--color-critical);">
+                            <span style="font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-critical); opacity: 0.8;">🔴 Blindaje</span>
+                            <span>¿El blindaje de tu sala responde a las características de tu equipo?</span>
                         </h3>
                         <p style="color: var(--text-secondary); font-size: 0.95rem;">
                             Paredes o puertas plomadas con fugas de radiación dispersa o tarrajeos de baritina con espesores inferiores a los requeridos por el cálculo.
                         </p>
                     </div>
                     <div class="glass-card risk-card" style="border-top: 3px solid var(--color-critical);">
-                        <h3 style="font-size: 1.25rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem; color: var(--color-critical);">
-                            <span>❌</span> Equipos/EPP no conformes
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.8rem; display: flex; flex-direction: column; gap: 0.3rem; color: var(--color-critical);">
+                            <span style="font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-critical); opacity: 0.8;">🔴 Protección</span>
+                            <span>¿Tu instalación y personal cuentan con las medidas necesarias?</span>
                         </h3>
                         <p style="color: var(--text-secondary); font-size: 0.95rem;">
-                            Falta de control de calidad QC anual o uso de mandiles de plomo con grietas internas que exponen al personal e inspectores.
+                            Falta de control de calidad QC anual o ausencia de Oficiales de Protección Radiológica (OPR) activos y habilitados en la clínica.
                         </p>
                     </div>
                     <div class="glass-card risk-card" style="border-top: 3px solid var(--color-critical);">
-                        <h3 style="font-size: 1.25rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem; color: var(--color-critical);">
-                            <span>❌</span> Falta de documentación técnica
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.8rem; display: flex; flex-direction: column; gap: 0.3rem; color: var(--color-critical);">
+                            <span style="font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-critical); opacity: 0.8;">🔴 Equipamiento</span>
+                            <span>¿Tus EPP y elementos de protección están certificados y disponibles?</span>
                         </h3>
                         <p style="color: var(--text-secondary); font-size: 0.95rem;">
-                            Ausencia de memoria de cálculo de blindaje y levantamiento radiométrico firmado por un Físico Médico colegiado habilitado.
+                            Uso de mandiles plomados con grietas internas invisibles que exponen al personal o carencia de visores plomados con atenuación certificada.
                         </p>
                     </div>
                 </div>
-                <div class="text-center" style="margin-bottom: 1rem;">
-                    <a href="#diagnostico" class="btn btn-primary btn-glow">Quiero evaluar mi instalación →</a>
+                <div class="text-center" style="margin-bottom: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+                    <p style="color: var(--text-secondary); font-size: 1.05rem; font-weight: 500;">¿No estás seguro de si alguno de estos puntos afecta a tu instalación?</p>
+                    <a href="#diagnostico" class="btn btn-primary btn-glow">Haz el autodiagnóstico gratuito →</a>
                 </div>
             </div>
         </section>
 
-        <!-- Transition Callout Section -->
-        <section class="transition-section" style="background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%), var(--color-bg-surface); padding: 5rem 0; border-bottom: 1px solid var(--border-color);">
-            <div class="container text-center">
-                <h2 style="font-size: 3rem; margin-bottom: 1rem; font-weight: 800; letter-spacing: -0.02em; color: #ffffff; font-family: 'Outfit', sans-serif;">De la incertidumbre al cumplimiento.</h2>
-                <h3 style="font-size: 2.2rem; color: var(--color-primary); margin-bottom: 1.5rem; font-weight: 700; font-family: 'Outfit', sans-serif;">Evaluamos. Detectamos. Corregimos.</h3>
-                <p style="font-size: 1.2rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto 2.5rem auto;">
-                    Protección radiológica, blindaje, documentación y soluciones integrales llave en mano para que tu instalación esté 100% preparada ante cualquier inspección.
-                </p>
-                <a href="#contacto" class="btn btn-secondary">Hablar con un especialista</a>
+        <!-- Transition Callout Section (El Mecanismo) -->
+        <section class="transition-section" style="background: linear-gradient(135deg, rgba(14, 165, 233, 0.08) 0%, rgba(16, 185, 129, 0.03) 100%), var(--color-bg-surface); padding: 6rem 0; border-bottom: 1px solid var(--border-color);">
+            <div class="container">
+                <div class="text-center" style="margin-bottom: 3.5rem;">
+                    <h2 style="font-size: 3rem; margin-bottom: 1rem; font-weight: 800; letter-spacing: -0.02em; color: #ffffff; font-family: 'Outfit', sans-serif;">De la incertidumbre al cumplimiento.</h2>
+                    <p style="font-size: 1.25rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                        Un proceso claro y transparente diseñado para garantizar el blindaje y la aprobación de tu sala.
+                    </p>
+                </div>
+
+                <div class="process-timeline" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; position: relative;">
+                    <!-- Step 1 -->
+                    <div class="process-step-card" style="position: relative; padding: 1.5rem; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: 8px;">
+                        <div class="step-badge" style="position: absolute; top: -15px; left: 1.5rem; background: var(--color-primary); color: #ffffff; font-weight: 800; font-family: 'Outfit', sans-serif; padding: 0.2rem 0.8rem; border-radius: 4px; font-size: 0.85rem; box-shadow: 0 0 10px var(--color-primary-glow);">01 — EVALUAMOS</div>
+                        <p style="font-size: 1.1rem; font-weight: 600; color: #ffffff; margin-top: 0.8rem; margin-bottom: 0.5rem;">Diagnóstico Inicial</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5;">
+                            Analizamos tu instalación y documentación técnica actual para identificar el punto de partida.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="process-step-card" style="position: relative; padding: 1.5rem; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: 8px;">
+                        <div class="step-badge" style="position: absolute; top: -15px; left: 1.5rem; background: var(--color-warning); color: #ffffff; font-weight: 800; font-family: 'Outfit', sans-serif; padding: 0.2rem 0.8rem; border-radius: 4px; font-size: 0.85rem; box-shadow: 0 0 10px var(--color-warning-glow);">02 — DETECTAMOS</div>
+                        <p style="font-size: 1.1rem; font-weight: 600; color: #ffffff; margin-top: 0.8rem; margin-bottom: 0.5rem;">Identificación del Riesgo</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5;">
+                            Identificamos las posibles deficiencias y puntos críticos que requieren atención inmediata o blindaje adicional.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="process-step-card" style="position: relative; padding: 1.5rem; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: 8px;">
+                        <div class="step-badge" style="position: absolute; top: -15px; left: 1.5rem; background: var(--color-critical); color: #ffffff; font-weight: 800; font-family: 'Outfit', sans-serif; padding: 0.2rem 0.8rem; border-radius: 4px; font-size: 0.85rem; box-shadow: 0 0 10px var(--color-critical-glow);">03 — CORREGIMOS</div>
+                        <p style="font-size: 1.1rem; font-weight: 600; color: #ffffff; margin-top: 0.8rem; margin-bottom: 0.5rem;">Solución de Deficiencias</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5;">
+                            Te ayudamos a implementar las soluciones necesarias, desde materiales plomados hasta redacción de manuales.
+                        </p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="process-step-card" style="position: relative; padding: 1.5rem; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: 8px;">
+                        <div class="step-badge" style="position: absolute; top: -15px; left: 1.5rem; background: var(--color-success); color: #ffffff; font-weight: 800; font-family: 'Outfit', sans-serif; padding: 0.2rem 0.8rem; border-radius: 4px; font-size: 0.85rem; box-shadow: 0 0 10px var(--color-success-glow);">04 — DOCUMENTAMOS</div>
+                        <p style="font-size: 1.1rem; font-weight: 600; color: #ffffff; margin-top: 0.8rem; margin-bottom: 0.5rem;">Expediente IPEN Listo</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5;">
+                            Preparamos y consolidamos el expediente correspondiente firmado por Físico Médico colegiado para obtener tu licencia.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="text-center" style="margin-top: 3.5rem;">
+                    <a href="#diagnostico" class="btn btn-secondary">Comenzar Evaluación Gratis</a>
+                </div>
             </div>
         </section>
 
@@ -325,57 +424,96 @@
                 <div class="services-grid">
                     
                     <!-- Service 1 -->
-                    <div class="glass-card service-card">
-                        <div class="service-icon-wrapper">
-                            <svg class="service-icon" viewBox="0 0 24 24" width="36" height="36">
-                                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" fill="currentColor"/>
-                            </svg>
+                    <div class="glass-card service-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <div class="service-icon-wrapper" style="margin-bottom: 1rem;">
+                                <svg class="service-icon" viewBox="0 0 24 24" width="36" height="36">
+                                    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <h3 style="font-size: 1.35rem; margin-bottom: 1rem; color: #ffffff;">📄 Licencia y documentación</h3>
+                            <div class="service-details" style="display: flex; flex-direction: column; gap: 0.8rem; font-size: 0.95rem; margin-bottom: 1.5rem;">
+                                <div>
+                                    <strong style="color: var(--color-primary); font-size: 0.8rem; text-transform: uppercase;">Qué es:</strong>
+                                    <p style="color: var(--text-primary); margin-top: 0.1rem;">Gestión del expediente y asignación de OPR externo ante el IPEN y DIRIS.</p>
+                                </div>
+                                <div>
+                                    <strong style="color: var(--color-warning); font-size: 0.8rem; text-transform: uppercase;">Qué resuelve:</strong>
+                                    <p style="color: var(--text-secondary); margin-top: 0.1rem;">Observaciones por licencias vencidas, trámites paralizados o falta de personal POE registrado.</p>
+                                </div>
+                                <div>
+                                    <strong style="color: var(--color-success); font-size: 0.8rem; text-transform: uppercase;">Qué obtienes:</strong>
+                                    <ul style="list-style: none; padding-left: 0; margin-top: 0.3rem; display: flex; flex-direction: column; gap: 0.3rem; color: var(--text-secondary);">
+                                        <li>✓ Manuales de protección radiológica y seguridad física.</li>
+                                        <li>✓ Obtención y renovación de Licencia de Operación y de POE.</li>
+                                        <li>✓ Asesoría continua ante auditorías de la DIRIS.</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                        <h3>01 — Licencia y documentación (Expediente IPEN / OPR)</h3>
-                        <p>
-                            Preparamos la documentación necesaria para que puedas demostrar el cumplimiento de tu instalación. Gestionamos y revisamos la documentación necesaria para tu instalación y personal técnico ante el IPEN y DIRIS bajo la norma IR.001.2026.
-                        </p>
-                        <ul class="service-features">
-                            <li>Elaboración de manuales de seguridad y protección.</li>
-                            <li>Modelos de trámites actualizados al 2026.</li>
-                            <li>Asesoría frente a inspecciones sorpresa de DIRIS/DIRESA.</li>
-                        </ul>
+                        <a href="#contacto" class="btn btn-secondary btn-full">Ver solución →</a>
                     </div>
 
                     <!-- Service 2 -->
-                    <div class="glass-card service-card">
-                        <div class="service-icon-wrapper">
-                            <svg class="service-icon" viewBox="0 0 24 24" width="36" height="36">
-                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" fill="currentColor"/>
-                            </svg>
+                    <div class="glass-card service-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <div class="service-icon-wrapper" style="margin-bottom: 1rem;">
+                                <svg class="service-icon" viewBox="0 0 24 24" width="36" height="36">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <h3 style="font-size: 1.35rem; margin-bottom: 1rem; color: #ffffff;">🛡️ Protección y Blindaje</h3>
+                            <div class="service-details" style="display: flex; flex-direction: column; gap: 0.8rem; font-size: 0.95rem; margin-bottom: 1.5rem;">
+                                <div>
+                                    <strong style="color: var(--color-primary); font-size: 0.8rem; text-transform: uppercase;">Qué es:</strong>
+                                    <p style="color: var(--text-primary); margin-top: 0.1rem;">Cálculos de blindajes y su ejecución física con baritina o planchas de plomo.</p>
+                                </div>
+                                <div>
+                                    <strong style="color: var(--color-warning); font-size: 0.8rem; text-transform: uppercase;">Qué resuelve:</strong>
+                                    <p style="color: var(--text-secondary); margin-top: 0.1rem;">Fugas de radiación dispersa en pasillos, mamparas u oficinas colindantes.</p>
+                                </div>
+                                <div>
+                                    <strong style="color: var(--color-success); font-size: 0.8rem; text-transform: uppercase;">Qué obtienes:</strong>
+                                    <ul style="list-style: none; padding-left: 0; margin-top: 0.3rem; display: flex; flex-direction: column; gap: 0.3rem; color: var(--text-secondary);">
+                                        <li>✓ Memoria de Cálculo de Blindaje firmada por Físico Médico.</li>
+                                        <li>✓ Tarrajeo de baritina de alta pureza y colocación de planchas de plomo.</li>
+                                        <li>✓ Levantamiento radiométrico y vidrios plomados importados.</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                        <h3>02 — Protección radiológica y Blindaje Técnico</h3>
-                        <p>
-                            Evaluamos las condiciones de protección de tu sala y sus requerimientos técnicos. Ejecutamos cálculos de blindaje y tarrajeo de baritina de alta densidad o planchas de plomo calibradas sin puentes de fuga.
-                        </p>
-                        <ul class="service-features">
-                            <li>Memoria de Cálculo de Blindaje firmada por Físico Médico.</li>
-                            <li>Baritina de alta pureza (densidad de barrera).</li>
-                            <li>Láminas de plomo y vidrios plomados instalados profesionalmente.</li>
-                        </ul>
+                        <a href="#contacto" class="btn btn-secondary btn-full">Ver solución →</a>
                     </div>
 
                     <!-- Service 3 -->
-                    <div class="glass-card service-card">
-                        <div class="service-icon-wrapper">
-                            <svg class="service-icon" viewBox="0 0 24 24" width="36" height="36">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z" fill="currentColor"/>
-                            </svg>
+                    <div class="glass-card service-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <div class="service-icon-wrapper" style="margin-bottom: 1rem;">
+                                <svg class="service-icon" viewBox="0 0 24 24" width="36" height="36">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <h3 style="font-size: 1.35rem; margin-bottom: 1rem; color: #ffffff;">📊 Dosimetría y Control QC</h3>
+                            <div class="service-details" style="display: flex; flex-direction: column; gap: 0.8rem; font-size: 0.95rem; margin-bottom: 1.5rem;">
+                                <div>
+                                    <strong style="color: var(--color-primary); font-size: 0.8rem; text-transform: uppercase;">Qué es:</strong>
+                                    <p style="color: var(--text-primary); margin-top: 0.1rem;">Dosimetría personal ocupacional mensual y Control de Calidad anual de equipos.</p>
+                                </div>
+                                <div>
+                                    <strong style="color: var(--color-warning); font-size: 0.8rem; text-transform: uppercase;">Qué resuelve:</strong>
+                                    <p style="color: var(--text-secondary); margin-top: 0.1rem;">Suspensión de licencias por falta de pruebas anuales QC obligatorias.</p>
+                                </div>
+                                <div>
+                                    <strong style="color: var(--color-success); font-size: 0.8rem; text-transform: uppercase;">Qué obtienes:</strong>
+                                    <ul style="list-style: none; padding-left: 0; margin-top: 0.3rem; display: flex; flex-direction: column; gap: 0.3rem; color: var(--text-secondary);">
+                                        <li>✓ Dosímetros personales de lectura mensual con reporte oficial.</li>
+                                        <li>✓ Protocolo de Control de Calidad (QC) bajo la norma IR.001.2026.</li>
+                                        <li>✓ Documentación nominal y expedientes al día para auditorías.</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                        <h3>03 — Dosimetría y Control de Calidad QC</h3>
-                        <p>
-                            Control y seguimiento de la exposición ocupacional. Implementamos dosímetros mensuales acreditados ante el IPEN y realizamos el control de calidad QC anual obligatorio de tus equipos emisores de radiación.
-                        </p>
-                        <ul class="service-features">
-                            <li>Dosimetría acreditada por IPEN con entrega puntual.</li>
-                            <li>Reportes históricos mensuales listos para auditorías.</li>
-                            <li>Asignación de Oficiales de Protección Radiológica autorizados.</li>
-                        </ul>
+                        <a href="#contacto" class="btn btn-secondary btn-full">Ver solución →</a>
                     </div>
 
                 </div>
@@ -386,9 +524,9 @@
         <section id="productos" class="products-section">
             <div class="container">
                 <div class="section-title-wrapper text-center">
-                    <h2 class="section-title">¿Necesitas corregir una deficiencia? Tenemos los materiales certificados necesarios para implementar las correcciones.</h2>
+                    <h2 class="section-title">Detectamos una deficiencia. Ahora, solucionémosla.</h2>
                     <p class="section-subtitle">
-                        Comercializamos materiales de alta pureza y EPPs ergonómicos que reducen el peso para evitar lesiones lumbares en los tecnólogos.
+                        Materiales certificados para implementar las correcciones necesarias.
                     </p>
                 </div>
 
@@ -663,8 +801,11 @@
                                 Estimación preliminar. No sustituye un cálculo técnico ni una evaluación profesional de protección radiológica. Todo blindaje formal exige una Memoria de Cálculo de Blindaje.
                             </p>
                         </div>
-
-                        <a href="#contacto" class="btn btn-primary btn-glow btn-full" id="btn-quote-calc">Solicitar Cotización de Materiales y Cálculo de Blindaje</a>
+                        
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; margin-top: 1.5rem; width: 100%;">
+                            <span style="font-size: 0.9rem; color: var(--text-secondary); text-align: center; font-weight: 500;">¿Quieres convertir esta estimación en un cálculo técnico para tu instalación?</span>
+                            <a href="#contacto" class="btn btn-primary btn-glow btn-full" id="btn-quote-calc">Solicitar evaluación de sala →</a>
+                        </div>
                     </div>
 
                 </div>
@@ -732,12 +873,25 @@
                         </div>
                     </div>
 
-                    <div class="glass-card stat-testimonial-card" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border-left: 4px solid var(--color-success); background: rgba(16, 185, 129, 0.02); padding: 2rem;">
-                        <div class="stat-large" style="font-size: 4.5rem; font-weight: 800; color: var(--color-success); font-family: 'Outfit', sans-serif; line-height: 1; margin-bottom: 0.5rem;">6</div>
-                        <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: #ffffff;">Puntos de Incumplimiento Detectados a Tiempo</h3>
-                        <p style="color: var(--text-secondary); font-size: 0.95rem; max-width: 320px; margin: 0 auto;">
-                            En promedio, identificamos y corregimos hasta 6 deficiencias críticas de seguridad y protección en salas de rayos X antes de la inspección.
-                        </p>
+                    <div class="glass-card testimonial-card" style="display: flex; flex-direction: column; justify-content: space-between; border-left: 4px solid var(--color-success); background: rgba(16, 185, 129, 0.02); padding: 2rem;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <span style="font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-success); font-weight: 700; display: block; margin-bottom: 0.5rem;">⭐ Caso de Estudio Real</span>
+                            <h3 style="font-size: 1.2rem; margin-bottom: 0.8rem; color: #ffffff;">Clínica Dental Luz (Lima)</h3>
+                            <div class="before-after-grid" style="display: flex; flex-direction: column; gap: 0.8rem; font-size: 0.95rem;">
+                                <div class="case-before" style="background: rgba(239, 68, 68, 0.03); border-left: 3px solid var(--color-critical); padding: 0.4rem 0.6rem; border-radius: 4px;">
+                                    <strong style="color: var(--color-critical); font-size: 0.8rem; text-transform: uppercase;">Problema:</strong>
+                                    <p style="color: var(--text-secondary); margin-top: 0.1rem;">Deficiencias detectadas e inspección IPEN próxima con riesgo inminente de paralización.</p>
+                                </div>
+                                <div class="case-after" style="background: rgba(16, 185, 129, 0.03); border-left: 3px solid var(--color-success); padding: 0.4rem 0.6rem; border-radius: 4px;">
+                                    <strong style="color: var(--color-success); font-size: 0.8rem; text-transform: uppercase;">Intervención:</strong>
+                                    <p style="color: var(--text-secondary); margin-top: 0.1rem;">Evaluación de blindaje integral, tarrajeo de baritina certificado y expediente OPR llave en mano.</p>
+                                </div>
+                                <div class="case-result" style="background: rgba(14, 165, 233, 0.03); border-left: 3px solid var(--color-primary); padding: 0.4rem 0.6rem; border-radius: 4px;">
+                                    <strong style="color: var(--color-primary); font-size: 0.8rem; text-transform: uppercase;">Métricas y Resultado:</strong>
+                                    <p style="color: var(--text-primary); font-weight: 500; margin-top: 0.1rem;">4 deficiencias corregidas a tiempo. 5 días de intervención física. Licencia emitida sin observaciones.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -750,9 +904,9 @@
                 <div class="glass-card lead-magnet-card">
                     <div class="lead-magnet-content">
                         <div class="lead-magnet-tag">Recurso Gratuito 2026</div>
-                        <h2>Descarga el Kit de Cumplimiento IPEN IR.001.2026</h2>
+                        <h2>Checklist de preparación para una inspección</h2>
                         <p class="lead-magnet-intro">
-                            Evita la clausura de tu establecimiento médico. Hemos empaquetado los documentos y plantillas indispensables que los inspectores del IPEN y DIRIS te exigirán en su próxima auditoría.
+                            Descarga gratuitamente el Kit de Cumplimiento IPEN y revisa los puntos que deberías tener preparados antes de una inspección.
                         </p>
                         <div class="lead-magnet-bullets">
                             <div class="bullet-item">
@@ -761,7 +915,7 @@
                             </div>
                             <div class="bullet-item">
                                 <span class="bullet-icon-check">✓</span>
-                                <span><strong>Modelos de Consentimiento:</strong> Formatos para gestantes y pediátricos (dolor legal).</span>
+                                <span><strong>Modelos de Consentimiento:</strong> Formatos para gestantes y pediátricos (obligatorios).</span>
                             </div>
                             <div class="bullet-item">
                                 <span class="bullet-icon-check">✓</span>
@@ -808,20 +962,40 @@
                 </div>
                 <div class="faq-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 1000px; margin: 0 auto; margin-top: 3rem;">
                     <div class="glass-card faq-item" style="padding: 1.5rem;">
-                        <h4 style="font-size: 1.1rem; color: #ffffff; margin-bottom: 0.5rem; font-weight: 600;">¿Cuáles son las sanciones por no tener licencia IPEN?</h4>
-                        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">La DIRIS o DIRESA, en coordinación con el IPEN, pueden aplicar multas sustanciales y proceder a la clausura inmediata de la sala, impidiendo la atención de pacientes y generando pérdidas económicas.</p>
+                        <h4 style="font-size: 1.1rem; color: #ffffff; margin-bottom: 0.5rem; font-weight: 600;">¿Qué requisitos debe cumplir una sala de Rayos X?</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">La sala debe contar con blindaje certificado de plomo o baritina según el cálculo físico, dosimetría para el personal expuesto (POE), control de calidad del equipo QC y un Oficial de Protección Radiológica designado.</p>
                     </div>
                     <div class="glass-card faq-item" style="padding: 1.5rem;">
-                        <h4 style="font-size: 1.1rem; color: #ffffff; margin-bottom: 0.5rem; font-weight: 600;">¿Qué es la Memoria de Cálculo de Blindaje?</h4>
-                        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">Es un documento técnico elaborado y firmado por un Físico Médico colegiado habilitado. Detalla los espesores requeridos de plomo o baritina para que la radiación dispersa no represente riesgos al exterior.</p>
+                        <h4 style="font-size: 1.1rem; color: #ffffff; margin-bottom: 0.5rem; font-weight: 600;">¿Cómo sé si mi sala necesita blindaje?</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">Todas las salas de diagnóstico por imágenes requieren blindaje. Para conocer el espesor exacto (en plomo o baritina), se realiza una Memoria de Cálculo de Blindaje firmada por un Físico Médico, que simula la atenuación de la radiación dispersa.</p>
                     </div>
                     <div class="glass-card faq-item" style="padding: 1.5rem;">
-                        <h4 style="font-size: 1.1rem; color: #ffffff; margin-bottom: 0.5rem; font-weight: 600;">¿Con qué frecuencia se realiza la dosimetría?</h4>
-                        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">El control de dosimetría personal es mensual y obligatorio para todo el personal ocupacionalmente expuesto (POE), reportado ante el IPEN.</p>
+                        <h4 style="font-size: 1.1rem; color: #ffffff; margin-bottom: 0.5rem; font-weight: 600;">¿Qué documentación necesito para una instalación de Rayos X?</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">El IPEN exige el expediente de Licencia de Operación del establecimiento que incluye manuales de seguridad, plan de emergencias radiológicas, resoluciones de Control de Calidad y licencias individuales del personal.</p>
                     </div>
                     <div class="glass-card faq-item" style="padding: 1.5rem;">
-                        <h4 style="font-size: 1.1rem; color: #ffffff; margin-bottom: 0.5rem; font-weight: 600;">¿Cuál es la diferencia entre Baritina y Plomo?</h4>
-                        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">La baritina se aplica mediante tarrajeo húmedo tradicional (espesor de 1.5 a 2.5cm) y es ideal para muros de ladrillo. El plomo se coloca en planchas delgadas y es preferible para drywall o puertas de madera.</p>
+                        <h4 style="font-size: 1.1rem; color: #ffffff; margin-bottom: 0.5rem; font-weight: 600;">¿Qué ocurre si mi instalación presenta deficiencias?</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">Las deficiencias detectadas en una inspección de la DIRIS o DIRESA pueden resultar en un acta de observación con plazos muy cortos o, en casos graves, en la clausura inmediata de la sala de radiodiagnóstico.</p>
+                    </div>
+                    <div class="glass-card faq-item" style="padding: 1.5rem;">
+                        <h4 style="font-size: 1.1rem; color: #ffffff; margin-bottom: 0.5rem; font-weight: 600;">¿Qué es una OPR y por qué es obligatoria?</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">El Oficial de Protección Radiológica (OPR) es el encargado técnico de velar por el cumplimiento de la seguridad. Toda clínica que opere equipos de radiación debe contar con un OPR designado con licencia vigente.</p>
+                    </div>
+                    <div class="glass-card faq-item" style="padding: 1.5rem;">
+                        <h4 style="font-size: 1.1rem; color: #ffffff; margin-bottom: 0.5rem; font-weight: 600;">¿Qué EPP plomado necesita mi personal?</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">El personal técnico debe usar mandiles plomados (equivalencia mínima de 0.25mm o 0.50mm Pb), protectores de tiroides, lentes plomados contra cataratas y protectores gonadales para mitigar la radiación dispersa.</p>
+                    </div>
+                    <div class="glass-card faq-item" style="padding: 1.5rem;">
+                        <h4 style="font-size: 1.1rem; color: #ffffff; margin-bottom: 0.5rem; font-weight: 600;">¿Cómo funciona una evaluación de protección radiológica?</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">Un Físico Médico evalúa físicamente las paredes, puertas y visores mediante detectores Geiger-Muller para certificar que la dosis ambiental exterior cumple los límites ocupacionales permitidos.</p>
+                    </div>
+                    <div class="glass-card faq-item" style="padding: 1.5rem;">
+                        <h4 style="font-size: 1.1rem; color: #ffffff; margin-bottom: 0.5rem; font-weight: 600;">¿Cuánto tarda el proceso de licenciamiento?</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">Con un expediente completo y sin observaciones (elaborado por UF Corp), la aprobación y emisión de la licencia del IPEN / DIRIS toma usualmente menos de 30 días calendario.</p>
+                    </div>
+                    <div class="glass-card faq-item" style="padding: 1.5rem;">
+                        <h4 style="font-size: 1.1rem; color: #ffffff; margin-bottom: 0.5rem; font-weight: 600;">¿Qué diferencia hay entre una evaluación preliminar y un cálculo técnico?</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">La evaluación preliminar estima el riesgo de cumplimiento y los materiales base de forma aproximada. El cálculo técnico es un estudio formal con simulación matemática exacto de blindaje obligatorio ante el IPEN.</p>
                     </div>
                 </div>
             </div>
@@ -832,9 +1006,9 @@
             <div class="container contact-container">
                 
                 <div class="contact-info-panel">
-                    <h2>¿Listo para blindar tu sala y pasar la auditoría?</h2>
+                    <h2>¿Listo para saber qué necesita tu sala?</h2>
                     <p>
-                        Escríbenos ahora mismo. Respondemos de inmediato para evaluar tu proyecto de protección radiológica o cotizar materiales.
+                        Cuéntanos sobre tu instalación y te ayudaremos a identificar el siguiente paso.
                     </p>
                     
                     <div class="contact-channels">
@@ -937,7 +1111,7 @@
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-glow btn-full">
-                            Enviar Solicitud a WhatsApp
+                            Quiero evaluar mi sala →
                         </button>
                     </form>
                 </div>
