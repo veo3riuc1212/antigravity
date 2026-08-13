@@ -315,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
             summary = 'Cuenta con cierta infraestructura, pero carece de documentación oficial actualizada (Memoria de cálculo, control de calidad QC o dosimetría integral) para renovar u obtener su licencia sin rebotes.';
         } else {
             title = 'Cumplimiento Óptimo y Seguro';
-            summary = 'Felicidades. Su instalación cumple con la mayoría de lineamientos radiológicos de la norma IR.001.2026. Mantenga sus controles vigentes.';
+            summary = 'Felicidades. Su instalación cumple con la mayoría de lineamientos radiológicos obligatorios. Mantenga sus controles vigentes.';
         }
 
         if (riskTitle) riskTitle.textContent = title;
@@ -473,7 +473,7 @@ document.addEventListener('DOMContentLoaded', () => {
             whatsappProblems.forEach(p => {
                 message += `- ${p}\n`;
             });
-            message += `\nSolicito asesoría y cotización para regularizar mi instalación bajo la nueva norma IR.001.2026.`;
+            message += `\nSolicito asesoría y cotización para regularizar mi instalación bajo la normativa aplicable.`;
         } else {
             message += `Cumplimos las normativas pero deseamos cotizar servicios de control de calidad/dosimetría continua.`;
         }

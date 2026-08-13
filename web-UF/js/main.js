@@ -99,6 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
 
             // Extract values
+            const situationSelect = document.getElementById('contact-situation');
+            const situationText = situationSelect ? situationSelect.options[situationSelect.selectedIndex].text : 'No especificada';
             const name = document.getElementById('contact-name').value;
             const institution = document.getElementById('contact-institution').value;
             const email = document.getElementById('contact-email').value;
@@ -112,6 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Structure WhatsApp message
             let waText = `*NUEVO LEAD - UF CORPORATION*\n\n`;
+            waText += `*Situación:* ${situationText}\n`;
             waText += `*Nombre:* ${name}\n`;
             waText += `*Establecimiento:* ${institution}\n`;
             waText += `*Email:* ${email}\n`;
@@ -153,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </svg>
                     </div>
                     <h3>¡Suscripción Exitosa!</h3>
-                    <p>Hola <strong>${name}</strong>, hemos registrado tus datos. El Kit de Cumplimiento IPEN IR.001.2026 ha sido enviado a <strong>${email}</strong>.</p>
+                    <p>Hola <strong>${name}</strong>, hemos registrado tus datos. El Kit de Cumplimiento IPEN ha sido enviado a <strong>${email}</strong>.</p>
                     <a href="${downloadUrl}" class="btn btn-primary btn-glow btn-full btn-evaluar-color btn-evaluar-glow" id="btn-download-pdf-direct">
                         Descargar PDF Directo
                     </a>
@@ -165,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (btnDirectDownload) {
                 btnDirectDownload.addEventListener('click', (ev) => {
                     ev.preventDefault();
-                    alert('Se ha iniciado la descarga simulada del archivo: Kit_Cumplimiento_IPEN_2026_UF.pdf');
+                    alert('Se ha iniciado la descarga simulada del archivo: Kit_Cumplimiento_IPEN_UF.pdf');
                 });
             }
         });
