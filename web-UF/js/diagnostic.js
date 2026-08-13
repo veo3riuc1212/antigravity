@@ -71,29 +71,29 @@ document.addEventListener('DOMContentLoaded', () => {
             // Build WhatsApp message
             const answersMap = {
                 licencia_ipen: {
-                    si: 'Sí, está vigente',
-                    tramite: 'Está vencida / En trámite',
-                    no: 'No, operamos sin licencia'
+                    si: 'Sí, vigente',
+                    tramite: 'Vencida / En trámite',
+                    no: 'No tenemos licencia'
                 },
                 dosimetria: {
-                    si: 'Sí, todos tienen lectura mensual',
-                    incompleto: 'Solo algunos / Compartimos dosímetro',
-                    no: 'No tenemos servicio de dosimetría'
+                    si: 'Sí, todos',
+                    incompleto: 'Solo algunos / Compartimos',
+                    no: 'No tenemos dosimetría'
                 },
                 control_calidad: {
                     si: 'Sí, al día',
-                    vencido: 'Vencido / Más de 1 año',
-                    no: 'No tenemos certificado QC'
+                    vencido: 'Está vencido',
+                    no: 'Nunca realizado'
                 },
                 blindaje_memoria: {
-                    si: 'Sí, contamos con ella',
-                    no_medida: 'Solo baritina/plomo, sin memoria firmada',
-                    no: 'No sabemos / No tenemos blindaje'
+                    si: 'Sí, con memoria de cálculo y firma de Físico Médico',
+                    duda: 'Tenemos blindaje, pero sin cálculo oficial',
+                    no: 'No contamos con blindaje técnico'
                 },
                 opr: {
-                    si: 'Sí, contratado',
-                    tramite: 'En proceso de contratación',
-                    no: 'No tenemos OPR'
+                    si: 'Sí, con licencia y designación vigente',
+                    encargado: 'Tenemos encargado, pero sin licencia/designación',
+                    no: 'No contamos con OPR'
                 }
             };
 

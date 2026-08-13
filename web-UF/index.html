@@ -169,74 +169,59 @@
                         
                         <!-- Step 1: Licencia -->
                         <div class="wizard-step active" data-step="1">
-                            <h3 class="step-question">1. ¿Su establecimiento cuenta con una Licencia de Operación vigente emitida por el IPEN?</h3>
-                            <p class="step-description">
-                                El IPEN exige que todo equipo emisor de radiación ionizante (Rayos X, Tomógrafo, Arco en C, Mamógrafo) cuente con licencia de operación activa.
-                            </p>
+                            <h3 class="step-question">1. ¿Tienes Licencia de Operación IPEN vigente?</h3>
                             <div class="wizard-options">
-                                <button type="button" class="btn btn-option" data-value="si">Sí, está vigente</button>
-                                <button type="button" class="btn btn-option" data-value="tramite">Está vencida / En trámite</button>
-                                <button type="button" class="btn btn-option" data-value="no">No, operamos sin licencia</button>
+                                <button type="button" class="btn btn-option" data-value="si">Sí, vigente</button>
+                                <button type="button" class="btn btn-option" data-value="tramite">Vencida / En trámite</button>
+                                <button type="button" class="btn btn-option" data-value="no">No tenemos licencia</button>
                             </div>
                         </div>
 
                         <!-- Step 2: Dosimetria -->
                         <div class="wizard-step" data-step="2">
-                            <h3 class="step-question">2. ¿Todo el personal expuesto cuenta con dosímetros personales con lecturas mensuales acreditadas?</h3>
-                            <p class="step-description">
-                                La ausencia de registros dosimétricos mensuales es una de las observaciones graves automáticas de IPEN y genera responsabilidad penal patronal.
-                            </p>
+                            <h3 class="step-question">2. ¿Todo el personal expuesto tiene dosimetría mensual?</h3>
                             <div class="wizard-options">
-                                <button type="button" class="btn btn-option" data-value="si">Sí, todos tienen lectura mensual</button>
-                                <button type="button" class="btn btn-option" data-value="incompleto">Solo algunos / Compartimos dosímetro</button>
-                                <button type="button" class="btn btn-option" data-value="no">No tenemos servicio de dosimetría</button>
+                                <button type="button" class="btn btn-option" data-value="si">Sí, todos</button>
+                                <button type="button" class="btn btn-option" data-value="incompleto">Solo algunos / Compartimos</button>
+                                <button type="button" class="btn btn-option" data-value="no">No tenemos dosimetría</button>
                             </div>
                         </div>
 
                         <!-- Step 3: Control de Calidad -->
                         <div class="wizard-step" data-step="3">
-                            <h3 class="step-question">3. ¿Sus equipos cuentan con el Certificado de Control de Calidad (QC) anual vigente?</h3>
-                            <p class="step-description">
-                                Los controles de calidad del equipo emisor deben ser ejecutados anualmente por una empresa acreditada por el IPEN.
-                            </p>
+                            <h3 class="step-question">3. ¿Tus equipos tienen Control de Calidad (QC) vigente?</h3>
                             <div class="wizard-options">
-                                <button type="button" class="btn btn-option" data-value="si">Sí, controles al día</button>
-                                <button type="button" class="btn btn-option" data-value="vencido">Vencido hace meses</button>
-                                <button type="button" class="btn btn-option" data-value="no">Nunca hemos realizado control de calidad</button>
+                                <button type="button" class="btn btn-option" data-value="si">Sí, al día</button>
+                                <button type="button" class="btn btn-option" data-value="vencido">Está vencido</button>
+                                <button type="button" class="btn btn-option" data-value="no">Nunca realizado</button>
                             </div>
                         </div>
 
                         <!-- Step 4: Blindaje y Memoria -->
                         <div class="wizard-step" data-step="4">
-                            <h3 class="step-question">4. ¿El blindaje de su sala tiene un levantamiento radiométrico y Memoria de Cálculo firmada por un Físico Médico?</h3>
-                            <p class="step-description">
-                                Tarrajear con baritina o colocar plomo sin cálculo oficial no garantiza la contención ni pasa la inspección del IPEN si hay lecturas superiores a 0.15 µSv/h en pasillos.
-                            </p>
+                            <h3 class="step-question">4. ¿Tu sala cuenta con blindaje certificado?</h3>
                             <div class="wizard-options">
-                                <button type="button" class="btn btn-option" data-value="si">Sí, firmado por Físico Médico</button>
-                                <button type="button" class="btn btn-option" data-value="duda">Instalamos baritina/plomo pero no hay cálculo oficial</button>
-                                <button type="button" class="btn btn-option" data-value="no">No tiene blindaje técnico</button>
+                                <button type="button" class="btn btn-option" data-value="si">Sí, con memoria de cálculo y firma de Físico Médico</button>
+                                <button type="button" class="btn btn-option" data-value="duda">Tenemos blindaje, pero sin cálculo oficial</button>
+                                <button type="button" class="btn btn-option" data-value="no">No contamos con blindaje técnico</button>
                             </div>
                         </div>
 
                         <!-- Step 5: OPR -->
                         <div class="wizard-step" data-step="5">
-                            <h3 class="step-question">5. ¿Su clínica cuenta con un Oficial de Protección Radiológica (OPR) con licencia individual vigente?</h3>
-                            <p class="step-description">
-                                La nueva normativa exige designar formalmente un OPR responsable del programa de protección radiológica en el establecimiento.
-                            </p>
+                            <h3 class="step-question">5. ¿Cuentas con un Oficial de Protección Radiológica (OPR)?</h3>
                             <div class="wizard-options">
-                                <button type="button" class="btn btn-option" data-value="si">Sí, OPR con resolución</button>
-                                <button type="button" class="btn btn-option" data-value="encargado">Tenemos un encargado sin licencia/resolución</button>
+                                <button type="button" class="btn btn-option" data-value="si">Sí, con licencia y designación vigente</button>
+                                <button type="button" class="btn btn-option" data-value="encargado">Tenemos encargado, pero sin licencia/designación</button>
                                 <button type="button" class="btn btn-option" data-value="no">No contamos con OPR</button>
                             </div>
                         </div>
 
                         <!-- Step 6: Lead Capture & Segmentation -->
                         <div class="wizard-step" data-step="6">
-                            <h3 class="step-question" style="text-align: center; margin-bottom: 0.5rem;">📊 Completa tus datos para ver tu Diagnóstico de Cumplimiento</h3>
+                            <h3 class="step-question" style="text-align: center; margin-bottom: 0.5rem;">6. Completa tus datos para obtener tu diagnóstico</h3>
                             <p class="step-description" style="text-align: center; margin-bottom: 1.5rem; color: var(--text-secondary);">
-                                Registra los datos de tu instalación para calcular el porcentaje de riesgo y obtener las recomendaciones personalizadas del Físico Médico.
+                                Calcularemos tu nivel de cumplimiento y te mostraremos las recomendaciones según tu situación.
                             </p>
                             <form id="wizard-lead-form" style="max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem;">
                                 <div class="form-group">
