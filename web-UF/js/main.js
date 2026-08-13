@@ -173,4 +173,42 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // 7. FAQ Accordion Interactivity
+    const faqTriggers = document.querySelectorAll('.faq-trigger');
+    faqTriggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            const item = trigger.closest('.faq-item');
+            const content = item.querySelector('.faq-content');
+            const icon = item.querySelector('.faq-icon');
+            
+            // Check if currently open
+            const isOpen = item.classList.contains('active');
+            
+            // Close all other accordion items
+            document.querySelectorAll('.faq-item').forEach(otherItem => {
+                otherItem.classList.remove('active');
+                const otherContent = otherItem.querySelector('.faq-content');
+                if (otherContent) {
+                    otherContent.style.maxHeight = '0';
+                }
+                const otherIcon = otherItem.querySelector('.faq-icon');
+                if (otherIcon) {
+                    otherIcon.textContent = '+';
+                    otherIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            // If it wasn't open, open it
+            if (!isOpen) {
+                item.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + 'px';
+                if (icon) {
+                    icon.textContent = '−'; // Using mathematical minus sign
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            }
+        });
+    });
 });
+
