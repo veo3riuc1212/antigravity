@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
             waText += `*Detalles del Proyecto:*\n${message}`;
 
             const encodedWaText = encodeURIComponent(waText);
-            const waNumber = '51987654321'; // UF Corporation sales phone
+            const waNumber = '51933666362'; // UF Corporation sales phone
 
             // Redirect to WhatsApp web/app
             window.open(`https://wa.me/${waNumber}?text=${encodedWaText}`, '_blank');

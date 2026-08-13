@@ -480,7 +480,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const encodedMessage = encodeURIComponent(message);
         if (btnWhatsApp) {
-            btnWhatsApp.href = `https://wa.me/51987654321?text=${encodedMessage}`;
+            btnWhatsApp.href = `https://wa.me/51933666362?text=${encodedMessage}`;
         }
     }
 });
