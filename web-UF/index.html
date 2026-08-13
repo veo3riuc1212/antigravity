@@ -114,20 +114,17 @@
         <section id="diagnostico" class="diagnostic-section">
             <div class="container">
                 <div class="section-title-wrapper text-center">
-                    <h2 class="section-title">¿Tu centro radiológico está preparado para operar?</h2>
-                    <p class="section-subtitle">
-                        La respuesta depende de la etapa en la que te encuentres.
-                    </p>
+                    <h2 class="section-title">¿En qué etapa está tu centro?</h2>
                     
                     <!-- Intent Selector Grid -->
                     <div class="intent-selector-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 800px; margin: 2rem auto; text-align: left;">
                         <div class="glass-card intent-card" style="border-left: 4px solid var(--color-success); padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;">
                             <div>
                                 <h3 style="color: #ffffff; font-size: 1.25rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                                    <span>🟢</span> Estoy por abrir
+                                    <span>🟢</span> Por abrir
                                 </h3>
                                 <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem;">
-                                    Estás diseñando, construyendo, acondicionando o equipando tu nuevo centro. Antes de avanzar, necesitas saber qué requisitos y condiciones debes considerar para evitar descubrir problemas cuando la obra ya esté terminada.
+                                    Revisa tu proyecto antes de invertir.
                                 </p>
                             </div>
                             <a href="#wizard-lead-form" class="btn btn-secondary btn-full" onclick="document.getElementById('wiz-situation').value='Instalar equipo nuevo'; document.getElementById('wiz-situation').dispatchEvent(new Event('change'));">Revisar mi proyecto</a>
@@ -136,10 +133,10 @@
                         <div class="glass-card intent-card" style="border-left: 4px solid var(--color-critical); padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;">
                             <div>
                                 <h3 style="color: #ffffff; font-size: 1.25rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                                    <span>🔴</span> Ya estoy operando
+                                    <span>🔴</span> Operando
                                 </h3>
                                 <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem;">
-                                    Tu sala ya funciona y quieres comprobar si tienes todo en orden. Identifica posibles deficiencias antes de una inspección y descubre qué aspectos deberías revisar.
+                                    Detecta deficiencias antes de una inspección.
                                 </p>
                             </div>
                             <a href="#wizard-lead-form" class="btn btn-secondary btn-full" onclick="document.getElementById('wiz-situation').value='Instalación funcionando'; document.getElementById('wiz-situation').dispatchEvent(new Event('change'));">Revisar mi sala</a>
@@ -148,8 +145,7 @@
 
                     <div class="diag-highlights" style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 1.5rem; color: var(--text-secondary); font-size: 0.95rem; font-weight: 500;">
                         <span>✓ Evaluación inicial</span>
-                        <span>✓ Identificación de posibles incumplimientos</span>
-                        <span>✓ Recomendaciones de siguiente paso</span>
+                        <span>✓ Recomendaciones</span>
                         <span>✓ Sin compromiso</span>
                     </div>
                 </div>
