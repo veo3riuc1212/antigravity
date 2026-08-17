@@ -1871,8 +1871,8 @@ section {
     display: inline-block;
     width: 14px;
     height: 14px;
-    background-color: #ef4444;
-    border: 1.5px solid #07110e;
+    background-color: transparent;
+    border: 1.5px solid #b8ef3a;
     border-radius: 50%;
     flex-shrink: 0;
 }
