@@ -474,7 +474,7 @@ section {
     top: 0;
     left: 0;
     height: 100%;
-    background: linear-gradient(90deg, var(--color-critical) 0%, #f87171 100%);
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
     transition: width var(--transition-normal);
 }
 
@@ -502,16 +502,16 @@ section {
 }
 
 .step-num.active {
-    background-color: var(--color-critical);
-    border-color: var(--color-critical);
-    color: #ffffff;
-    box-shadow: 0 0 15px var(--color-critical-glow);
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #07110E;
+    box-shadow: 0 0 15px var(--color-primary-glow);
 }
 
 .step-num.completed {
-    background-color: var(--color-critical);
-    border-color: var(--color-critical);
-    color: #ffffff;
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #07110E;
 }
 
 .wizard-steps {
