@@ -1856,4 +1856,35 @@ section {
     box-shadow: 0 8px 24px rgba(184, 239, 58, 0.05) !important;
 }
 
+/* Custom Status Dots */
+.status-dot-green {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-color: #b8ef3a;
+    border: 1.5px solid #07110e;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.status-dot-red {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-color: #ef4444;
+    border: 1.5px solid #07110e;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.status-dot-orange {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-color: #f59e0b;
+    border: 1.5px solid #07110e;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
 

@@ -98,9 +98,9 @@
                                 ¿Cuál es tu situación?
                             </p>
                             <div class="mini-checklist" style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.95rem; color: var(--text-secondary);">
-                                <div><a href="#diagnostico" style="color: var(--text-primary); text-decoration: none;">🟢 Estoy por abrir</a></div>
-                                <div><a href="#diagnostico" style="color: var(--text-primary); text-decoration: none;">🔴 Ya estoy operando</a></div>
-                                <div><a href="#diagnostico" style="color: var(--text-primary); text-decoration: none;">🟠 Tengo una inspección / observación</a></div>
+                                <div><a href="#diagnostico" style="color: var(--text-primary); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;"><span class="status-dot-green"></span> Estoy por abrir</a></div>
+                                <div><a href="#diagnostico" style="color: var(--text-primary); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;"><span class="status-dot-red"></span> Ya estoy operando</a></div>
+                                <div><a href="#diagnostico" style="color: var(--text-primary); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;"><span class="status-dot-orange"></span> Tengo una inspección / observación</a></div>
                             </div>
                             <a href="#diagnostico" class="btn btn-primary btn-glow btn-full btn-evaluar-color btn-evaluar-glow" style="padding: 0.7rem 1.2rem; font-size: 0.95rem;">Comenzar evaluación →</a>
                         </div>
@@ -121,7 +121,7 @@
                         <div class="glass-card intent-card" style="border-left: 4px solid var(--color-success); padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;">
                             <div>
                                 <h3 style="color: #ffffff; font-size: 1.25rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                                    <span>🟢</span> Por abrir
+                                    <span class="status-dot-green"></span> Por abrir
                                 </h3>
                                 <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem;">
                                     Revisa tu proyecto antes de invertir.
@@ -133,7 +133,7 @@
                         <div class="glass-card intent-card" style="border-left: 4px solid var(--color-critical); padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;">
                             <div>
                                 <h3 style="color: #ffffff; font-size: 1.25rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                                    <span>🔴</span> Operando
+                                    <span class="status-dot-red"></span> Operando
                                 </h3>
                                 <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem;">
                                     Detecta deficiencias antes de una inspección.
