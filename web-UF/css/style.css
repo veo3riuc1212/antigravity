@@ -6,25 +6,27 @@
 /* Design Tokens & Variables */
 :root {
     /* Colors */
-    --color-bg-base: #0b0f19;
-    --color-bg-surface: #111827;
-    --color-bg-surface-elevated: #1f2937;
-    --color-primary: #16c60c;
-    --color-primary-glow: rgba(22, 198, 12, 0.4);
-    --color-primary-hover: #129c0a;
-    --color-success: #16c60c;
-    --color-success-glow: rgba(22, 198, 12, 0.2);
+    --color-bg-base: #07110E; /* Fondo principal oscuro (Verde negro) */
+    --color-bg-surface: #0B1814; /* Secciones oscuras (Verde bosque profundo) */
+    --color-bg-surface-elevated: #10241D; /* Tarjetas oscuras (Verde petróleo) */
+    --color-bg-secondary-surface: #13251F; /* Superficie secundaria (Verde profundo) */
+    
+    --color-primary: #B8EF3A; /* Verde de seguridad / CTA (Verde lima) */
+    --color-primary-glow: rgba(184, 239, 58, 0.4);
+    --color-primary-hover: #C5FA49; /* Verde de interacción (Verde lima claro) */
+    --color-success: #B8EF3A;
+    --color-success-glow: rgba(184, 239, 58, 0.2);
     --color-warning: #ef4444;
     --color-warning-glow: rgba(239, 68, 68, 0.2);
     --color-critical: #ef4444;
     --color-critical-glow: rgba(239, 68, 68, 0.3);
     
-    --text-primary: #f3f4f6;
-    --text-secondary: #9ca3af;
-    --text-muted: #6b7280;
+    --text-primary: #F3F3ED; /* Fondo principal claro (Marfil técnico) */
+    --text-secondary: #96A49E; /* Texto secundario oscuro (Gris salvia) */
+    --text-muted: #58665F; /* Texto secundario claro (Verde grisáceo) */
     
-    --border-color: rgba(255, 255, 255, 0.08);
-    --border-color-hover: rgba(255, 255, 255, 0.15);
+    --border-color: rgba(184, 239, 58, 0.14); /* Safety green borders at 14% opacity */
+    --border-color-hover: rgba(184, 239, 58, 0.25);
     
     /* Layout & Spacing */
     --container-max-width: 1200px;
@@ -32,8 +34,8 @@
     --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     
     /* Glassmorphism */
-    --glass-bg: rgba(17, 24, 39, 0.7);
-    --glass-border: rgba(255, 255, 255, 0.06);
+    --glass-bg: rgba(16, 36, 29, 0.7); /* #10241D (Tarjetas oscuras) at 70% opacity */
+    --glass-border: rgba(184, 239, 58, 0.08);
     --glass-blur: blur(12px);
 }
 
@@ -155,7 +157,7 @@ section {
 
 .btn-primary {
     background: var(--color-primary);
-    color: #ffffff;
+    color: #07110E;
 }
 
 .btn-primary:hover {
@@ -200,7 +202,7 @@ section {
     left: 0;
     width: 100%;
     z-index: 100;
-    background: rgba(11, 15, 25, 0.85);
+    background: rgba(7, 17, 14, 0.85);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     border-bottom: 1px solid var(--border-color);
@@ -250,7 +252,7 @@ section {
 
 .btn-header-contact:hover {
     background: var(--color-primary);
-    color: #ffffff;
+    color: #07110E;
 }
 
 .mobile-menu-toggle {
@@ -273,7 +275,7 @@ section {
 
 /* Hero Section */
 .hero-section {
-    background: radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.08) 0%, transparent 50%), var(--color-bg-base);
+    background: radial-gradient(circle at 80% 20%, rgba(184, 239, 58, 0.08) 0%, transparent 50%), var(--color-bg-base);
     padding-top: 6.5rem;
     padding-bottom: 4rem;
     min-height: calc(100vh - 70px);
@@ -345,7 +347,7 @@ section {
 }
 
 .hero-bullets .bullet-icon-check {
-    color: #16c60c;
+    color: var(--color-primary);
 }
 
 .hero-actions {
@@ -682,7 +684,7 @@ section {
 
 /* Services Section */
 .services-section {
-    background: radial-gradient(circle at 10% 80%, rgba(14, 165, 233, 0.05) 0%, transparent 40%), var(--color-bg-base);
+    background: radial-gradient(circle at 10% 80%, rgba(184, 239, 58, 0.05) 0%, transparent 40%), var(--color-bg-base);
 }
 
 .services-grid {
@@ -697,21 +699,21 @@ section {
 
 .service-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(22, 198, 12, 0.25);
-    box-shadow: 0 15px 35px rgba(22, 198, 12, 0.08);
+    border-color: rgba(184, 239, 58, 0.25);
+    box-shadow: 0 15px 35px rgba(184, 239, 58, 0.08);
 }
 
 .service-icon-wrapper {
     width: 64px;
     height: 64px;
     border-radius: 8px;
-    background: rgba(22, 198, 12, 0.08);
-    color: #16c60c;
+    background: rgba(184, 239, 58, 0.08);
+    color: var(--color-primary);
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1.5rem;
-    border: 1px solid rgba(22, 198, 12, 0.15);
+    border: 1px solid rgba(184, 239, 58, 0.15);
 }
 
 .service-card h3 {
@@ -779,10 +781,10 @@ section {
 }
 
 .tab-btn.active {
-    background: #16c60c;
-    border-color: #16c60c;
-    color: #ffffff;
-    box-shadow: 0 4px 15px rgba(22, 198, 12, 0.4);
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #07110E;
+    box-shadow: 0 4px 15px rgba(184, 239, 58, 0.4);
 }
 
 .tab-content {
@@ -824,7 +826,7 @@ section {
 }
 
 .product-card:hover .product-placeholder {
-    color: #16c60c;
+    color: var(--color-primary);
     transform: scale(1.05);
 }
 
@@ -832,9 +834,9 @@ section {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background: rgba(22, 198, 12, 0.15);
-    border: 1px solid #16c60c;
-    color: #16c60c;
+    background: rgba(184, 239, 58, 0.15);
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
     font-size: 0.75rem;
     font-weight: 700;
     padding: 0.25rem 0.75rem;
@@ -911,7 +913,7 @@ section {
 }
 
 .range-val {
-    color: #16c60c;
+    color: var(--color-primary);
     font-weight: 700;
     font-family: 'Outfit', sans-serif;
     font-size: 1.1rem;
@@ -931,7 +933,7 @@ section {
 
 .form-control:focus {
     border-color: var(--color-primary);
-    box-shadow: 0 0 10px rgba(14, 165, 233, 0.15);
+    box-shadow: 0 0 10px rgba(184, 239, 58, 0.15);
 }
 
 .form-range {
@@ -950,9 +952,9 @@ section {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #16c60c;
+    background: var(--color-primary);
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(22, 198, 12, 0.4);
+    box-shadow: 0 0 10px rgba(184, 239, 58, 0.4);
     transition: transform var(--transition-fast);
 }
 
@@ -1135,7 +1137,7 @@ section {
 
 /* Contact Section */
 .contact-section {
-    background: radial-gradient(circle at 10% 30%, rgba(14, 165, 233, 0.03) 0%, transparent 40%), var(--color-bg-base);
+    background: radial-gradient(circle at 10% 30%, rgba(184, 239, 58, 0.03) 0%, transparent 40%), var(--color-bg-base);
 }
 
 .contact-container {
@@ -1172,12 +1174,12 @@ section {
     width: 48px;
     height: 48px;
     border-radius: 8px;
-    background: rgba(22, 198, 12, 0.05);
-    color: #16c60c;
+    background: rgba(184, 239, 58, 0.05);
+    color: var(--color-primary);
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(22, 198, 12, 0.1);
+    border: 1px solid rgba(184, 239, 58, 0.1);
 }
 
 .channel-detail span {
@@ -1192,7 +1194,7 @@ section {
 }
 
 .contact-form-card {
-    border-top: 4px solid #16c60c;
+    border-top: 4px solid var(--color-primary);
 }
 
 .contact-form-card h3 {
@@ -1207,7 +1209,7 @@ section {
 
 /* Footer Section */
 .main-footer {
-    background: #070a11;
+    background: var(--color-bg-surface);
     border-top: 1px solid var(--border-color);
     padding: 5rem 0 2rem;
 }
@@ -1244,7 +1246,7 @@ section {
     left: 0;
     width: 30px;
     height: 2px;
-    background-color: #16c60c;
+    background-color: var(--color-primary);
 }
 
 .footer-links {
@@ -1489,7 +1491,7 @@ section {
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(11, 15, 25, 0.9);
+    background: rgba(7, 17, 14, 0.9);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-top: 1px solid var(--border-color);
@@ -1569,7 +1571,7 @@ section {
 .faq-item:hover {
     transform: translateY(-3px);
     border-color: var(--color-primary-glow);
-    box-shadow: 0 8px 24px rgba(14, 165, 233, 0.05);
+    box-shadow: 0 8px 24px rgba(184, 239, 58, 0.05);
 }
 
 /* Responsive grid for FAQ */
@@ -1581,21 +1583,21 @@ section {
 
 /* Green button styling for evaluation buttons */
 .btn-evaluar-color {
-    background-color: #16c60c !important;
-    border-color: #16c60c !important;
-    color: #ffffff !important;
+    background-color: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    color: #07110E !important;
 }
 
 .btn-evaluar-color:hover {
-    background-color: #129c0a !important;
-    border-color: #129c0a !important;
-    color: #ffffff !important;
-    box-shadow: 0 0 20px rgba(22, 198, 12, 0.5) !important;
+    background-color: var(--color-primary-hover) !important;
+    border-color: var(--color-primary-hover) !important;
+    color: #07110E !important;
+    box-shadow: 0 0 20px rgba(184, 239, 58, 0.5) !important;
     transform: translateY(-2px);
 }
 
 .btn-evaluar-glow {
-    box-shadow: 0 0 20px rgba(22, 198, 12, 0.4) !important;
+    box-shadow: 0 0 20px rgba(184, 239, 58, 0.4) !important;
 }
 
 /* Critical (Red) button styling */
