@@ -374,7 +374,7 @@ section {
 }
 
 .hero-glass-card {
-    border-left: 4px solid var(--color-critical);
+    border-left: 4px solid var(--color-primary);
     width: 100%;
 }
 
