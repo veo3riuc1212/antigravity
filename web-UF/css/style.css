@@ -1887,4 +1887,20 @@ section {
     flex-shrink: 0;
 }
 
+/* Outline Green Button Style */
+.btn-outline-green {
+    background-color: transparent !important;
+    border: 2px solid var(--color-primary) !important;
+    color: var(--color-primary) !important;
+    box-shadow: none !important;
+    transition: all var(--transition-fast) !important;
+}
+
+.btn-outline-green:hover {
+    background-color: var(--color-primary) !important;
+    color: #07110E !important;
+    box-shadow: 0 0 20px var(--color-primary-glow) !important;
+    transform: translateY(-2px) !important;
+}
+
 
