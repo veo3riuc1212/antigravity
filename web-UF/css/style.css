@@ -1903,4 +1903,23 @@ section {
     transform: translateY(-2px) !important;
 }
 
+/* FAQ Color Overrides for Dark & Light Themes */
+.faq-trigger span:first-child {
+    color: var(--text-primary) !important;
+}
+
+.faq-content p {
+    color: var(--text-secondary) !important;
+    border-top: 1px solid var(--border-color) !important;
+}
+
+.section-light .faq-trigger span:first-child {
+    color: var(--text-light-primary) !important;
+}
+
+.section-light .faq-content p {
+    color: var(--text-light-secondary) !important;
+    border-top: 1px solid var(--border-light) !important;
+}
+
 
