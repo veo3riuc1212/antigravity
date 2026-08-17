@@ -303,20 +303,20 @@ section {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    background: rgba(239, 68, 68, 0.08);
-    border: 1px solid rgba(239, 68, 68, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     padding: 0.4rem 1rem;
     border-radius: 99px;
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--color-critical);
+    color: #ffffff;
     margin-bottom: 1rem;
 }
 
 .pill-dot {
     width: 8px;
     height: 8px;
-    background-color: var(--color-critical);
+    background-color: var(--color-primary);
     border-radius: 50%;
 }
 
