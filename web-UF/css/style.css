@@ -28,6 +28,14 @@
     --border-color: rgba(184, 239, 58, 0.14); /* Safety green borders at 14% opacity */
     --border-color-hover: rgba(184, 239, 58, 0.25);
     
+    /* Light Theme Tokens */
+    --color-bg-light: #F3F3ED; /* Fondo principal claro (Marfil técnico) */
+    --color-bg-light-surface: #FBFCF7; /* Tarjetas y formularios (Blanco cálido) */
+    --color-bg-light-neutral: #DFE1D8; /* Franja neutra (Gris verdoso claro) */
+    --text-light-primary: #07110E; /* Texto primario en fondo claro */
+    --text-light-secondary: #58665F; /* Texto secundario claro (Verde grisáceo) */
+    --border-light: rgba(12, 31, 24, 0.14); /* Bordes claros */
+    
     /* Layout & Spacing */
     --container-max-width: 1200px;
     --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1656,4 +1664,191 @@ section {
         height: 50px;
     }
 }
+
+/* ==========================================================================
+   Light Section Utility & Alternating Theme Overrides
+   ========================================================================== */
+
+.section-light {
+    background-color: var(--color-bg-light) !important;
+    background-image: none !important;
+    color: var(--text-light-primary) !important;
+    border-bottom: 1px solid var(--border-light) !important;
+    border-top: 1px solid var(--border-light) !important;
+}
+
+.section-light h1,
+.section-light h2,
+.section-light h3,
+.section-light h4 {
+    color: var(--text-light-primary) !important;
+}
+
+.section-light .section-subtitle,
+.section-light p,
+.section-light .text-secondary,
+.section-light .step-question,
+.section-light .step-description,
+.section-light .warning-text,
+.section-light .output-unit,
+.section-light .spec-label,
+.section-light .testimonial-text,
+.section-light .faq-answer,
+.section-light .form-group label,
+.section-light .lead-magnet-intro,
+.section-light .form-desc {
+    color: var(--text-light-secondary) !important;
+}
+
+.section-light .glass-card,
+.section-light .breakdown-card,
+.section-light .service-card,
+.section-light .product-card,
+.section-light .testimonial-card,
+.section-light .faq-item,
+.section-light .stat-box {
+    background: var(--color-bg-light-surface) !important;
+    border: 1px solid var(--border-light) !important;
+    color: var(--text-light-primary) !important;
+    box-shadow: 0 10px 30px rgba(12, 31, 24, 0.04) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+.section-light .glass-card h3,
+.section-light .breakdown-card h4,
+.section-light .service-card h3,
+.section-light .product-card h3,
+.section-light .testimonial-author strong,
+.section-light .faq-question,
+.section-light .stat-number,
+.section-light .spec-value,
+.section-light .output-number {
+    color: var(--text-light-primary) !important;
+}
+
+.section-light .btn-secondary {
+    background: var(--color-bg-light-surface) !important;
+    border: 1px solid var(--border-light) !important;
+    color: var(--text-light-primary) !important;
+}
+
+.section-light .btn-secondary:hover {
+    background: var(--color-bg-light-neutral) !important;
+    border-color: var(--border-light) !important;
+    color: var(--text-light-primary) !important;
+}
+
+.section-light .btn-option {
+    background: var(--color-bg-light-surface) !important;
+    border: 1px solid var(--border-light) !important;
+    color: var(--text-light-primary) !important;
+}
+
+.section-light .btn-option:hover,
+.section-light .btn-option:focus {
+    background: var(--color-bg-light-neutral) !important;
+    border-color: var(--color-primary) !important;
+    color: var(--text-light-primary) !important;
+}
+
+.section-light .step-num {
+    background-color: var(--color-bg-light-neutral) !important;
+    border-color: var(--border-light) !important;
+    color: var(--text-light-secondary) !important;
+}
+
+.section-light .step-num.active {
+    background-color: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    color: #07110E !important;
+}
+
+.section-light .step-num.completed {
+    background-color: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    color: #07110E !important;
+}
+
+.section-light .service-features {
+    border-top: 1px solid var(--border-light) !important;
+}
+
+.section-light .service-features li {
+    color: var(--text-light-secondary) !important;
+}
+
+.section-light .product-info p,
+.section-light .product-specs {
+    color: var(--text-light-secondary) !important;
+}
+
+.section-light .product-visual {
+    background: var(--color-bg-light-neutral) !important;
+    border-bottom: 1px solid var(--border-light) !important;
+}
+
+.section-light .product-placeholder {
+    color: var(--text-light-secondary) !important;
+}
+
+.section-light .tab-btn {
+    background: var(--color-bg-light-neutral) !important;
+    border-color: var(--border-light) !important;
+    color: var(--text-light-secondary) !important;
+}
+
+.section-light .tab-btn:hover {
+    color: var(--text-light-primary) !important;
+    border-color: var(--border-light) !important;
+}
+
+.section-light .tab-btn.active {
+    background: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    color: #07110E !important;
+}
+
+.section-light .form-control {
+    background-color: var(--color-bg-light-surface) !important;
+    border: 1px solid var(--border-light) !important;
+    color: var(--text-light-primary) !important;
+}
+
+.section-light .form-control:focus {
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 10px rgba(184, 239, 58, 0.15) !important;
+}
+
+.section-light select.form-control option {
+    background-color: var(--color-bg-light-surface) !important;
+    color: var(--text-light-primary) !important;
+}
+
+.section-light .spec-item {
+    border-bottom: 1px solid var(--border-light) !important;
+}
+
+.section-light .output-box {
+    background: var(--color-bg-light-surface) !important;
+    border: 1px solid var(--border-light) !important;
+}
+
+.section-light .output-icon {
+    background-color: var(--color-bg-light-neutral) !important;
+}
+
+.section-light .testimonial-author {
+    border-top: 1px solid var(--border-light) !important;
+}
+
+.section-light .faq-item {
+    border: 1px solid var(--border-light) !important;
+}
+
+.section-light .faq-item:hover {
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 8px 24px rgba(184, 239, 58, 0.05) !important;
+}
+
 
