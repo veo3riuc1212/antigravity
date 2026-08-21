@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Blindaje & Diagnóstico de Riesgo IPEN/OTAN | UF Corp</title>
+    <meta name="description" content="Calcula el blindaje exacto y detecta fugas de radiación en tu sala antes de la inspección del IPEN. Evita multas y clausuras de tu establecimiento de salud.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Inline page-specific styles for the interactive quiz step form -->
+    <style>
+        .kicker-badge {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .step-container {
+            max-width: 650px;
+            margin: 2rem auto;
+            background: linear-gradient(135deg, rgba(16, 36, 29, 0.8) 0%, rgba(7, 17, 14, 0.9) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 50%;
+            background: var(--color-primary);
+            box-shadow: 0 0 10px var(--color-primary);
+            transition: width 0.4s ease;
+        }
+
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-title {
+            font-size: 1.35rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .step-badge {
+            background: var(--color-bg-surface-elevated);
+            border: 1px solid var(--border-color);
+            color: var(--color-primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(184, 239, 58, 0.1);
+            border-radius: 8px;
+            padding: 1.1rem;
+            margin-bottom: 0.85rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--color-primary);
+            background: rgba(184, 239, 58, 0.03);
+            transform: translateX(4px);
+        }
+
+        .quiz-option.selected {
+            border-color: var(--color-primary);
+            background: rgba(184, 239, 58, 0.08);
+            box-shadow: 0 0 12px rgba(184, 239, 58, 0.1);
+        }
+
+        .quiz-option input[type="radio"],
+        .quiz-option input[type="checkbox"] {
+            margin-right: 1rem;
+            accent-color: var(--color-primary);
+            width: 18px;
+            height: 18px;
+        }
+
+        .hidden-step {
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-color);
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all var(--transition-fast);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 8px rgba(184, 239, 58, 0.2);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .form-control::placeholder {
+            color: var(--text-muted);
+        }
+
+        .alert-box {
+            background: rgba(239, 68, 68, 0.03);
+            border-left: 4px solid var(--color-critical);
+            border-radius: 0 8px 8px 0;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="funnel-hub.html" class="logo">
+                <span class="logo-accent">UF</span> Corp
+            </a>
+            <div style="font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; font-weight: 600; letter-spacing: 1px;">
+                Calculadora de Blindaje Oficial
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+        <!-- Section Above the Fold (Hook) -->
+        <section class="hero-section" style="padding-top: 7rem; padding-bottom: 2rem;">
+            <div class="container text-center" style="max-width: 900px;">
+                <span class="kicker-badge">
+                    Exclusivo para Directores Médicos, Oficiales de Protección Radiológica (OPR) y Clínicas en Perú
+                </span>
+                
+                <h1 style="font-size: clamp(1.8rem, 3.5vw, 3rem); line-height: 1.2; margin-bottom: 1.5rem; color: #ffffff;">
+                    Calcula el Blindaje Exacto para Tu Sala de Rayos X o Tomografía y Detecta Fugas Ocultas Antes de Que la Autoridad Sanitaria Inspeccione Tu Centro
+                </h1>
+                
+                <p style="font-size: 1.15rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto; line-height: 1.6;">
+                    En menos de 3 minutos, determina los espesores normativos de baritina o plomo, los puntos críticos en puertas y visores plomados, y evita paralizaciones de servicio o multas de 30 a 40 UIT por parte del IPEN/OTAN.
+                </p>
+            </div>
+        </section>
+
+        <!-- Interactive 2-Step Form Section -->
+        <section style="padding-bottom: 4rem;">
+            <div class="container">
+                <div class="step-container">
+                    
+                    <!-- Progress Tracker Bar -->
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="progress-bar-fill"></div>
+                    </div>
+
+                    <form id="lead-quiz-form">
+                        
+                        <!-- PASO 1: Parámetros Técnicos de la Instalación -->
+                        <div id="step-1-content">
+                            <div class="step-header">
+                                <span class="step-title">Paso 1: Parámetros Técnicos de la Instalación</span>
+                                <span class="step-badge" id="step-indicator">Paso 1 de 2</span>
+                            </div>
+
+                            <!-- Pregunta 1 -->
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; margin-bottom: 0.75rem; font-weight: 600; color: #ffffff;">1. Tipo de Servicio o Equipo Emisor:</label>
+                                
+                                <label class="quiz-option">
+                                    <input type="radio" name="equipment_type" value="rayos_x_convencional" checked>
+                                    Rayos X Convencional / Rodable
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="equipment_type" value="tomografia_multicorte">
+                                    Tomografía Computarizada (Multicorte)
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="equipment_type" value="arco_en_c">
+                                    Arco en C / Sala Quirúrgica
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="equipment_type" value="mamografia_dental">
+                                    Mamografía / Dental Panorámico
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="equipment_type" value="medicina_nuclear">
+                                    Medicina Nuclear / PET-CT
+                                </label>
+                            </div>
+
+                            <!-- Pregunta 2 -->
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; margin-bottom: 0.75rem; font-weight: 600; color: #ffffff;">2. Situación Actual de la Sala:</label>
+                                
+                                <label class="quiz-option">
+                                    <input type="radio" name="room_situation" value="proyecto_plano" checked>
+                                    Proyecto en Plano (Obra Nueva)
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="room_situation" value="construccion_adecuacion">
+                                    Sala en Construcción / Adecuación
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="room_situation" value="sala_operativa">
+                                    Sala Operativa (Requiere Licencia o Renovación C1)
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="room_situation" value="subsanacion_observaciones">
+                                    Subsanación de Observaciones Previas del IPEN/OTAN
+                                </label>
+                            </div>
+
+                            <!-- Pregunta 3 -->
+                            <div style="margin-bottom: 2rem;">
+                                <label style="display: block; margin-bottom: 0.75rem; font-weight: 600; color: #ffffff;">3. Área Aproximada del Recinto:</label>
+                                
+                                <label class="quiz-option">
+                                    <input type="radio" name="room_area" value="menor_12" checked>
+                                    Menor a 12 m²
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="room_area" value="12_a_25">
+                                    De 12 a 25 m²
+                                </label>
+                                <label class="quiz-option">
+                                    <input type="radio" name="room_area" value="mayor_25">
+                                    Mayor a 25 m²
+                                </label>
+                            </div>
+
+                            <button type="button" class="btn btn-primary btn-glow btn-full" id="btn-next-step" style="padding: 1rem;">
+                                CONTINUAR AL CÁLCULO NORMATIVO ➔
+                            </button>
+                        </div>
+
+                        <!-- PASO 2: Generación del Expediente y Envío del Reporte -->
+                        <div id="step-2-content" class="hidden-step">
+                            <div class="step-header">
+                                <span class="step-title">Paso 2: Generación del Expediente y Reporte de Blindaje</span>
+                                <span class="step-badge">Paso 2 de 2</span>
+                            </div>
+
+                            <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.5;">
+                                Ingresa los datos del responsable del establecimiento de salud para indexar las memorias de cálculo y enviar el checklist normativo directo a tu WhatsApp.
+                            </p>
+
+                            <div class="form-group">
+                                <label for="lead-name">Nombre y Apellidos</label>
+                                <input type="text" id="lead-name" class="form-control" placeholder="Ej. Dr. Carlos Soto" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lead-role">Cargo en la Institución</label>
+                                <select id="lead-role" class="form-control" style="background: var(--color-bg-surface); color: white;" required>
+                                    <option value="" disabled selected>Seleccione su cargo</option>
+                                    <option value="Director Médico">Director Médico</option>
+                                    <option value="Oficial de Protección Radiológica (OPR)">Oficial de Protección Radiológica (OPR)</option>
+                                    <option value="Físico Médico">Físico Médico</option>
+                                    <option value="Administrador">Administrador / Gerente</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lead-institution">Nombre de la Clínica o Centro Médico</label>
+                                <input type="text" id="lead-institution" class="form-control" placeholder="Ej. Clínica Internacional" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lead-phone">WhatsApp Corporativo (Para envío de alerta técnica)</label>
+                                <input type="tel" id="lead-phone" class="form-control" placeholder="Ej. +51 987 654 321" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lead-email">Correo Electrónico Institucional</label>
+                                <input type="email" id="lead-email" class="form-control" placeholder="carlos@clinica.pe" required>
+                            </div>
+
+                            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                                <button type="button" class="btn btn-secondary" id="btn-prev-step" style="flex: 1; padding: 0.9rem;">
+                                    ← ATRÁS
+                                </button>
+                                <button type="submit" class="btn btn-primary btn-glow" style="flex: 2; padding: 0.9rem; font-weight: 600;">
+                                    GENERAR MI REPORTE Y CHECKLIST IPEN
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+                <!-- Social Proof and Regulatory Warning -->
+                <div style="max-width: 650px; margin: 0 auto;">
+                    <div class="alert-box">
+                        <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-primary);">
+                            <strong>Alerta Sanitaria en el Sector Salud (2025-2026):</strong> Contraloría e IPEN observaron múltiples centros médicos por operar equipamiento emisor de radiación sin blindaje certificado. Evita multas de hasta 40 UIT y detenciones inmediatas de facturación técnica.
+                        </p>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 1.5rem; color: var(--text-muted); font-size: 0.85rem;">
+                        Los datos ingresados son tratados bajo estricto secreto profesional y confidencialidad por ingenieros especializados en radioprotección de UF Corporation de conformidad con la Ley N° 29733.
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer" style="padding: 2rem 0; margin-top: 4rem;">
+        <div class="container text-center" style="font-size: 0.85rem; color: var(--text-muted);">
+            <p>&copy; 2026 UF Corporation. Todos los derechos reservados. Cumplimiento normativo IPEN / OTAN.</p>
+        </div>
+    </footer>
+
+    <!-- Step progression logic in JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnNext = document.getElementById('btn-next-step');
+            const btnPrev = document.getElementById('btn-prev-step');
+            const step1 = document.getElementById('step-1-content');
+            const step2 = document.getElementById('step-2-content');
+            const progressBar = document.getElementById('progress-bar-fill');
+            const form = document.getElementById('lead-quiz-form');
+
+            // Interactive options selection highlight
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach(option => {
+                const input = option.querySelector('input');
+                
+                // Highlight initially checked inputs
+                if (input && input.checked) {
+                    option.classList.add('selected');
+                }
+
+                option.addEventListener('click', (e) => {
+                    if (input && e.target !== input) {
+                        input.checked = true;
+                        // Trigger change event manually
+                        input.dispatchEvent(new Event('change', { bubbles: true }));
+                    }
+                });
+            });
+
+            // Handle radio option visual updates
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.addEventListener('change', () => {
+                    const name = radio.getAttribute('name');
+                    document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+                        r.closest('.quiz-option').classList.remove('selected');
+                    });
+                    if (radio.checked) {
+                        radio.closest('.quiz-option').classList.add('selected');
+                    }
+                });
+            });
+
+            // Transition from Step 1 to Step 2
+            if (btnNext && step1 && step2 && progressBar) {
+                btnNext.addEventListener('click', () => {
+                    step1.classList.add('hidden-step');
+                    step2.classList.remove('hidden-step');
+                    progressBar.style.width = '100%';
+                    // Scroll to top of the step container smoothly
+                    document.querySelector('.step-container').scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+
+            // Transition from Step 2 back to Step 1
+            if (btnPrev && step1 && step2 && progressBar) {
+                btnPrev.addEventListener('click', () => {
+                    step2.classList.add('hidden-step');
+                    step1.classList.remove('hidden-step');
+                    progressBar.style.width = '50%';
+                    document.querySelector('.step-container').scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+
+            // Form Submit and redirect
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('lead-name').value;
+                    const phone = document.getElementById('lead-phone').value;
+                    const institution = document.getElementById('lead-institution').value;
+
+                    // Redirect to gracias.html passing values in query string to personalize the landing page
+                    const redirectUrl = `gracias.html?name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}&institution=${encodeURIComponent(institution)}`;
+                    window.location.href = redirectUrl;
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Expediente Registrado! | UF Corp</title>
+    <meta name="description" content="Tu reporte preliminar se está enviando. Mira este video antes de comprar materiales o iniciar obras civiles.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Inline styles for progress bar, video player container, and direct Calendly / WhatsApp CTA -->
+    <style>
+        .completion-bar-container {
+            max-width: 600px;
+            margin: 0 auto 2.5rem auto;
+            text-align: center;
+        }
+
+        .bar-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .custom-progress-track {
+            width: 100%;
+            height: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .custom-progress-bar {
+            height: 100%;
+            width: 80%;
+            background: linear-gradient(90deg, var(--color-primary), #a6d833);
+            border-radius: 50px;
+            box-shadow: 0 0 10px var(--color-primary-glow);
+            animation: pulse-bar 2s infinite alternate;
+        }
+
+        @keyframes pulse-bar {
+            0% { opacity: 0.85; }
+            100% { opacity: 1; }
+        }
+
+        /* Mock Video Player */
+        .video-player-wrapper {
+            max-width: 800px;
+            margin: 2.5rem auto;
+            position: relative;
+            aspect-ratio: 16/9;
+            background: #000000;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            cursor: pointer;
+        }
+
+        .video-poster-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.85) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .play-btn-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            color: var(--color-bg-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 30px var(--color-primary-glow);
+            transition: all var(--transition-fast);
+        }
+
+        .video-player-wrapper:hover .play-btn-circle {
+            transform: scale(1.1);
+            box-shadow: 0 0 45px var(--color-primary);
+        }
+
+        .bridge-text-transcript {
+            max-width: 800px;
+            margin: 2.5rem auto;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(184, 239, 58, 0.05);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+
+        .bridge-text-transcript h3 {
+            font-size: 1.15rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .transcript-time-block {
+            margin-bottom: 1.25rem;
+            border-bottom: 1px dashed rgba(255,255,255,0.05);
+            padding-bottom: 1.25rem;
+        }
+
+        .transcript-time-block:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .time-badge {
+            font-family: monospace;
+            background: var(--color-bg-surface-elevated);
+            color: #ffffff;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .appointment-box {
+            max-width: 800px;
+            margin: 3.5rem auto;
+            background: linear-gradient(135deg, rgba(16, 36, 29, 0.9) 0%, rgba(7, 17, 14, 0.95) 100%);
+            border: 2px solid var(--color-primary);
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 15px 40px var(--color-primary-glow);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="funnel-hub.html" class="logo">
+                <span class="logo-accent">UF</span> Corp
+            </a>
+            <div style="font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; font-weight: 600; letter-spacing: 1px;">
+                Peldaño Cero: Página Puente
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+        <!-- Header confirmation & Progress bar -->
+        <section class="hero-section" style="padding-top: 7rem; padding-bottom: 2rem;">
+            <div class="container text-center" style="max-width: 900px;">
+                
+                <!-- Completion tracker -->
+                <div class="completion-bar-container">
+                    <div class="bar-label">
+                        <span>ESTADO DEL EXPEDIENTE PRELIMINAR</span>
+                        <span style="color: var(--color-primary);">80% COMPLETADO</span>
+                    </div>
+                    <div class="custom-progress-track">
+                        <div class="custom-progress-bar"></div>
+                    </div>
+                </div>
+
+                <h1 style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); line-height: 1.25; margin-bottom: 1rem; color: #ffffff;">
+                    ¡Hola <span id="lead-name-display" style="color: var(--color-primary);">Doctor(a)</span>! Tu Reporte Preliminar de Blindaje y Checklist Normativo se está enviando a tu WhatsApp y Correo...
+                </h1>
+                
+                <p style="font-size: 1.2rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto; line-height: 1.6; font-weight: 500;">
+                    Mira este video de 3 minutos antes de comprar materiales de obra o iniciar cualquier construcción civil:
+                </p>
+            </div>
+        </section>
+
+        <!-- Simulated Video Container (Bridge Video Script) -->
+        <section style="padding-bottom: 2rem;">
+            <div class="container">
+                
+                <div class="video-player-wrapper" id="video-mock-player">
+                    <!-- Video Overlay -->
+                    <div class="video-poster-overlay" id="poster-overlay">
+                        <div class="play-btn-circle">▶</div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: #ffffff;">REPRODUCIR VIDEO DE 3 MINUTOS</h3>
+                        <p style="color: var(--text-secondary); max-width: 500px; font-size: 0.95rem;">
+                            "El error crítico que comete el 80% de directores al blindar salas en el Perú"
+                        </p>
+                    </div>
+                    
+                    <!-- Simulated video controls when "playing" -->
+                    <div id="video-sim-screen" style="display: none; width: 100%; height: 100%; background: #0b1814; flex-direction: column; justify-content: center; align-items: center; color: white;">
+                        <span class="pill-dot animate-pulse" style="background: red; width: 12px; height: 12px; border-radius: 50%; display: inline-block;"></span>
+                        <div style="margin-top: 1rem; font-size: 1.2rem; font-weight: 600; text-align: center; padding: 2rem;">
+                            [ Simulación de Video en Reproducción ]<br>
+                            <span style="font-size: 0.95rem; color: var(--text-secondary); font-weight: 400;">Escucha el guión técnico detallado en el panel inferior</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Script Transcription (Read text) -->
+                <div class="bridge-text-transcript">
+                    <h3>Guión y Transcripción del Mensaje Técnico</h3>
+                    
+                    <div class="transcript-time-block">
+                        <p><span class="time-badge">0:00 - 0:30</span> <strong>El Gancho y la Confirmación:</strong></p>
+                        <p style="color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.6;">
+                            "Hola, te saluda el equipo de ingeniería de UF Protección Radiológica. Tu reporte de estimación preliminar y la lista de verificación de la Ley N° 28028 ya están en tu bandeja de entrada. Pero antes de que abras ese documento, hay un error crítico que comete el 80% de directores y administradores de clínicas en el Perú y que debes evitar a toda costa..."
+                        </p>
+                    </div>
+
+                    <div class="transcript-time-block">
+                        <p><span class="time-badge">0:30 - 1:30</span> <strong>La Historia y el Gran Conflicto (El Villano Común):</strong></p>
+                        <p style="color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.6;">
+                            "La mayoría cree que blindar una sala es simplemente comprar sacos de baritina o planchas de plomo y entregárselos a un contratista civil general. Hace unos meses vimos el caso de una clínica que invirtió miles de dólares en su sala de tomografía. Todo lucía impecable hasta la inspección de la OTAN. El detector radiométrico identificó fugas invisibles en la junta del marco de la puerta plomada y microporosidades en el mortero. ¿El resultado? Licencia rechazada, equipo parado por meses y miles de soles en demolición y reparación. Un blindaje mal ejecutado cuesta diez veces más que hacerlo con ingeniería especializada desde el primer día."
+                        </p>
+                    </div>
+
+                    <div class="transcript-time-block">
+                        <p><span class="time-badge">1:30 - 2:15</span> <strong>La Revelación (The Epiphany):</strong></p>
+                        <p style="color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.6;">
+                            "Para que una sala pase la inspección a la primera, se requiere una memoria de cálculo precisa basada en la carga de trabajo semanal del tubo y una fiscalización técnica por fases constructivas antes de colocar los acabados finales."
+                        </p>
+                    </div>
+
+                    <div class="transcript-time-block">
+                        <p><span class="time-badge">2:15 - 3:00</span> <strong>La Oferta del Siguiente Paso (The Call to Action):</strong></p>
+                        <p style="color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.6;">
+                            "Por eso, hemos habilitado cupos semanales para una <strong>Auditoría Técnica Express de Blindaje y Cumplimiento Normativo (Vía Remota o En Sitio)</strong>. En 15 minutos revisaremos los planos de tu sala, validaremos los espesores requeridos y trazaremos la ruta crítica para que obtengas tu Licencia de Operación IPEN sin observaciones ni sobrecostos. Haz clic en el botón debajo de este video y reserva tu horario antes de iniciar cualquier compra de material."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- High-Intent CTA Box -->
+                <div class="appointment-box">
+                    <div class="alert-pill" style="margin: 0 auto 1.5rem auto; width: fit-content;">
+                        <span class="pill-dot animate-pulse"></span>
+                        <span>ASESORÍA INMEDIATA SIN COSTO</span>
+                    </div>
+                    
+                    <h2 style="font-size: 2.2rem; color: #ffffff; margin-bottom: 1rem;">
+                        Agendar Mi Auditoría Técnica Express de 15 Minutos
+                    </h2>
+                    
+                    <p style="color: var(--text-secondary); font-size: 1.1rem; max-width: 600px; margin: 0 auto 2.5rem auto; line-height: 1.6;">
+                        Revisaremos de forma personalizada el plano preliminar o situación documental de tu establecimiento médico para evitar observaciones en tu expediente IPEN.
+                    </p>
+
+                    <a href="https://api.whatsapp.com/send?phone=51933666362&text=Hola%20UF%20Corp%2C%20deseo%20Agendar%20mi%20Auditor%C3%ADa%20T%C3%A9cnica%20Express%20de%2015%20minutos%20sin%20costo%20para%20mi%20sala." 
+                       target="_blank" 
+                       class="btn btn-primary btn-glow" 
+                       style="padding: 1.2rem 2.5rem; font-size: 1.2rem; font-weight: 700;">
+                        AGENDAR MI AUDITORÍA TÉCNICA EXPRESS AHORA (SIN COSTO)
+                    </a>
+
+                    <div style="margin-top: 1.5rem; color: var(--text-muted); font-size: 0.9rem;">
+                        *Disponibilidad limitada por capacidad de inspección técnica en Lima y regiones.*
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer" style="padding: 2rem 0; margin-top: 4rem;">
+        <div class="container text-center" style="font-size: 0.85rem; color: var(--text-muted);">
+            <p>&copy; 2026 UF Corporation. Todos los derechos reservados. Cumplimiento normativo IPEN / OTAN.</p>
+        </div>
+    </footer>
+
+    <!-- Video toggle simulation and query string parser -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Parse query string to personalize the page
+            const urlParams = new URLSearchParams(window.location.search);
+            const leadName = urlParams.get('name');
+            const leadInstitution = urlParams.get('institution');
+
+            if (leadName) {
+                document.getElementById('lead-name-display').textContent = leadName;
+            }
+
+            // Video mock toggle play
+            const videoMock = document.getElementById('video-mock-player');
+            const posterOverlay = document.getElementById('poster-overlay');
+            const videoScreen = document.getElementById('video-sim-screen');
+
+            if (videoMock && posterOverlay && videoScreen) {
+                videoMock.addEventListener('click', () => {
+                    posterOverlay.style.opacity = '0';
+                    setTimeout(() => {
+                        posterOverlay.style.display = 'none';
+                        videoScreen.style.display = 'flex';
+                    }, 300);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
