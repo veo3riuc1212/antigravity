@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda VIP: Sesión Estratégica con Ingeniero Principal | UF Corp</title>
+    <meta name="description" content="Reserve su bloque de agenda técnica de factibilidad de 15 minutos para su proyecto llave en mano.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Page-specific Calendly styles -->
+    <style>
+        .vip-calendar-box {
+            max-width: 750px;
+            margin: 3rem auto;
+            background: linear-gradient(135deg, rgba(16, 36, 29, 0.9) 0%, rgba(7, 17, 14, 0.95) 100%);
+            border: 2px solid var(--color-primary);
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: 0 20px 45px var(--color-primary-glow);
+        }
+
+        .calendar-wrap {
+            background: #ffffff;
+            color: #1a1a1a;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .calendar-day {
+            padding: 0.75rem;
+            background: #f5f5f5;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .calendar-day:hover:not(.empty-day) {
+            background: var(--color-primary);
+            color: var(--color-bg-base);
+        }
+
+        .empty-day {
+            background: transparent;
+            cursor: default;
+        }
+
+        .time-slots {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .time-slot {
+            padding: 0.5rem 1rem;
+            background: #e3f2fd;
+            border: 1px solid #90caf9;
+            color: #0d47a1;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .time-slot:hover {
+            background: #0d47a1;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="funnel-hub.html" class="logo">
+                <span class="logo-accent">UF</span> Corp
+            </a>
+            <div style="font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; font-weight: 600; letter-spacing: 1px;">
+                Agenda VIP Principal
+            </div>
+        </div>
+    </header>
+
+    <main style="padding-top: 7rem; padding-bottom: 4rem;">
+        <div class="container">
+            
+            <div class="vip-calendar-box">
+                <div class="alert-pill" style="margin: 0 auto 1.5rem auto; width: fit-content; border-color: var(--color-primary);">
+                    <span class="pill-dot animate-pulse"></span>
+                    <span>Postulación Pre-Calificada</span>
+                </div>
+
+                <h2 class="text-center" style="color: #ffffff; font-size: 1.8rem; margin-bottom: 0.5rem;">
+                    Agendar Sesión de Factibilidad con el Ingeniero Principal
+                </h2>
+                <p class="text-center" style="color: var(--text-secondary); font-size: 0.95rem; max-width: 600px; margin: 0 auto;">
+                    Reserve su bloque de agenda técnica de 15 minutos en el calendario VIP a continuación para evaluar la planimetría de su establecimiento de salud.
+                </p>
+
+                <!-- Calendly Widget Mockup -->
+                <div class="calendar-wrap">
+                    <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 1rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 0.5rem;">
+                        <span>Agosto 2026</span>
+                        <span>Zona Horaria: Lima (GMT-5)</span>
+                    </div>
+
+                    <div class="calendar-grid">
+                        <span style="font-weight: 600; color: #888;">Do</span>
+                        <span style="font-weight: 600; color: #888;">Lu</span>
+                        <span style="font-weight: 600; color: #888;">Ma</span>
+                        <span style="font-weight: 600; color: #888;">Mi</span>
+                        <span style="font-weight: 600; color: #888;">Ju</span>
+                        <span style="font-weight: 600; color: #888;">Vi</span>
+                        <span style="font-weight: 600; color: #888;">Sá</span>
+
+                        <span class="calendar-day empty-day"></span>
+                        <span class="calendar-day empty-day"></span>
+                        <span class="calendar-day empty-day"></span>
+                        <span class="calendar-day empty-day"></span>
+                        <span class="calendar-day empty-day"></span>
+                        <span class="calendar-day empty-day"></span>
+                        <span class="calendar-day">1</span>
+                        <span class="calendar-day">2</span>
+                        <span class="calendar-day">3</span>
+                        <span class="calendar-day">4</span>
+                        <span class="calendar-day">5</span>
+                        <span class="calendar-day">6</span>
+                        <span class="calendar-day">7</span>
+                        <span class="calendar-day">8</span>
+                        <span class="calendar-day">9</span>
+                        <span class="calendar-day">10</span>
+                        <span class="calendar-day">11</span>
+                        <span class="calendar-day">12</span>
+                        <span class="calendar-day">13</span>
+                        <span class="calendar-day">14</span>
+                        <span class="calendar-day">15</span>
+                        <span class="calendar-day">16</span>
+                        <span class="calendar-day">17</span>
+                        <span class="calendar-day">18</span>
+                        <span class="calendar-day">19</span>
+                        <span class="calendar-day">20</span>
+                        <span class="calendar-day" style="background: #e3f2fd; color: #0d47a1;">21</span>
+                        <span class="calendar-day" style="background: var(--color-primary); color: var(--color-bg-base);">22</span>
+                        <span class="calendar-day" style="background: var(--color-primary); color: var(--color-bg-base);">23</span>
+                        <span class="calendar-day" style="background: var(--color-primary); color: var(--color-bg-base);">24</span>
+                        <span class="calendar-day" style="background: var(--color-primary); color: var(--color-bg-base);">25</span>
+                        <span class="calendar-day" style="background: var(--color-primary); color: var(--color-bg-base);">26</span>
+                        <span class="calendar-day" style="background: var(--color-primary); color: var(--color-bg-base);">27</span>
+                        <span class="calendar-day" style="background: var(--color-primary); color: var(--color-bg-base);">28</span>
+                        <span class="calendar-day">29</span>
+                        <span class="calendar-day">30</span>
+                        <span class="calendar-day">31</span>
+                    </div>
+
+                    <div style="font-weight: 700; margin-top: 1rem; font-size: 0.95rem;">Espacios VIP Disponibles para el Lunes 24:</div>
+                    <div class="time-slots">
+                        <span class="time-slot" onclick="confirmVipAppointment('08:30 AM')">08:30 AM (Llamada Inicial)</span>
+                        <span class="time-slot" onclick="confirmVipAppointment('11:00 AM')">11:00 AM (Llamada Inicial)</span>
+                        <span class="time-slot" onclick="confirmVipAppointment('03:30 PM')">03:30 PM (Llamada Inicial)</span>
+                        <span class="time-slot" onclick="confirmVipAppointment('05:00 PM')">05:00 PM (Llamada Inicial)</span>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer" style="padding: 2rem 0; margin-top: 4rem;">
+        <div class="container text-center" style="font-size: 0.85rem; color: var(--text-muted);">
+            <p>&copy; 2026 UF Corporation. Todos los derechos reservados. Cumplimiento normativo IPEN / OTAN.</p>
+        </div>
+    </footer>
+
+    <!-- Parse redirect query params and forward to confirmation -->
+    <script>
+        let urlParams;
+        document.addEventListener('DOMContentLoaded', () => {
+            urlParams = new URLSearchParams(window.location.search);
+        });
+
+        function confirmVipAppointment(timeSlot) {
+            const nameVal = urlParams.get('name') || 'Cliente VIP';
+            const phoneVal = urlParams.get('phone') || '';
+            const eqVal = urlParams.get('eq') || '';
+
+            const redirectUrl = `gracias-postulacion.html?time=${encodeURIComponent(timeSlot)}&name=${encodeURIComponent(nameVal)}&phone=${encodeURIComponent(phoneVal)}&eq=${encodeURIComponent(eqVal)}&date=Lunes%2024%20de%20Agosto`;
+            window.location.href = redirectUrl;
+        }
+    </script>
+</body>
+</html>

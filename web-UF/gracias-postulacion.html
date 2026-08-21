@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Postulación Recibida! Cita VIP Confirmada | UF Corp</title>
+    <meta name="description" content="Instrucciones previas y detalles para su sesión técnica de factibilidad del Proyecto Llave en Mano.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Page-specific VIP Confirmation & Timeline styles -->
+    <style>
+        .vip-confirmation-card {
+            max-width: 800px;
+            margin: 3rem auto;
+            background: linear-gradient(135deg, rgba(16, 36, 29, 0.8) 0%, rgba(7, 17, 14, 0.95) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        .success-shield {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(184, 239, 58, 0.1);
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            margin: 0 auto 1.5rem auto;
+            box-shadow: 0 0 25px var(--color-primary-glow);
+        }
+
+        .details-badge-box {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(184, 239, 58, 0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .homework-step-card {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .homework-step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background: var(--color-primary);
+            color: var(--color-bg-base);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        /* Script Timeline styling */
+        .script-timeline-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2.5rem 0;
+            position: relative;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .script-step-node {
+            background: rgba(16, 36, 29, 0.9);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .script-step-node strong {
+            display: block;
+            color: var(--color-primary);
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .script-step-node span {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .script-timeline-grid::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(184, 239, 58, 0.15);
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .script-timeline-grid {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .script-timeline-grid::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header" style="position: relative; margin-bottom: 2rem;">
+        <div class="container header-container">
+            <a href="funnel-hub.html" class="logo">
+                <span class="logo-accent">UF</span> Corp
+            </a>
+            <div style="font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; font-weight: 600; letter-spacing: 1px;">
+                Confirmación de Postulación VIP
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <div class="container">
+                <div class="vip-confirmation-card">
+                    
+                    <div class="success-shield">🛡️</div>
+                    
+                    <h2 class="text-center" style="color: #ffffff; font-size: 2rem; margin-bottom: 0.5rem;">
+                        ¡Postulación Recibida Correctamente!
+                    </h2>
+                    <p class="text-center" style="color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 2rem;">
+                        Tu sesión técnica estratégica de factibilidad ha sido confirmada con nuestro Ingeniero Principal.
+                    </p>
+
+                    <!-- Appointment Metadata Summary -->
+                    <div class="details-badge-box">
+                        <h3 style="font-size: 0.95rem; color: #ffffff; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">
+                            Resumen de su Cita Técnica
+                        </h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.95rem; color: var(--text-secondary);">
+                            <div>
+                                <strong>Fecha:</strong> <span id="vip-date" style="color: #fff;">Lunes 24 de Agosto, 2026</span>
+                            </div>
+                            <div>
+                                <strong>Hora:</strong> <span id="vip-time" style="color: #fff;">08:30 AM (GMT-5)</span>
+                            </div>
+                            <div style="grid-column: span 2;">
+                                <strong>Proyecto Evaluado:</strong> <span id="vip-eq" style="color: #fff;">Tomógrafo Multicorte</span>
+                            </div>
+                            <div style="grid-column: span 2;">
+                                <strong>Ingeniero Asignado:</strong> <span style="color: var(--color-primary); font-weight: 600;">Ing. Principal de Protección Radiológica UF</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Homework / Preparations Section -->
+                    <div style="margin: 3.5rem 0;">
+                        <h3 style="font-size: 1.25rem; color: #ffffff; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px;">
+                            📋 Requisitos Obligatorios para la Sesión (Homework)
+                        </h3>
+
+                        <div class="homework-step-card">
+                            <div class="homework-step-number">1</div>
+                            <h4 class="homework-title">Planos de distribución arquitectónica</h4>
+                            <p class="homework-desc">
+                                Es indispensable que cuente con los planos de distribución o planimetría civil de la sala (en formato PDF, AutoCAD o sketch) para evaluar los espesores de baritina y plomo requeridos en tiempo real.
+                            </p>
+                        </div>
+
+                        <div class="homework-step-card">
+                            <div class="homework-step-number">2</div>
+                            <h4 class="homework-title">Especificaciones técnicas del tubo emisor</h4>
+                            <p class="homework-desc">
+                                Tenga a la mano la ficha técnica del equipo (tomógrafo, arco en c, etc.), indicando la corriente máxima de tubo (mA) y tensión nominal de trabajo (kVp).
+                            </p>
+                        </div>
+
+                        <div class="homework-step-card">
+                            <div class="homework-step-number">3</div>
+                            <h4 class="homework-title">Presencia del tomador de decisiones</h4>
+                            <p class="homework-desc">
+                                Para poder formalizar el acta de factibilidad y el inicio de la planificación de la obra civil de blindaje, se requiere que el Director Médico o Gerente General de la clínica asista a la sesión de Zoom.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Flow/Timeline of the high-ticket session call (Priming) -->
+                    <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 3rem; margin-top: 3rem;">
+                        <h3 style="font-size: 1.15rem; color: #ffffff; text-align: center; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">
+                            Protocolo Estratégico de la Sesión Técnica
+                        </h3>
+                        <p style="color: var(--text-secondary); text-align: center; font-size: 0.95rem; max-width: 600px; margin: 0 auto 1.5rem auto;">
+                            Nuestra llamada técnica de 15 minutos sigue un protocolo estructurado de factibilidad para optimizar tiempos:
+                        </p>
+
+                        <!-- Visual CSS/HTML horizontal diagram showing the 4 steps -->
+                        <div class="script-timeline-grid">
+                            <div class="script-step-node">
+                                <strong>1. Contacto</strong>
+                                <span>Establecer estatus y retos civiles</span>
+                            </div>
+                            <div class="script-step-node">
+                                <strong>2. La Ruina</strong>
+                                <span>Verbalizar el costo del equipo parado</span>
+                            </div>
+                            <div class="script-step-node">
+                                <strong>3. Vehículo</strong>
+                                <span>Ingeniería radiológica 3 fases</span>
+                            </div>
+                            <div class="script-step-node">
+                                <strong>4. Cierre</strong>
+                                <span>Acuerdo de obra con garantía</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direct Confirmation Links -->
+                    <div class="text-center" style="margin-top: 3rem;">
+                        <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem;">
+                            Hemos enviado el enlace de acceso de Zoom y la confirmación VIP directo a su correo electrónico.
+                        </p>
+                        <a href="https://api.whatsapp.com/send?phone=51933666362&text=Hola%20UF%20Corp%2C%20confirmo%20mi%20asistencia%20VIP%20para%20la%20Sesi%C3%B3n%20T%C3%A9cnica%20con%20el%20Ingeniero%20Principal." 
+                           target="_blank" 
+                           class="btn btn-primary btn-glow" 
+                           style="padding: 1rem 2.5rem; font-size: 1.1rem; font-weight: 700;">
+                            CONFIRMAR ASISTENCIA VIP POR WHATSAPP
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer" style="padding: 2rem 0; margin-top: 4rem;">
+        <div class="container text-center" style="font-size: 0.85rem; color: var(--text-muted);">
+            <p>&copy; 2026 UF Corporation. Todos los derechos reservados. Cumplimiento normativo IPEN / OTAN.</p>
+        </div>
+    </footer>
+
+    <!-- Parse query parameters to render dynamic confirmation details -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const timeVal = urlParams.get('time');
+            const dateVal = urlParams.get('date');
+            const eqVal = urlParams.get('eq');
+
+            if (timeVal) {
+                document.getElementById('vip-time').textContent = `${timeVal} (GMT-5)`;
+            }
+            if (dateVal) {
+                document.getElementById('vip-date').textContent = dateVal;
+            }
+            if (eqVal) {
+                document.getElementById('vip-eq').textContent = eqVal;
+            }
+        });
+    </script>
+</body>
+</html>

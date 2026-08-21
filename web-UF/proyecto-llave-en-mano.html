@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolo de Blindaje Hospitalario Llave en Mano | UF Corp</title>
+    <meta name="description" content="Entregamos su sala de diagnóstico por imágenes 100% blindada, certificada y licenciada ante el IPEN. Garantía cero observaciones y multas.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Page-specific High-Ticket VSL & Checkout Form Styles -->
+    <style>
+        .kicker-exclusive {
+            color: #ef4444;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            display: inline-block;
+            background: rgba(239, 68, 68, 0.08);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .vsl-box-frame {
+            max-width: 850px;
+            margin: 2.5rem auto;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            background: #000000;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            position: relative;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
+            cursor: pointer;
+        }
+
+        .vsl-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(7, 17, 14, 0.3) 0%, rgba(7, 17, 14, 0.95) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+            transition: all var(--transition-fast);
+        }
+
+        .vsl-play-btn {
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            color: var(--color-bg-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 35px var(--color-primary-glow);
+            transition: all var(--transition-fast);
+        }
+
+        .vsl-box-frame:hover .vsl-play-btn {
+            transform: scale(1.1);
+            box-shadow: 0 0 45px var(--color-primary);
+        }
+
+        .ht-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            text-align: left;
+        }
+
+        .ht-table th, .ht-table td {
+            padding: 1.25rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            vertical-align: top;
+        }
+
+        .ht-table th {
+            color: #ffffff;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            background: rgba(16, 36, 29, 0.5);
+        }
+
+        .ht-table td {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .ht-stack-wrapper {
+            max-width: 850px;
+            margin: 4rem auto;
+            background: linear-gradient(135deg, rgba(16, 36, 29, 0.8) 0%, rgba(7, 17, 14, 0.95) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+
+        .filter-form-box {
+            max-width: 850px;
+            margin: 4rem auto;
+            background: rgba(11, 24, 20, 0.5);
+            border: 1px solid rgba(184, 239, 58, 0.08);
+            border-radius: 12px;
+            padding: 3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.75rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.65rem;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-color);
+            color: #ffffff;
+            font-size: 0.95rem;
+            transition: all var(--transition-fast);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            background: rgba(255,255,255,0.05);
+            box-shadow: 0 0 8px rgba(184, 239, 58, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="funnel-hub.html" class="logo">
+                <span class="logo-accent">UF</span> Corp
+            </a>
+            <div style="font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; font-weight: 600; letter-spacing: 1px;">
+                Programa Llave en Mano
+            </div>
+        </div>
+    </header>
+
+    <main style="padding-top: 7rem; padding-bottom: 4rem;">
+        <div class="container">
+            
+            <!-- Headline Hook -->
+            <div class="text-center" style="max-width: 950px; margin: 0 auto 3rem auto;">
+                <span class="kicker-exclusive">Programa de Habilitación Clínica Exclusivo para Centros de Diagnóstico por Imágenes en Perú</span>
+                <h1 style="font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.15; color: #ffffff; margin-bottom: 1.25rem;">
+                    Entregamos Tu Sala de Rayos X o Tomografía 100% Blindada, Fiscalizada y con Licencia de Operación IPEN Garantizada
+                </h1>
+                <p style="font-size: 1.25rem; color: var(--text-secondary); max-width: 850px; margin: 0 auto; line-height: 1.6;">
+                    Sin retrasos de apertura ni riesgo de demolición. Asumimos la responsabilidad técnica integral: desde la memoria dosimétrica hasta la supervisión de mortero baritado, puertas plomadas y gestión regulatoria directa ante la OTAN.
+                </p>
+            </div>
+
+            <!-- Simulated High-Ticket VSL Player -->
+            <div class="vsl-box-frame" id="vsl-webinar-player">
+                <div class="vsl-overlay" id="vsl-poster-overlay">
+                    <div class="vsl-play-btn">▶</div>
+                    <h3 style="font-size: 1.6rem; color: #ffffff; margin-bottom: 0.5rem;">VER PRESENTACIÓN DEL PROTOCOLO INTEGRAL (15 MIN)</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; max-width: 500px;">
+                        "Cómo blindar y licenciar salas de alta potencia con total certeza y garantía de habilitación comercial"
+                    </p>
+                </div>
+
+                <div id="vsl-sim-screen" style="display: none; width: 100%; height: 100%; background: #07110e; flex-direction: column; justify-content: center; align-items: center; color: white;">
+                    <span class="pill-dot animate-pulse" style="background: red; width: 12px; height: 12px; border-radius: 50%;"></span>
+                    <div style="margin-top: 1rem; font-size: 1.3rem; font-weight: 600; text-align: center; padding: 2rem;">
+                        [ Presentación del Protocolo Llave en Mano en Reproducción... ]<br>
+                        <span style="font-size: 0.95rem; color: var(--text-secondary); font-weight: 400; display: block; margin-top: 0.5rem;">
+                            Consulte el stack de entregables del programa detallado a continuación.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Done-For-You Offer Stack Table -->
+            <div class="ht-stack-wrapper">
+                <div class="alert-pill" style="margin-bottom: 1.5rem; width: fit-content;">
+                    <span class="pill-dot animate-pulse"></span>
+                    <span>Done-For-You (Solución Corporativa Integral)</span>
+                </div>
+                
+                <h2 style="font-size: 2rem; color: #ffffff; margin-bottom: 1.5rem;">
+                    El Protocolo Integral Llave en Mano de UF Corporation
+                </h2>
+
+                <table class="ht-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 40%;">Entregable del Protocolo UF</th>
+                            <th>Impacto Operativo y Cumplimiento para la Clínica</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1. Ingeniería y Planimetría Dosimétrica</strong></td>
+                            <td>Memoria de cálculo según carga de trabajo semanal (\(mA\cdot min/semana\)) firmada por físico o ingeniero especialista colegiado. Garantiza el cumplimiento de la Ley N° 28028 ante la OTAN/IPEN.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. Blindaje Físico Estructural Certificado</strong></td>
+                            <td>Suministro y aplicación de baritina homogénea y/o planchas de plomo de alta pureza. Fiscalización continua de juntas y traslapes \(\ge 1\text{ cm}\) por capas para evitar filtraciones.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. Carpintería Plomada Especializada</strong></td>
+                            <td>Suministro e instalación de puertas plomadas con alma de plomo y marcos blindados, además de visores de vidrio plomado certificados. Cero fugas en los puntos ciegos normativos.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4. Gestoría Regulatoria Integral</strong></td>
+                            <td>Armado del expediente técnico de licenciamiento, pago de tasas al Banco de la Nación y acompañamiento técnico presencial el día de la inspección oficial del IPEN.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5. Garantía de Hierro Cero-Multas</strong></td>
+                            <td>Si el regulador emite cualquier observación técnica sobre nuestro blindaje, realizamos todas las modificaciones y adecuaciones necesarias sin costo adicional para la clínica. Protección total ante multas de 40 UIT.</td>
+                        </tr>
+                        <tr style="border-top: 2px solid var(--color-primary); background: rgba(184, 239, 58, 0.02);">
+                            <td style="font-weight: 800; color: var(--color-primary); font-size: 1.15rem;">INVERSIÓN LLAVE EN MANO:</td>
+                            <td style="font-weight: 800; color: var(--color-primary); font-size: 1.15rem;">S/ 25,000 a S/ 80,000+ <span style="font-size: 0.85rem; font-weight: 400; color: var(--text-secondary); display: block; margin-top: 0.25rem;">(Determinado según m², tipo de emisor de radiación, materiales de obra y ubicación geográfica)</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Strict Qualification Filter Form -->
+            <div class="filter-form-box" id="postulation-filter">
+                <h3 style="font-size: 1.75rem; color: #ffffff; margin-bottom: 1rem; text-align: center;">
+                    Formulario de Calificación Estricta (Filtro VIP)
+                </h3>
+                <p style="color: var(--text-secondary); text-align: center; margin-bottom: 2.5rem; font-size: 0.95rem;">
+                    Debido a la alta demanda de ingeniería en obra y el limitado personal técnico de inspección, filtramos las solicitudes para priorizar proyectos listos para iniciar.
+                </p>
+
+                <form id="ht-filter-form">
+                    
+                    <div class="form-group">
+                        <label for="ht-deadline">1. ¿Cuál es la fecha límite en la que su centro médico necesita estar atendiendo pacientes y facturando con el equipo?</label>
+                        <input type="text" id="ht-deadline" class="form-control" placeholder="Ej. Noviembre 2026 (En 3 meses)" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ht-equipments">2. ¿Qué equipos de radiación instalarán o tienen en su local?</label>
+                        <select id="ht-equipments" class="form-control" style="background: var(--color-bg-surface);" required>
+                            <option value="" disabled selected>Seleccione una opción</option>
+                            <option value="Tomógrafo Multicorte">Tomógrafo Multicorte (TC)</option>
+                            <option value="Rayos X Estacionario / Fijo">Rayos X Estacionario / Fijo</option>
+                            <option value="Arco en C / Sala Quirúrgica">Arco en C / Sala Quirúrgica</option>
+                            <option value="Mamógrafo / Dental Panorámico">Mamógrafo / Dental Panorámico</option>
+                            <option value="Múltiples salas (Centro radiológico completo)">Múltiples salas (Centro radiológico completo)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ht-budget">3. ¿Dispone la institución de un presupuesto asignado aprobado para la ejecución de obra y licenciamiento técnico de blindaje?</label>
+                        <select id="ht-budget" class="form-control" style="background: var(--color-bg-surface);" required>
+                            <option value="" disabled selected>Seleccione una opción</option>
+                            <option value="Sí, presupuesto corporativo aprobado">Sí, contamos con presupuesto corporativo aprobado (Rango S/ 25K - S/ 80K)</option>
+                            <option value="En evaluación presupuestal">En evaluación presupuestal (Disponibilidad inmediata una vez cotizado)</option>
+                            <option value="Presupuesto menor a S/ 10,000">Menor a S/ 10,000 (Buscamos asesoría únicamente documental)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ht-contact-name">Nombre y Cargo del Solicitante</label>
+                        <input type="text" id="ht-contact-name" class="form-control" placeholder="Ej. Ing. Martín Rivas - Gerente de Proyectos" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ht-contact-phone">WhatsApp Corporativo de Contacto Directo</label>
+                        <input type="tel" id="ht-contact-phone" class="form-control" placeholder="Ej. 987654321" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-glow btn-full" style="padding: 1rem; font-weight: 700; font-size: 1.05rem;">
+                        POSTULAR PARA PROYECTO LLAVE EN MANO ➔
+                    </button>
+
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer" style="padding: 2rem 0; margin-top: 4rem;">
+        <div class="container text-center" style="font-size: 0.85rem; color: var(--text-muted);">
+            <p>&copy; 2026 UF Corporation. Todos los derechos reservados. Cumplimiento normativo IPEN / OTAN.</p>
+        </div>
+    </footer>
+
+    <!-- VSL Video mock toggle script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const webinarPlayer = document.getElementById('vsl-webinar-player');
+            const overlay = document.getElementById('vsl-poster-overlay');
+            const simScreen = document.getElementById('vsl-sim-screen');
+
+            if (webinarPlayer && overlay && simScreen) {
+                webinarPlayer.addEventListener('click', () => {
+                    overlay.style.opacity = '0';
+                    setTimeout(() => {
+                        overlay.style.display = 'none';
+                        simScreen.style.display = 'flex';
+                    }, 300);
+                });
+            }
+
+            // Form Submit and redirect
+            const form = document.getElementById('ht-filter-form');
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const name = document.getElementById('ht-contact-name').value;
+                    const phone = document.getElementById('ht-contact-phone').value;
+                    const eq = document.getElementById('ht-equipments').value;
+
+                    // Redirect to Calendly VIP page
+                    const redirectUrl = `calendario-vip.html?name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}&eq=${encodeURIComponent(eq)}`;
+                    window.location.href = redirectUrl;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
