@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión Técnica Especializada: Licenciamiento sin Observaciones | UF Corp</title>
+    <meta name="description" content="Aprende el protocolo técnico de 3 fases para blindar y licenciar salas de rayos X y tomografía en Perú sin observaciones.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Page-specific styles for Case Study presentation -->
+    <style>
+        .kicker-top {
+            color: var(--color-primary);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .video-box-container {
+            max-width: 850px;
+            margin: 2.5rem auto;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            background: #000000;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            position: relative;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+            cursor: pointer;
+        }
+
+        .video-overlay-play {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(7, 17, 14, 0.4) 0%, rgba(7, 17, 14, 0.9) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+            transition: all var(--transition-fast);
+        }
+
+        .play-btn-circle-webinar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            color: var(--color-bg-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 35px var(--color-primary-glow);
+            transition: all var(--transition-fast);
+        }
+
+        .video-box-container:hover .play-btn-circle-webinar {
+            transform: scale(1.1);
+            box-shadow: 0 0 45px var(--color-primary);
+        }
+
+        .secrets-section {
+            max-width: 850px;
+            margin: 4rem auto;
+        }
+
+        .secret-card {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(184, 239, 58, 0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: all var(--transition-fast);
+        }
+
+        .secret-card:hover {
+            border-color: var(--color-primary);
+            background: rgba(184, 239, 58, 0.02);
+        }
+
+        .secret-badge {
+            background: var(--color-primary);
+            color: var(--color-bg-base);
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .stack-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            text-align: left;
+        }
+
+        .stack-table th, .stack-table td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stack-table th {
+            color: #ffffff;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .stack-table td {
+            color: var(--text-secondary);
+        }
+
+        .stack-container-box {
+            max-width: 850px;
+            margin: 4rem auto;
+            background: linear-gradient(135deg, rgba(16, 36, 29, 0.8) 0%, rgba(7, 17, 14, 0.95) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="funnel-hub.html" class="logo">
+                <span class="logo-accent">UF</span> Corp
+            </a>
+            <div style="font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; font-weight: 600; letter-spacing: 1px;">
+                Sesión Técnica de Caso de Estudio
+            </div>
+        </div>
+    </header>
+
+    <main style="padding-top: 7rem; padding-bottom: 4rem;">
+        <div class="container">
+            
+            <!-- Header Hook -->
+            <div class="text-center" style="max-width: 900px; margin: 0 auto 3rem auto;">
+                <span class="kicker-top">Sesión Técnica Especializada para Directores Médicos, OPR y Gerentes de Clínicas</span>
+                <h1 style="font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.15; color: #ffffff; margin-bottom: 1.25rem;">
+                    El Protocolo Técnico de 3 Fases para Blindar y Licenciar Tu Sala de Rayos X o Tomografía a la Primera
+                </h1>
+                <p style="font-size: 1.2rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto; line-height: 1.6;">
+                    Sin puntos ciegos de radiación ni multas de la OTAN. Descubre por qué las mediciones de control de calidad y las memorias de cálculo firmadas evitan el rechazo de expedientes y paralizaciones de servicio.
+                </p>
+            </div>
+
+            <!-- Simulated Video Player (Case Study) -->
+            <div class="video-box-container" id="video-webinar-player">
+                <div class="video-overlay-play" id="webinar-overlay">
+                    <div class="play-btn-circle-webinar">▶</div>
+                    <h3 style="font-size: 1.6rem; color: #ffffff; margin-bottom: 0.5rem;">VER CASO DE ESTUDIO COMPLETO (15 MIN)</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; max-width: 500px;">
+                        "El paso a paso técnico para garantizar la aprobación del IPEN sin observaciones"
+                    </p>
+                </div>
+
+                <!-- Video simulating frame -->
+                <div id="webinar-sim-screen" style="display: none; width: 100%; height: 100%; background: #0b1814; flex-direction: column; justify-content: center; align-items: center; color: white;">
+                    <span class="pill-dot animate-pulse" style="background: red; width: 12px; height: 12px; border-radius: 50%;"></span>
+                    <div style="margin-top: 1rem; font-size: 1.3rem; font-weight: 600; text-align: center; padding: 2rem;">
+                        [ Video del Caso de Estudio en Reproducción... ]<br>
+                        <span style="font-size: 0.95rem; color: var(--text-secondary); font-weight: 400; display: block; margin-top: 0.5rem;">
+                            Por favor revisa la transcripción de los 3 secretos fundamentales justo debajo.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call To Action Button directly below the video -->
+            <div class="text-center" style="margin: 3rem 0;">
+                <a href="postulacion.html" class="btn btn-primary btn-glow btn-evaluar-color btn-evaluar-glow" style="padding: 1.2rem 2.5rem; font-size: 1.25rem; font-weight: 700;">
+                    POSTULAR A UNA AUDITORÍA TÉCNICA EN SITIO
+                </a>
+            </div>
+
+            <!-- The 3 Secrets Section -->
+            <div class="secrets-section">
+                <h2 style="font-size: 2rem; color: #ffffff; text-align: center; margin-bottom: 2.5rem;">
+                    Los 3 Secretos Fundamentales del Licenciamiento Exitoso
+                </h2>
+
+                <!-- Secreto 1 -->
+                <div class="secret-card">
+                    <span class="secret-badge">Secreto #1</span>
+                    <h3 style="font-size: 1.3rem; color: #ffffff; margin-bottom: 0.75rem;">
+                        Por qué un plano arquitectónico convencional no sirve para el IPEN/OTAN si no incluye la tasa de kerma y la carga de trabajo semanal del tubo (\(mA\cdot min/semana\))
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.98rem;">
+                        <strong>La Revelación:</strong> Los inspectores rechazan de inmediato las memorias descriptivas genéricas. Un cálculo de blindaje profesional debe analizar los factores de ocupación perimétricos reales (personal médico colindante, pasillos públicos, salas de espera) y la dirección específica del haz útil de radiación.
+                    </p>
+                </div>
+
+                <!-- Secreto 2 -->
+                <div class="secret-card">
+                    <span class="secret-badge">Secreto #2</span>
+                    <h3 style="font-size: 1.3rem; color: #ffffff; margin-bottom: 0.75rem;">
+                        No necesitas ser físico médico para garantizar que la obra no tenga fugas; necesitas una fiscalización radiométrica por capas antes del tarrajeo final
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.98rem;">
+                        <strong>La Revelación:</strong> Esperar a que la obra esté terminada para medir la radiación es el error más costoso. Con detectores calibrados de centelleo, realizamos un escaneo en frío y en caliente por capas constructivas, logrando detectar microporosidades en el mortero de baritina o fisuras en uniones de marcos plomados antes de colocar los acabados.
+                    </p>
+                </div>
+
+                <!-- Secreto 3 -->
+                <div class="secret-card">
+                    <span class="secret-badge">Secreto #3</span>
+                    <h3 style="font-size: 1.3rem; color: #ffffff; margin-bottom: 0.75rem;">
+                        Cómo levantar observaciones de la autoridad nacional en menos de 15 días en lugar de esperar 6 meses con el equipo inoperativo
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.98rem;">
+                        <strong>La Revelación:</strong> Si tu sala fue observada, la clave está en presentar la planimetría de blindaje corregida firmada por un ingeniero certificado junto con un plan de acción rápido de traslapes. Hemos ayudado a decenas de clínicas a restablecer la marcha administrativa y levantar observaciones en tiempo récord.
+                    </p>
+                </div>
+            </div>
+
+            <!-- The Offer Stack Block -->
+            <div class="stack-container-box">
+                <div class="alert-pill" style="margin-bottom: 1rem; width: fit-content;">
+                    <span class="pill-dot animate-pulse"></span>
+                    <span>Done With You (Servicio de Ingeniería)</span>
+                </div>
+                
+                <h2 style="font-size: 2rem; color: #ffffff; margin-bottom: 1rem;">
+                    Auditoría Técnica Pre-IPEN & Memoria de Blindaje Estructural UF
+                </h2>
+                
+                <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 2rem;">
+                    La solución definitiva y profesional para que delegues los cálculos y la supervisión técnica en manos expertas.
+                </p>
+
+                <table class="stack-table">
+                    <thead>
+                        <tr>
+                            <th>Componente del Servicio</th>
+                            <th style="text-align: right;">Valor Estimado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1. Inspección Radiométrica en Sitio:</strong> Mapeo detallado de fugas en juntas, ductos de aire acondicionado y traslapes de plomo con equipos calibrados.</td>
+                            <td style="text-align: right; color: #ffffff;">S/ 2,200</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. Memoria de Cálculo Dosimétrico:</strong> Protocolo oficial de cálculo de espesores de blindaje firmado por ingeniero especialista colegiado.</td>
+                            <td style="text-align: right; color: #ffffff;">S/ 2,800</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. Planimetría de Blindaje Parametrizada:</strong> Planos detallados listos para anexar al expediente de solicitud de Licencia de Operación C1.</td>
+                            <td style="text-align: right; color: #ffffff;">S/ 1,500</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4. Bono de Acompañamiento:</strong> Levantamiento técnico de observaciones emitidas por la OTAN/IPEN sin costos adicionales.</td>
+                            <td style="text-align: right; color: #ffffff;">S/ 1,200</td>
+                        </tr>
+                        <tr style="border-top: 2px solid var(--color-primary);">
+                            <td style="font-weight: 700; color: #ffffff;">VALOR TOTAL ACUMULADO:</td>
+                            <td style="text-align: right; font-weight: 700; text-decoration: line-through; color: var(--color-critical);">S/ 7,700</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 800; color: var(--color-primary); font-size: 1.15rem;">PRECIO DIRECTO DE INVERSIÓN:</td>
+                            <td style="text-align: right; font-weight: 800; color: var(--color-primary); font-size: 1.15rem;">S/ 2,500 a S/ 6,500 <span style="font-size: 0.8rem; font-weight: 400; color: var(--text-secondary); block-size: auto;">(Según el tipo de equipo)</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="text-center" style="margin-top: 3rem;">
+                    <a href="postulacion.html" class="btn btn-primary btn-glow btn-evaluar-color btn-evaluar-glow" style="padding: 1rem 2rem; font-size: 1.15rem; font-weight: 700;">
+                        POSTULAR A UNA AUDITORÍA TÉCNICA AHORA →
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer" style="padding: 2rem 0; margin-top: 4rem;">
+        <div class="container text-center" style="font-size: 0.85rem; color: var(--text-muted);">
+            <p>&copy; 2026 UF Corporation. Todos los derechos reservados. Cumplimiento normativo IPEN / OTAN.</p>
+        </div>
+    </footer>
+
+    <!-- Script for video toggle simulation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const webinarPlayer = document.getElementById('video-webinar-player');
+            const overlay = document.getElementById('webinar-overlay');
+            const simScreen = document.getElementById('webinar-sim-screen');
+
+            if (webinarPlayer && overlay && simScreen) {
+                webinarPlayer.addEventListener('click', () => {
+                    overlay.style.opacity = '0';
+                    setTimeout(() => {
+                        overlay.style.display = 'none';
+                        simScreen.style.display = 'flex';
+                    }, 300);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postular a Auditoría Técnica Pre-IPEN | UF Corp</title>
+    <meta name="description" content="Complete el formulario de factibilidad para calificar a una sesión de auditoría técnica de blindaje y licenciamiento.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Page-specific application styles -->
+    <style>
+        .app-container {
+            max-width: 650px;
+            margin: 2rem auto;
+            background: linear-gradient(135deg, rgba(16, 36, 29, 0.8) 0%, rgba(7, 17, 14, 0.95) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-color);
+            color: #ffffff;
+            font-size: 0.95rem;
+            transition: all var(--transition-fast);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            background: rgba(255,255,255,0.05);
+            box-shadow: 0 0 8px rgba(184, 239, 58, 0.2);
+        }
+
+        .hidden-widget {
+            display: none;
+        }
+
+        /* Mock Calendly Widget styling */
+        .calendly-mock {
+            background: #ffffff;
+            color: #1a1a1a;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .calendar-day {
+            padding: 0.75rem;
+            background: #f5f5f5;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .calendar-day:hover:not(.empty-day) {
+            background: var(--color-primary);
+            color: var(--color-bg-base);
+        }
+
+        .empty-day {
+            background: transparent;
+            cursor: default;
+        }
+
+        .time-slots {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .time-slot {
+            padding: 0.5rem 1rem;
+            background: #e3f2fd;
+            border: 1px solid #90caf9;
+            color: #0d47a1;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .time-slot:hover {
+            background: #0d47a1;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="funnel-hub.html" class="logo">
+                <span class="logo-accent">UF</span> Corp
+            </a>
+            <div style="font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; font-weight: 600; letter-spacing: 1px;">
+                Filtro de Postulación
+            </div>
+        </div>
+    </header>
+
+    <main style="padding-top: 7rem; padding-bottom: 4rem;">
+        <div class="container">
+            
+            <div class="text-center" style="max-width: 800px; margin: 0 auto 2rem auto;">
+                <h1 style="font-size: 2.2rem; color: #ffffff; margin-bottom: 0.5rem;">Formulario de Factibilidad Técnica</h1>
+                <p style="color: var(--text-secondary); font-size: 1rem;">
+                    Por favor complete la información técnica básica de su establecimiento para calificar su postulación y abrir la agenda técnica.
+                </p>
+            </div>
+
+            <div class="app-container">
+                
+                <!-- STEP 1: Form Questions -->
+                <form id="app-questions-form">
+                    
+                    <div class="form-group">
+                        <label for="app-eq-type">1. ¿Qué tipo de equipamiento emisor de radiación tiene o planea instalar?</label>
+                        <select id="app-eq-type" class="form-control" style="background: var(--color-bg-surface);" required>
+                            <option value="" disabled selected>Seleccione una opción</option>
+                            <option value="Rayos X Fijo / Rodable">Rayos X Fijo o Rodable</option>
+                            <option value="Tomógrafo Multicorte">Tomógrafo Multicorte (TC)</option>
+                            <option value="Arco en C">Arco en C / Sala Quirúrgica</option>
+                            <option value="Mamógrafo / Dental Panorámico">Mamógrafo / Dental Panorámico</option>
+                            <option value="Otro">Otro equipamiento especial</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="app-urgency">2. ¿Cuál es la urgencia de ejecución de su proyecto?</label>
+                        <select id="app-urgency" class="form-control" style="background: var(--color-bg-surface);" required>
+                            <option value="" disabled selected>Seleccione una opción</option>
+                            <option value="Apertura en menos de 30 días">Crítica: Apertura comercial en menos de 30 días</option>
+                            <option value="Sala en construcción">Intermedia: Sala en proceso de construcción civil</option>
+                            <option value="Subsanación de requerimiento IPEN">Urgente: Levantamiento de observación de Contraloría/IPEN</option>
+                            <option value="Planificación">Planificación: Evaluación preliminar a mediano plazo</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="app-decision-maker">3. ¿Quién es el responsable de la toma de decisiones de infraestructura en su clínica?</label>
+                        <input type="text" id="app-decision-maker" class="form-control" placeholder="Ej. Gerente de Operaciones / Director Médico" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-glow btn-full" style="padding: 0.9rem; font-weight: 700; margin-top: 1rem;">
+                        CALIFICAR POSTULACIÓN Y VER CALENDARIO ➔
+                    </button>
+                </form>
+
+                <!-- STEP 2: Mock Calendly Widget (Conditionally Unlocked) -->
+                <div id="calendly-widget-section" class="hidden-widget">
+                    <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; margin-top: 2rem;">
+                        <div class="alert-pill" style="margin: 0 auto 1.5rem auto; width: fit-content; border-color: var(--color-primary);">
+                            <span class="pill-dot animate-pulse"></span>
+                            <span>Postulación Calificada Exitosamente</span>
+                        </div>
+                        
+                        <h3 class="text-center" style="color: #ffffff; font-size: 1.3rem; margin-bottom: 0.5rem;">
+                            Selecciona Fecha y Hora para Tu Revisión Técnica
+                        </h3>
+                        <p class="text-center" style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">
+                            Hemos desbloqueado la agenda de nuestro Ingeniero de Protección Radiológica. Elige tu espacio:
+                        </p>
+
+                        <!-- Mock Calendar Widget Box -->
+                        <div class="calendly-mock">
+                            <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 1rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 0.5rem;">
+                                <span>Agosto 2026</span>
+                                <span>Zona Horaria: Lima (GMT-5)</span>
+                            </div>
+
+                            <div class="calendar-grid">
+                                <span style="font-weight: 600; color: #888;">Do</span>
+                                <span style="font-weight: 600; color: #888;">Lu</span>
+                                <span style="font-weight: 600; color: #888;">Ma</span>
+                                <span style="font-weight: 600; color: #888;">Mi</span>
+                                <span style="font-weight: 600; color: #888;">Ju</span>
+                                <span style="font-weight: 600; color: #888;">Vi</span>
+                                <span style="font-weight: 600; color: #888;">Sá</span>
+
+                                <span class="calendar-day empty-day"></span>
+                                <span class="calendar-day empty-day"></span>
+                                <span class="calendar-day empty-day"></span>
+                                <span class="calendar-day empty-day"></span>
+                                <span class="calendar-day empty-day"></span>
+                                <span class="calendar-day empty-day"></span>
+                                <span class="calendar-day">1</span>
+                                <span class="calendar-day">2</span>
+                                <span class="calendar-day">3</span>
+                                <span class="calendar-day">4</span>
+                                <span class="calendar-day">5</span>
+                                <span class="calendar-day">6</span>
+                                <span class="calendar-day">7</span>
+                                <span class="calendar-day">8</span>
+                                <span class="calendar-day">9</span>
+                                <span class="calendar-day">10</span>
+                                <span class="calendar-day">11</span>
+                                <span class="calendar-day">12</span>
+                                <span class="calendar-day">13</span>
+                                <span class="calendar-day">14</span>
+                                <span class="calendar-day">15</span>
+                                <span class="calendar-day">16</span>
+                                <span class="calendar-day">17</span>
+                                <span class="calendar-day">18</span>
+                                <span class="calendar-day">19</span>
+                                <span class="calendar-day">20</span>
+                                <span class="calendar-day" style="background: #e3f2fd; color: #0d47a1;">21</span>
+                                <span class="calendar-day" style="background: var(--color-primary); color: var(--color-bg-base);">22</span>
+                                <span class="calendar-day" style="background: var(--color-primary); color: var(--color-bg-base);">23</span>
+                                <span class="calendar-day" style="background: var(--color-primary); color: var(--color-bg-base);">24</span>
+                                <span class="calendar-day" style="background: var(--color-primary); color: var(--color-bg-base);">25</span>
+                                <span class="calendar-day" style="background: var(--color-primary); color: var(--color-bg-base);">26</span>
+                                <span class="calendar-day" style="background: var(--color-primary); color: var(--color-bg-base);">27</span>
+                                <span class="calendar-day" style="background: var(--color-primary); color: var(--color-bg-base);">28</span>
+                                <span class="calendar-day">29</span>
+                                <span class="calendar-day">30</span>
+                                <span class="calendar-day">31</span>
+                            </div>
+
+                            <div style="font-weight: 700; margin-top: 1rem; font-size: 0.95rem;">Espacios Disponibles para el Sábado 22:</div>
+                            <div class="time-slots">
+                                <span class="time-slot" onclick="confirmAppointment('09:00 AM')">09:00 AM</span>
+                                <span class="time-slot" onclick="confirmAppointment('10:30 AM')">10:30 AM</span>
+                                <span class="time-slot" onclick="confirmAppointment('02:00 PM')">02:00 PM</span>
+                                <span class="time-slot" onclick="confirmAppointment('04:30 PM')">04:30 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer" style="padding: 2rem 0; margin-top: 4rem;">
+        <div class="container text-center" style="font-size: 0.85rem; color: var(--text-muted);">
+            <p>&copy; 2026 UF Corporation. Todos los derechos reservados. Cumplimiento normativo IPEN / OTAN.</p>
+        </div>
+    </footer>
+
+    <!-- Form processing and appointment booking script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('app-questions-form');
+            const widget = document.getElementById('calendly-widget-section');
+
+            if (form && widget) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    // Hide form button, reveal Calendly section
+                    form.querySelector('button[type="submit"]').style.display = 'none';
+                    widget.classList.remove('hidden-widget');
+                    
+                    // Scroll to Calendly section smoothly
+                    widget.scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+        });
+
+        // Redirect to sesion-agendada.html passing the selected date/time
+        function confirmAppointment(timeSlot) {
+            const equipment = document.getElementById('app-eq-type').value;
+            const redirectUrl = `sesion-agendada.html?time=${encodeURIComponent(timeSlot)}&eq=${encodeURIComponent(equipment)}&date=S%C3%A1bado%2022%20de%20Agosto`;
+            window.location.href = redirectUrl;
+        }
+    </script>
+</body>
+</html>

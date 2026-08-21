@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Sesión Agendada y Confirmada! | UF Corp</title>
+    <meta name="description" content="Instrucciones previas y detalles de su sesión de auditoría técnica pre-IPEN.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Page-specific homework page styling -->
+    <style>
+        .homework-container {
+            max-width: 750px;
+            margin: 3rem auto;
+            background: linear-gradient(135deg, rgba(16, 36, 29, 0.8) 0%, rgba(7, 17, 14, 0.95) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        .success-tick {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(184, 239, 58, 0.1);
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem auto;
+            box-shadow: 0 0 20px var(--color-primary-glow);
+        }
+
+        .booking-details-box {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(184, 239, 58, 0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .homework-step {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .homework-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background: var(--color-primary);
+            color: var(--color-bg-base);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .homework-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.25rem;
+        }
+
+        .homework-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header" style="position: relative; margin-bottom: 2rem;">
+        <div class="container header-container">
+            <a href="funnel-hub.html" class="logo">
+                <span class="logo-accent">UF</span> Corp
+            </a>
+            <div style="font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; font-weight: 600; letter-spacing: 1px;">
+                Sesión Confirmada
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <div class="container">
+                <div class="homework-container">
+                    
+                    <div class="success-tick">✓</div>
+                    
+                    <h2 class="text-center" style="color: #ffffff; font-size: 2rem; margin-bottom: 0.5rem;">
+                        ¡Postulación Recibida!
+                    </h2>
+                    <p class="text-center" style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 2rem;">
+                        Tu sesión técnica de revisión de blindaje y licenciamiento ha sido agendada con éxito.
+                    </p>
+
+                    <!-- Booking Details -->
+                    <div class="booking-details-box">
+                        <h3 style="font-size: 1rem; color: #ffffff; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">
+                            Detalles de la Cita de Revisión
+                        </h3>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.95rem; color: var(--text-secondary);">
+                            <div>
+                                <strong>Fecha:</strong> <span id="display-date" style="color: #fff;">Sábado 22 de Agosto, 2026</span>
+                            </div>
+                            <div>
+                                <strong>Hora:</strong> <span id="display-time" style="color: #fff;">09:00 AM</span>
+                            </div>
+                            <div style="grid-column: span 2;">
+                                <strong>Equipamiento a Evaluar:</strong> <span id="display-eq" style="color: #fff;">Tomógrafo Multicorte (TC)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Homework Steps Section -->
+                    <div style="margin: 3rem 0;">
+                        <h3 style="font-size: 1.2rem; color: var(--color-primary); margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px;">
+                            📋 Tareas Previas Obligatorias para la Sesión (Homework)
+                        </h3>
+
+                        <!-- Paso 1 -->
+                        <div class="homework-step">
+                            <div class="homework-number">1</div>
+                            <div class="homework-title">Ten a la mano los planos arquitectónicos</div>
+                            <div class="homework-desc">
+                                Asegúrese de tener el plano de distribución de ambientes de la sala en formato PDF o CAD para poder compartir pantalla y trazar los espesores sobre el plano.
+                            </div>
+                        </div>
+
+                        <!-- Paso 2 -->
+                        <div class="homework-step">
+                            <div class="homework-number">2</div>
+                            <div class="homework-title">Tenga identificada la potencia y modelo del tubo</div>
+                            <div class="homework-desc">
+                                Requerimos la marca, modelo, potencia y corriente (mA) del tubo de rayos X o del tomógrafo para calcular la carga de trabajo semanal del equipo emisor.
+                            </div>
+                        </div>
+
+                        <!-- Paso 3 -->
+                        <div class="homework-step">
+                            <div class="homework-number">3</div>
+                            <div class="homework-title">Asegure la presencia del tomador de decisiones</div>
+                            <div class="homework-desc">
+                                Es indispensable que el Director Médico, Administrador o el Oficial de Protección Radiológica (OPR) esté presente en la llamada para trazar el flujo de ejecución técnica.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; text-align: center;">
+                        <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem;">
+                            Hemos enviado un enlace de Zoom y confirmación directo al correo electrónico registrado.
+                        </p>
+                        <a href="https://api.whatsapp.com/send?phone=51933666362&text=Hola%20UF%20Corp%2C%20confirm%C3%B3%20mi%20asistencia%20para%20la%20Sesi%C3%B3n%20T%C3%A9cnica%20Pre-IPEN." 
+                           target="_blank" 
+                           class="btn btn-primary btn-glow" 
+                           style="padding: 0.8rem 2rem;">
+                            Confirmar Asistencia por WhatsApp
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer" style="padding: 2rem 0; margin-top: 4rem;">
+        <div class="container text-center" style="font-size: 0.85rem; color: var(--text-muted);">
+            <p>&copy; 2026 UF Corporation. Todos los derechos reservados. Cumplimiento normativo IPEN / OTAN.</p>
+        </div>
+    </footer>
+
+    <!-- Parse query parameters to render dynamic appointment details -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const timeVal = urlParams.get('time');
+            const dateVal = urlParams.get('date');
+            const eqVal = urlParams.get('eq');
+
+            if (timeVal) {
+                document.getElementById('display-time').textContent = timeVal;
+            }
+            if (dateVal) {
+                document.getElementById('display-date').textContent = dateVal;
+            }
+            if (eqVal) {
+                document.getElementById('display-eq').textContent = eqVal;
+            }
+        });
+    </script>
+</body>
+</html>
