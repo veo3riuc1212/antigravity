@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Pedido Confirmado! | UF Corp</title>
+    <meta name="description" content="Detalle del pedido de tu kit de licenciamiento y accesos a recursos de protección radiológica.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Page-specific confirmation styling -->
+    <style>
+        .confirmation-card {
+            max-width: 750px;
+            margin: 3rem auto;
+            background: linear-gradient(135deg, rgba(16, 36, 29, 0.8) 0%, rgba(7, 17, 14, 0.95) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        .success-checkmark {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(184, 239, 58, 0.1);
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem auto;
+            box-shadow: 0 0 20px var(--color-primary-glow);
+        }
+
+        .download-resource-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(184, 239, 58, 0.2);
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            transition: all var(--transition-fast);
+        }
+
+        .download-resource-btn:hover {
+            border-color: var(--color-primary);
+            background: rgba(184, 239, 58, 0.05);
+            transform: translateX(4px);
+        }
+
+        .receipt-summary {
+            background: rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .receipt-line {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .receipt-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: #ffffff;
+            border-top: 1px dashed rgba(255,255,255,0.1);
+            padding-top: 0.75rem;
+            margin-top: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header" style="position: relative; margin-bottom: 2rem;">
+        <div class="container header-container">
+            <a href="funnel-hub.html" class="logo">
+                <span class="logo-accent">UF</span> Corp
+            </a>
+            <div style="font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; font-weight: 600; letter-spacing: 1px;">
+                Confirmación de Pedido
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <div class="container">
+                <div class="confirmation-card">
+                    
+                    <div class="success-checkmark">✓</div>
+                    
+                    <h2 class="text-center" style="color: #ffffff; font-size: 2rem; margin-bottom: 0.5rem;">
+                        ¡Muchas gracias por su compra!
+                    </h2>
+                    <p class="text-center" style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 2rem;">
+                        Hemos registrado su transacción de forma segura. A continuación encontrará sus accesos y descargas inmediatas.
+                    </p>
+
+                    <!-- Receipt summary breakdown -->
+                    <div class="receipt-summary">
+                        <h3 style="font-size: 1.05rem; color: #ffffff; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">
+                            Resumen de Compra
+                        </h3>
+                        
+                        <div class="receipt-line">
+                            <span>Kit Maestro de Licenciamiento IPEN</span>
+                            <span>S/ 97</span>
+                        </div>
+
+                        <div class="receipt-line" id="receipt-bump-line" style="display: none;">
+                            <span>Matriz Digital de Control de EPP (+ Bump)</span>
+                            <span>S/ 47</span>
+                        </div>
+
+                        <div class="receipt-line" id="receipt-oto-line" style="display: none;">
+                            <span>Sesión Privada de Revisión Planimétrica (+ OTO)</span>
+                            <span>S/ 497</span>
+                        </div>
+
+                        <div class="receipt-total">
+                            <span>Total Facturado:</span>
+                            <span style="color: var(--color-primary);" id="receipt-grand-total">S/ 97</span>
+                        </div>
+                    </div>
+
+                    <!-- Downloads Section -->
+                    <div style="margin-bottom: 3rem;">
+                        <h3 style="font-size: 1.15rem; color: #ffffff; margin-bottom: 1.25rem;">
+                            Sus Enlaces de Descarga y Accesos:
+                        </h3>
+
+                        <!-- Resource 1 (Always Visible) -->
+                        <a href="https://api.whatsapp.com/send?phone=51933666362&text=Hola%20UF%20Corp%2C%20acabo%20de%20comprar%20el%20Kit%20Maestro.%20Deseo%20solicitar%20el%20enlace%20de%20descarga%20en%20PDF%20y%20Word." 
+                           target="_blank" 
+                           class="download-resource-btn">
+                            <div>
+                                <strong style="color: #ffffff; display: block;">📂 Kit Maestro de Licenciamiento IPEN (PDF + Word)</strong>
+                                <span style="font-size: 0.85rem; color: var(--text-secondary);">Memorias descriptivas, protocolos de cálculo y checklists oficiales.</span>
+                            </div>
+                            <span class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Descargar →</span>
+                        </a>
+
+                        <!-- Resource 2 (Conditionally Visible - Bump) -->
+                        <a href="https://api.whatsapp.com/send?phone=51933666362&text=Hola%20UF%20Corp%2C%20compr%C3%A9%20el%20Kit%20Maestro%20con%20el%20Order%20Bump.%20Deseo%20solicitar%20la%20Matriz%20Digital%20en%20Excel." 
+                           target="_blank" 
+                           class="download-resource-btn" 
+                           id="btn-download-bump" 
+                           style="display: none;">
+                            <div>
+                                <strong style="color: #ffffff; display: block;">📊 Matriz Digital de Control de EPP Plomado (Excel)</strong>
+                                <span style="font-size: 0.85rem; color: var(--text-secondary);">Automatización y alertas de vencimiento para mandiles y tiroideos.</span>
+                            </div>
+                            <span class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Descargar →</span>
+                        </a>
+
+                        <!-- Resource 3 (Conditionally Visible - OTO) -->
+                        <a href="https://api.whatsapp.com/send?phone=51933666362&text=Hola%20UF%20Corp%2C%20adquir%C3%AD%20la%20Sesi%C3%B3n%20Privada%20Zoom%201-a-1%20de%20S%2F%20497.%20Deseo%20agendar%20mi%20horario." 
+                           target="_blank" 
+                           class="download-resource-btn" 
+                           id="btn-schedule-oto" 
+                           style="display: none; border-color: var(--color-primary);">
+                            <div>
+                                <strong style="color: #ffffff; display: block;">🗓️ Sesión Privada Zoom 1-a-1 (Agendamiento)</strong>
+                                <span style="font-size: 0.85rem; color: var(--text-secondary);">Coordina tu sesión de 45 minutos con un ingeniero experto.</span>
+                            </div>
+                            <span class="btn btn-primary btn-glow" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">Agendar Sesión</span>
+                        </a>
+                    </div>
+
+                    <!-- Ascension Box to Peldaño 2 -->
+                    <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2.5rem; text-align: center;">
+                        <h3 style="font-size: 1.25rem; color: #ffffff; margin-bottom: 0.75rem;">¿Desea una solución física integral llave en mano?</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; max-width: 600px; margin: 0 auto 1.5rem auto;">
+                            ¿Tu sala requiere medición radiométrica física en sitio o tienes observaciones urgentes de Contraloría/IPEN? Conoce nuestro servicio avanzado de <strong>Auditoría Técnica Pre-IPEN & Memoria Estructural Firmada</strong>.
+                        </p>
+                        <a href="https://api.whatsapp.com/send?phone=51933666362&text=Hola%20UF%20Corp%2C%20deseo%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20Servicio%20de%20Auditor%C3%ADa%20T%C3%A9cnica%20Pre-IPEN%20y%20Memoria%20Estructural%20firmada." 
+                           target="_blank" 
+                           class="btn btn-outline-green" 
+                           style="padding: 0.75rem 1.5rem; font-size: 0.95rem;">
+                            Conocer Servicio Especializado Pre-IPEN
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer" style="padding: 2rem 0; margin-top: 4rem;">
+        <div class="container text-center" style="font-size: 0.85rem; color: var(--text-muted);">
+            <p>&copy; 2026 UF Corporation. Todos los derechos reservados. Cumplimiento normativo IPEN / OTAN.</p>
+        </div>
+    </footer>
+
+    <!-- Parse query parameters to render dynamic receipt -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const hasBump = urlParams.get('bump') === 'true';
+            const hasOto = urlParams.get('oto') === 'true';
+
+            let grandTotal = 97;
+
+            // Render Bump line & update total
+            if (hasBump) {
+                document.getElementById('receipt-bump-line').style.display = 'flex';
+                document.getElementById('btn-download-bump').style.display = 'flex';
+                grandTotal += 47;
+            }
+
+            // Render OTO line & update total
+            if (hasOto) {
+                document.getElementById('receipt-oto-line').style.display = 'flex';
+                document.getElementById('btn-schedule-oto').style.display = 'flex';
+                grandTotal += 497;
+            }
+
+            // Update total price display
+            document.getElementById('receipt-grand-total').textContent = `S/ ${grandTotal}`;
+        });
+    </script>
+</body>
+</html>

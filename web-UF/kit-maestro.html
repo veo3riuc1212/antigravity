@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kit Maestro de Licenciamiento IPEN & Carpeta Técnica OTAN | UF Corp</title>
+    <meta name="description" content="Descarga el kit oficial con memorias descriptivas, protocolos de cálculo y checklists para habilitar tu sala de rayos X o tomografía ante el IPEN.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Page-specific styling for the Sales + 2-Step checkout page -->
+    <style>
+        .kicker-label {
+            color: var(--color-primary);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .sales-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 992px) {
+            .sales-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .epiphany-box {
+            background: rgba(255, 255, 255, 0.01);
+            border-left: 3px solid var(--color-primary);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 2rem 0;
+            line-height: 1.6;
+        }
+
+        .stack-list {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(16, 36, 29, 0.3);
+            border: 1px solid rgba(184, 239, 58, 0.1);
+            border-radius: 8px;
+        }
+
+        .stack-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px dashed rgba(255,255,255,0.06);
+            padding: 0.75rem 0;
+        }
+
+        .stack-item:last-child {
+            border-bottom: none;
+        }
+
+        .stack-name {
+            font-weight: 500;
+            color: #ffffff;
+            font-size: 0.95rem;
+        }
+
+        .stack-value {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* 2-Step Order Form container */
+        .checkout-box {
+            background: linear-gradient(135deg, rgba(16, 36, 29, 0.8) 0%, rgba(7, 17, 14, 0.95) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            position: sticky;
+            top: 100px;
+        }
+
+        .checkout-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 1rem;
+        }
+
+        .checkout-tab {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            padding-bottom: 0.5rem;
+            cursor: pointer;
+        }
+
+        .checkout-tab.active {
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-primary);
+        }
+
+        /* Order Bump Styling */
+        .order-bump-container {
+            background: rgba(184, 239, 58, 0.05);
+            border: 2px dashed var(--color-primary);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .order-bump-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            cursor: pointer;
+        }
+
+        .order-bump-checkbox input {
+            accent-color: var(--color-primary);
+            width: 20px;
+            height: 20px;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
+        .order-bump-label {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #ffffff;
+        }
+
+        .summary-total {
+            background: rgba(255,255,255,0.03);
+            padding: 1rem;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-color);
+            color: #ffffff;
+            font-size: 0.95rem;
+            transition: all var(--transition-fast);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            background: rgba(255,255,255,0.05);
+            box-shadow: 0 0 8px rgba(184, 239, 58, 0.2);
+        }
+
+        .hidden-step {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="funnel-hub.html" class="logo">
+                <span class="logo-accent">UF</span> Corp
+            </a>
+            <div style="font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; font-weight: 600; letter-spacing: 1px;">
+                Adquirir Kit Maestro
+            </div>
+        </div>
+    </header>
+
+    <main style="padding-top: 7rem; padding-bottom: 4rem;">
+        <div class="container">
+            
+            <!-- Above the fold H1 -->
+            <div style="max-width: 900px; margin-bottom: 2rem;">
+                <span class="kicker-label">Herramienta Oficial para Directores Médicos, Físicos y Oficiales de Protección Radiológica</span>
+                <h1 style="font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.15; color: #ffffff; margin-bottom: 1rem;">
+                    Arma Tu Expediente de Licenciamiento IPEN/OTAN en Horas (No en Meses) y Garantiza la Conformidad Técnica a la Primera.
+                </h1>
+                <p style="font-size: 1.2rem; color: var(--text-secondary); line-height: 1.6;">
+                    Descarga las plantillas editables de memorias descriptivas, protocolos de cálculo dosimétrico y el checklist oficial de fiscalización bajo la Ley N° 28028 para blindar tu centro contra observaciones burocráticas y multas.
+                </p>
+            </div>
+
+            <!-- Two-column Sales Layout -->
+            <div class="sales-layout">
+                
+                <!-- Left Column: Copy & Offer Stack -->
+                <div>
+                    <!-- Epiphany Bridge Story -->
+                    <div class="epiphany-box">
+                        <p style="margin-bottom: 1rem; font-weight: 500; color: #ffffff;">El Problema Real:</p>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            Presentar un expediente ante la OTAN no es solo llenar formularios de mesa de partes. Un solo dato inconsistente en la carga de trabajo semanal del tubo (\(mA \cdot min/semana\)) o la omisión del plano de detalle en ductos y juntas retrasa la apertura comercial de tu tomógrafo o equipo de rayos X por más de 60 días.
+                        </p>
+                        <p style="color: var(--text-secondary);">
+                            Cada día de retraso es facturación médica perdida y riesgo de sanciones de Contraloría e IPEN.
+                        </p>
+                    </div>
+
+                    <div style="margin: 2rem 0;">
+                        <h3 style="font-size: 1.35rem; color: #ffffff; margin-bottom: 1rem;">El Gran Dominó:</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">
+                            Si logras tener una carpeta técnica estandarizada y pre-auditada que cumpla punto por punto con las exigencias del regulador peruano, obtendrás tu Licencia de Operación C1 sin depender de gestores informales ni volver a rehacer trámites burocráticos.
+                        </p>
+                    </div>
+
+                    <!-- Offer Stack -->
+                    <div class="stack-list">
+                        <h3 style="font-size: 1.25rem; color: var(--color-primary); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 1px;">
+                            El Stack del Kit Maestro
+                        </h3>
+                        
+                        <div class="stack-item">
+                            <span class="stack-name">Componente 1: Plantilla de Memoria Descriptiva y Planimétrica</span>
+                            <span class="stack-value">Valor: S/ 450</span>
+                        </div>
+                        
+                        <div class="stack-item">
+                            <span class="stack-name">Componente 2: Protocolo del Programa de Protección Radiológica (PPR)</span>
+                            <span class="stack-value">Valor: S/ 350</span>
+                        </div>
+
+                        <div class="stack-item">
+                            <span class="stack-name">Componente 3: Checklist de Pre-Fiscalización OTAN (25 Puntos Críticos)</span>
+                            <span class="stack-value">Valor: S/ 200</span>
+                        </div>
+
+                        <div class="stack-item">
+                            <span class="stack-name">Bono #1: Guía de Pago de Tasas (BN) y Seguimiento Digital</span>
+                            <span class="stack-value">Valor: S/ 120</span>
+                        </div>
+
+                        <div class="stack-item">
+                            <span class="stack-name">Bono #2: Validador de Licencias de Personal OPR y Tecnólogos</span>
+                            <span class="stack-value">Valor: S/ 150</span>
+                        </div>
+
+                        <div style="display: flex; justify-content: space-between; margin-top: 1.5rem; font-weight: 700; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+                            <span style="color: #ffffff;">Valor Total Real:</span>
+                            <span style="text-decoration: line-through; color: var(--color-critical);">S/ 1,270</span>
+                        </div>
+
+                        <div style="display: flex; justify-content: space-between; font-size: 1.3rem; margin-top: 0.5rem; font-weight: 800; color: var(--color-primary);">
+                            <span>Precio Especial Hoy:</span>
+                            <span>S/ 97</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Interactive 2-Step Checkout Form -->
+                <div>
+                    <div class="checkout-box">
+                        
+                        <!-- Tabs representing steps -->
+                        <div class="checkout-header">
+                            <div class="checkout-tab active" id="tab-step-1">1. Facturación</div>
+                            <div class="checkout-tab" id="tab-step-2">2. Pago & Bump</div>
+                        </div>
+
+                        <form id="checkout-form">
+                            
+                            <!-- PASO 1: Datos de Facturación e Institucionales -->
+                            <div id="checkout-step-1">
+                                <div class="form-group">
+                                    <label for="bill-doc">RUC o DNI para Facturación</label>
+                                    <input type="text" id="bill-doc" class="form-control" placeholder="Ej. 20123456789" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="bill-name">Nombre / Razón Social</label>
+                                    <input type="text" id="bill-name" class="form-control" placeholder="Ej. Clínica Dental del Sur S.A.C." required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="bill-email">Correo Electrónico (Para envío inmediato de archivos)</label>
+                                    <input type="email" id="bill-email" class="form-control" placeholder="admin@clinicadelsur.pe" required>
+                                </div>
+
+                                <button type="button" class="btn btn-primary btn-glow btn-full" id="btn-goto-step-2" style="padding: 0.85rem; margin-top: 1rem; font-weight: 600;">
+                                    IR AL PASO 2: PAGO ➔
+                                </button>
+                            </div>
+
+                            <!-- PASO 2: Pago & Order Bump -->
+                            <div id="checkout-step-2" class="hidden-step">
+                                
+                                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                                    Selecciona tu método de pago simulado:
+                                </p>
+
+                                <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem;">
+                                    <label style="flex: 1; border: 1px solid var(--border-color); border-radius: 6px; padding: 0.75rem; text-align: center; cursor: pointer; background: rgba(255,255,255,0.02);" id="pay-card-lbl">
+                                        <input type="radio" name="pay_method" value="tarjeta" checked style="accent-color: var(--color-primary);"> Tarjeta
+                                    </label>
+                                    <label style="flex: 1; border: 1px solid rgba(255,255,255,0.05); border-radius: 6px; padding: 0.75rem; text-align: center; cursor: pointer;" id="pay-yape-lbl">
+                                        <input type="radio" name="pay_method" value="yape" style="accent-color: var(--color-primary);"> Yape / Plin
+                                    </label>
+                                </div>
+
+                                <!-- ORDER BUMP Box -->
+                                <div class="order-bump-container">
+                                    <label class="order-bump-checkbox">
+                                        <input type="checkbox" id="order-bump-check">
+                                        <span class="order-bump-label">
+                                            <strong>🟩 SÍ, agregar la Matriz Digital de Control de EPP Plomado y Alertas de Vencimiento (+ S/ 47)</strong>
+                                            <span style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">
+                                                Evita observaciones en inspección por mandiles agrietados. Automatiza el registro de inspecciones fluoroscópicas anuales de chalecos y tiroideos, y recibe alertas automáticas.
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+
+                                <!-- Total Summary Box -->
+                                <div class="summary-total">
+                                    <span>Total a Pagar:</span>
+                                    <span style="color: var(--color-primary);" id="checkout-total-price">S/ 97</span>
+                                </div>
+
+                                <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
+                                    <button type="button" class="btn btn-secondary" id="btn-back-to-step-1" style="flex: 1; padding: 0.85rem;">
+                                        ← ATRÁS
+                                    </button>
+                                    <button type="submit" class="btn btn-primary btn-glow" style="flex: 2; padding: 0.85rem; font-weight: 700;">
+                                        PROCESAR PEDIDO
+                                    </button>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer" style="padding: 2rem 0; margin-top: 4rem;">
+        <div class="container text-center" style="font-size: 0.85rem; color: var(--text-muted);">
+            <p>&copy; 2026 UF Corporation. Todos los derechos reservados. Cumplimiento normativo IPEN / OTAN.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive script for 2-step checkout and order bump pricing -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tab1 = document.getElementById('tab-step-1');
+            const tab2 = document.getElementById('tab-step-2');
+            const step1 = document.getElementById('checkout-step-1');
+            const step2 = document.getElementById('checkout-step-2');
+            
+            const btnGoto2 = document.getElementById('btn-goto-step-2');
+            const btnBack1 = document.getElementById('btn-back-to-step-1');
+
+            const orderBump = document.getElementById('order-bump-check');
+            const priceDisplay = document.getElementById('checkout-total-price');
+
+            // Handle transition to Step 2
+            btnGoto2.addEventListener('click', () => {
+                // Perform quick validation
+                if (document.getElementById('bill-doc').value && document.getElementById('bill-name').value && document.getElementById('bill-email').value) {
+                    step1.classList.add('hidden-step');
+                    step2.classList.remove('hidden-step');
+                    tab1.classList.remove('active');
+                    tab2.classList.add('active');
+                } else {
+                    alert('Por favor complete todos los datos de facturación institucional antes de proceder.');
+                }
+            });
+
+            // Handle transition back to Step 1
+            btnBack1.addEventListener('click', () => {
+                step2.classList.add('hidden-step');
+                step1.classList.remove('hidden-step');
+                tab2.classList.remove('active');
+                tab1.classList.add('active');
+            });
+
+            // Order Bump Price logic
+            orderBump.addEventListener('change', () => {
+                if (orderBump.checked) {
+                    priceDisplay.textContent = 'S/ 144';
+                } else {
+                    priceDisplay.textContent = 'S/ 97';
+                }
+            });
+
+            // Handle payment options visual highlight
+            const payCard = document.getElementById('pay-card-lbl');
+            const payYape = document.getElementById('pay-yape-lbl');
+            const payRadios = document.querySelectorAll('input[name="pay_method"]');
+
+            payRadios.forEach(radio => {
+                radio.addEventListener('change', () => {
+                    if (radio.value === 'tarjeta') {
+                        payCard.style.borderColor = 'var(--color-primary)';
+                        payCard.style.background = 'rgba(184, 239, 58, 0.05)';
+                        payYape.style.borderColor = 'rgba(255,255,255,0.05)';
+                        payYape.style.background = 'transparent';
+                    } else {
+                        payYape.style.borderColor = 'var(--color-primary)';
+                        payYape.style.background = 'rgba(184, 239, 58, 0.05)';
+                        payCard.style.borderColor = 'rgba(255,255,255,0.05)';
+                        payCard.style.background = 'transparent';
+                    }
+                });
+            });
+
+            // Submit checkout form and pass variables to the Upsell page
+            const form = document.getElementById('checkout-form');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const hasBump = orderBump.checked ? 'true' : 'false';
+                const docVal = document.getElementById('bill-doc').value;
+                const nameVal = document.getElementById('bill-name').value;
+                
+                // Redirect to Upsell page
+                const redirectUrl = `upsell-revision.html?bump=${hasBump}&doc=${encodeURIComponent(docVal)}&name=${encodeURIComponent(nameVal)}`;
+                window.location.href = redirectUrl;
+            });
+        });
+    </script>
+</body>
+</html>
