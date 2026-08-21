@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UF Shield Pass: Trazabilidad QR de EPP & Dosimetría Mensual | UF Corp</title>
+    <meta name="description" content="Automatice el control regulatorio de mandiles plomados y gestione la dosimetría de sus Oficiales de Protección Radiológica bajo normativa IPEN.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Page-specific SaaS styles -->
+    <style>
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, rgba(16, 36, 29, 0.8) 0%, rgba(7, 17, 14, 0.95) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--color-primary);
+            box-shadow: 0 10px 30px var(--color-primary-glow);
+        }
+
+        .pricing-card.featured::before {
+            content: 'RECOMENDADO';
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: var(--color-primary);
+            color: var(--color-bg-base);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 2.5rem;
+            transform: rotate(45deg);
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            margin: 1rem 0;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="funnel-hub.html" class="logo">
+                <span class="logo-accent">UF</span> Corp
+            </a>
+            <nav class="nav-menu" id="nav-menu">
+                <a href="funnel-hub.html" class="nav-link">Inicio Hub</a>
+                <a href="funnel-hub.html#rutas-embudos" class="nav-link">Servicios</a>
+                <a href="https://api.whatsapp.com/send?phone=51933666362&text=Hola%20UF%20Corp%2C%20deseo%20solicitar%20un%20demo%20de%20UF%20Shield%20Pass." class="login-btn-sim">Demo Gratuito</a>
+            </nav>
+        </div>
+    </header>
+
+    <main style="padding-top: 7rem; padding-bottom: 4rem;">
+        <div class="container">
+            
+            <div class="text-center" style="max-width: 900px; margin: 0 auto 3rem auto;">
+                <span class="pill-dot animate-pulse" style="background: var(--color-primary); display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px;"></span>
+                <span style="color: var(--color-primary); text-transform: uppercase; font-size: 0.85rem; font-weight: 700; letter-spacing: 2px;">Continuidad & Suscripción Mensual</span>
+                
+                <h1 style="font-size: clamp(2rem, 4vw, 3rem); line-height: 1.2; color: #ffffff; margin-top: 1rem; margin-bottom: 1.25rem;">
+                    Monitoreo Radiológico Inteligente y Trazabilidad QR de EPP
+                </h1>
+                <p style="font-size: 1.15rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto; line-height: 1.6;">
+                    Sustituya las planillas de Excel manuales por nuestra plataforma digital de control. Gestione la dosimetría de sus trabajadores ocupacionalmente expuestos (TOE) y el descarte anual de mandiles plomados bajo la norma IR.001.2026.
+                </p>
+            </div>
+
+            <!-- Pricing Grid -->
+            <div class="pricing-grid">
+                
+                <!-- Plan 1 -->
+                <div class="pricing-card">
+                    <div>
+                        <h3 style="color: #ffffff; font-size: 1.3rem; margin-bottom: 0.5rem;">Soporte Estándar</h3>
+                        <p style="color: var(--text-muted); font-size: 0.85rem;">Para consultorios dentales y clínicas pequeñas (hasta 5 mandiles)</p>
+                        <div class="pricing-price">S/ 450 <span style="font-size: 0.95rem; font-weight: 400; color: var(--text-secondary);">/ mes</span></div>
+                        <ul class="pricing-features">
+                            <li>✓ Trazabilidad QR para 5 EPP plomados</li>
+                            <li>✓ Reportes anuales digitalizados</li>
+                            <li>✓ Alertas automáticas de vencimiento</li>
+                            <li>✓ Soporte técnico básico vía email</li>
+                        </ul>
+                    </div>
+                    <a href="https://api.whatsapp.com/send?phone=51933666362&text=Hola%20UF%20Corp%2C%20deseo%20solicitar%20informaci%C3%B3n%20sobre%20el%20Plan%20Est%C3%A1ndar%20de%20UF%20Shield%20Pass." target="_blank" class="btn btn-secondary btn-full text-center">Adquirir Plan Estándar</a>
+                </div>
+
+                <!-- Plan 2 (Featured) -->
+                <div class="pricing-card featured">
+                    <div>
+                        <h3 style="color: #ffffff; font-size: 1.3rem; margin-bottom: 0.5rem;">Clínica Integrado</h3>
+                        <p style="color: var(--text-muted); font-size: 0.85rem;">Para centros médicos de mediano tamaño y policlínicos (hasta 25 mandiles)</p>
+                        <div class="pricing-price">S/ 950 <span style="font-size: 0.95rem; font-weight: 400; color: var(--text-secondary);">/ mes</span></div>
+                        <ul class="pricing-features">
+                            <li>✓ Trazabilidad QR para 25 EPP plomados</li>
+                            <li>✓ Dosimetría física mensual para 5 OPRs/Tecnólogos</li>
+                            <li>✓ Reporte consolidado mensual para fiscalización IPEN</li>
+                            <li>✓ Soporte técnico prioritario por WhatsApp</li>
+                        </ul>
+                    </div>
+                    <a href="https://api.whatsapp.com/send?phone=51933666362&text=Hola%20UF%20Corp%2C%20deseo%20solicitar%20informaci%C3%B3n%20sobre%20el%20Plan%20Cl%C3%ADnica%20de%20UF%20Shield%20Pass." target="_blank" class="btn btn-primary btn-glow btn-full text-center">Adquirir Plan Clínica</a>
+                </div>
+
+                <!-- Plan 3 -->
+                <div class="pricing-card">
+                    <div>
+                        <h3 style="color: #ffffff; font-size: 1.3rem; margin-bottom: 0.5rem;">Soporte Hospitalario</h3>
+                        <p style="color: var(--text-muted); font-size: 0.85rem;">Para hospitales y clínicas de alta complejidad (EPP y OPRs ilimitados)</p>
+                        <div class="pricing-price">S/ 1,800 <span style="font-size: 0.95rem; font-weight: 400; color: var(--text-secondary);">/ mes</span></div>
+                        <ul class="pricing-features">
+                            <li>✓ Trazabilidad QR ilimitada de EPP</li>
+                            <li>✓ Gestión de dosimetría para todo el personal clínico</li>
+                            <li>✓ Auditoría física de control de calidad trimestral</li>
+                            <li>✓ Gerente de cuenta de radioprotección asignado</li>
+                        </ul>
+                    </div>
+                    <a href="https://api.whatsapp.com/send?phone=51933666362&text=Hola%20UF%20Corp%2C%20deseo%20solicitar%20informaci%C3%B3n%20sobre%20el%20Plan%20Hospitalario%20de%20UF%20Shield%20Pass." target="_blank" class="btn btn-secondary btn-full text-center">Contactar a Soporte VIP</a>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer" style="padding: 2rem 0; margin-top: 4rem;">
+        <div class="container text-center" style="font-size: 0.85rem; color: var(--text-muted);">
+            <p>&copy; 2026 UF Corporation. Todos los derechos reservados. Cumplimiento normativo IPEN / OTAN.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
