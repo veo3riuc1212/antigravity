@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funnel Hub B2B | Centro de Ingeniería y Protección Radiológica Especializada</title>
+    <meta name="description" content="Diseñamos, blindamos y certificamos salas de rayos X y tomografía bajo normativa IPEN/OTAN. Evita multas de hasta 40 UIT y observaciones de blindaje.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Inline styles for page-specific Funnel Hub layout (Dual Hub & Value Ladder) -->
+    <style>
+        .niche-identifier {
+            color: var(--color-primary);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .value-ladder-box {
+            background: linear-gradient(135deg, rgba(16, 36, 29, 0.8) 0%, rgba(7, 17, 14, 0.9) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .value-ladder-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), transparent);
+        }
+
+        .dual-hub-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .dual-hub-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .hub-column {
+            background: rgba(11, 24, 20, 0.4);
+            border: 1px solid rgba(184, 239, 58, 0.06);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .hub-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.75rem;
+            color: #ffffff;
+        }
+
+        .article-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-bottom: 1.25rem;
+            transition: all var(--transition-fast);
+        }
+
+        .article-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-color);
+            background: rgba(184, 239, 58, 0.03);
+        }
+
+        .article-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .article-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .funnel-route-card {
+            background: rgba(16, 36, 29, 0.6);
+            border: 1px solid rgba(184, 239, 58, 0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all var(--transition-fast);
+        }
+
+        .funnel-route-card:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 15px rgba(184, 239, 58, 0.15);
+        }
+
+        .funnel-route-title {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .funnel-route-desc {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 1.25rem;
+        }
+
+        .phase-step {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .phase-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .phase-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background: var(--color-primary);
+            color: var(--color-bg-base);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .login-btn-sim {
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn-sim:hover {
+            background: var(--color-primary);
+            color: var(--color-bg-base);
+            border-color: var(--color-primary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <span class="logo-accent">UF</span> Corp
+            </a>
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#inicio" class="nav-link">Inicio</a>
+                <a href="#oferta-entrada" class="nav-link">Kit Oficial</a>
+                <a href="#dual-hub" class="nav-link">Centro de Recursos</a>
+                <a href="#respaldo" class="nav-link">Cumplimiento & Fases</a>
+                <a href="https://api.whatsapp.com/send?phone=51933666362&text=Hola%20UF%20Corp%2C%20necesito%20acceder%20a%20la%20plataforma%20de%20clientes." target="_blank" class="login-btn-sim">[ LOGIN ]</a>
+            </nav>
+            <button class="mobile-menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        
+        <!-- BLOQUE 1: CORE MISSION STATEMENT (Above the fold) -->
+        <section id="inicio" class="hero-section" style="padding-top: 8rem; padding-bottom: 4rem;">
+            <div class="container">
+                <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+                    
+                    <span class="niche-identifier">
+                        <span class="pill-dot animate-pulse" style="background: var(--color-primary); display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px;"></span>
+                        Centro de Ingeniería y Protección Radiológica Especializada para Clínicas y Hospitales en el Perú
+                    </span>
+                    
+                    <h1 style="font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.15; margin-bottom: 1.5rem; color: #ffffff;">
+                        Diseñamos, Blindamos y Certificamos Salas de Rayos X y Tomografía Bajo Estricta Normativa <span style="color: var(--color-primary);">IPEN/OTAN</span> — Evitando Multas de hasta <span class="text-outline-green" style="-webkit-text-stroke: 1px var(--color-primary); color: transparent;">40 UIT</span> y Demoliciones.
+                    </h1>
+                    
+                    <p class="hero-lead" style="font-size: 1.25rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto 2.5rem auto; line-height: 1.6;">
+                        No dejes la habilitación de tu equipamiento médico en manos de obras civiles convencionales. Garantizamos cálculos dosimétricos exactos, traslapes certificados y acompañamiento técnico hasta la obtención de tu Licencia de Operación.
+                    </p>
+                    
+                    <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+                        <a href="https://api.whatsapp.com/send?phone=51933666362&text=Hola%20UF%20Corp%2C%20deseo%20Iniciar%20el%20Diagn%C3%B3stico%20T%C3%A9cnico%20de%20Blindaje%20Gratuito%20para%20mi%20sala." 
+                           target="_blank" 
+                           class="btn btn-primary btn-glow btn-evaluar-color btn-evaluar-glow" 
+                           style="padding: 1rem 2rem; font-size: 1.1rem; font-weight: 600;">
+                            Iniciar Diagnóstico Técnico de Blindaje (Gratuito) →
+                        </a>
+                    </div>
+
+                    <div style="margin-top: 2rem; color: var(--text-muted); font-size: 0.9rem;">
+                        <span>✓ Cálculos avalados por Oficiales de Protección Radiológica autorizados por el IPEN.</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOQUE 2: CORE PRODUCT / FRONT OF VALUE LADDER -->
+        <section id="oferta-entrada" class="section-dark" style="padding: 4rem 0;">
+            <div class="container">
+                <div class="value-ladder-box">
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: center;">
+                        <div>
+                            <div class="alert-pill" style="margin-bottom: 1rem; width: fit-content;">
+                                <span class="pill-dot animate-pulse"></span>
+                                <span>RECURSO DE DESCARGA INMEDIATA B2B</span>
+                            </div>
+                            <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #ffffff;">
+                                Kit Maestro de Licenciamiento y Carpeta Técnica Anti-Observaciones
+                            </h2>
+                            <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                                ¿Vas a ingresar expediente a la OTAN? Descarga las plantillas oficiales de memorias descriptivas, protocolos de cálculo de blindaje y listas de verificación de seguridad para pasar la inspección a la primera.
+                            </p>
+                            <ul style="list-style: none; margin-bottom: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; color: var(--text-primary); font-size: 0.95rem;">
+                                <li>✓ Plantilla de Memoria Descriptiva</li>
+                                <li>✓ Formato de Protocolo de Pruebas</li>
+                                <li>✓ Checklist Anti-Multas 40 UIT</li>
+                                <li>✓ Guía de Traslapes Técnicos</li>
+                            </ul>
+                        </div>
+                        <div class="text-center" style="background: rgba(255,255,255,0.02); padding: 2rem; border-radius: 8px; border: 1px solid rgba(184,239,58,0.1);">
+                            <div style="font-size: 0.9rem; color: var(--text-secondary); text-transform: uppercase;">Precio de Lanzamiento</div>
+                            <div style="font-size: 3rem; font-weight: 800; color: var(--color-primary); margin: 0.5rem 0;">S/ 97</div>
+                            <a href="https://api.whatsapp.com/send?phone=51933666362&text=Hola%20UF%20Corp%2C%20deseo%20adquirir%20el%20Kit%20Maestro%20de%20Licenciamiento%20por%20S%2F%2097." 
+                               target="_blank" 
+                               class="btn btn-primary btn-full btn-evaluar-color" 
+                               style="padding: 0.8rem 1rem;">
+                                Obtener el Kit Maestro
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOQUE 3: DUAL HUB (Contenido de Autoridad vs. Rutas de Embudos) -->
+        <section id="dual-hub" class="section-light" style="padding: 5rem 0; background: var(--color-bg-surface);">
+            <div class="container">
+                <div class="section-title-wrapper text-center" style="margin-bottom: 4rem;">
+                    <h2 class="section-title" style="font-size: 2.5rem; color: #ffffff;">Centro de Decisiones y Recursos</h2>
+                    <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">Navega por nuestros recursos técnicos de autoridad o ingresa directamente al embudo correspondiente según la necesidad actual de tu centro médico.</p>
+                </div>
+
+                <div class="dual-hub-grid">
+                    
+                    <!-- COLUMNA A: Medios & Normativa (Autoridad Técnica) -->
+                    <div class="hub-column">
+                        <h3>Medios & Normativa Técnica</h3>
+                        
+                        <div class="article-card">
+                            <h4>Por qué el 80% de salas son observadas por el IPEN: el error del traslape en láminas de plomo</h4>
+                            <p>El blindaje no solo requiere el espesor correcto de plomo; la falta de un traslape mínimo de 1.5 cm en las uniones de las láminas es la causa principal de fugas detectadas en la inspección radiométrica.</p>
+                            <a href="https://api.whatsapp.com/send?phone=51933666362&text=Hola%20UF%20Corp%2C%20deseo%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20art%C3%ADculo%20de%20traslapes%20en%20l%C3%A1minas%20de%20plomo." target="_blank" style="font-size: 0.9rem; font-weight: 600;">Leer análisis completo →</a>
+                        </div>
+
+                        <div class="article-card">
+                            <h4>Contraloría advierte: El costo operativo de inaugurar un tomógrafo sin certificación vigente</h4>
+                            <p>Tener un equipo de alta gama inoperativo por trabas documentales o blindaje deficiente puede generar pérdidas de hasta S/ 12,000 diarios en facturación de exámenes clínicos.</p>
+                            <a href="https://api.whatsapp.com/send?phone=51933666362&text=Hola%20UF%20Corp%2C%20deseo%20m%C3%A1s%20informaci%C3%B3n%20sobre%20costos%20de%20inoperatividad%20de%20tom%C3%B3grafos." target="_blank" style="font-size: 0.9rem; font-weight: 600;">Leer análisis completo →</a>
+                        </div>
+
+                        <div class="article-card">
+                            <h4>Control de mandiles plomados: Cómo sustituir el Excel por trazabilidad digital</h4>
+                            <p>El descarte anual de EPP es obligatorio según la norma del IPEN. Conoce el método moderno de trazabilidad QR para monitorear el estado físico de tu blindaje de protección personal.</p>
+                            <a href="https://api.whatsapp.com/send?phone=51933666362&text=Hola%20UF%20Corp%2C%20deseo%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20trazabilidad%20digital%20de%20mandiles%20plomados." target="_blank" style="font-size: 0.9rem; font-weight: 600;">Leer análisis completo →</a>
+                        </div>
+                    </div>
+
+                    <!-- COLUMNA B: Embudos Activos (Direct Funnel Navigation) -->
+                    <div class="hub-column" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <h3>Rutas de Solución Inmediata</h3>
+                        
+                        <!-- Ruta A -->
+                        <div class="funnel-route-card">
+                            <div>
+                                <div class="funnel-route-title">🚪 Ruta A · Construcción o Remodelación</div>
+                                <div class="funnel-route-desc">¿Estás construyendo o remodelando una sala de diagnóstico por imágenes?</div>
+                            </div>
+                            <a href="https://api.whatsapp.com/send?phone=51933666362&text=Hola%20UF%20Corp%2C%20deseo%20conocer%20el%20Protocolo%20Llave%20en%20Mano%20para%20dise%C3%B1ar%2Fconstruir%20mi%20sala." 
+                               target="_blank" 
+                               class="btn btn-outline-green text-center" 
+                               style="padding: 0.7rem;">
+                                Ver Protocolo Llave en Mano
+                            </a>
+                        </div>
+
+                        <!-- Ruta B -->
+                        <div class="funnel-route-card">
+                            <div>
+                                <div class="funnel-route-title">🚪 Ruta B · Equipo Instalado sin Licencia</div>
+                                <div class="funnel-route-desc">¿Tienes un equipo instalado pero no cuentas con la Licencia de Operación IPEN?</div>
+                            </div>
+                            <a href="https://api.whatsapp.com/send?phone=51933666362&text=Hola%20UF%20Corp%2C%20deseo%20solicitar%20una%20Auditor%C3%ADa%20Pre-IPEN%20para%20un%20equipo%20instalado." 
+                               target="_blank" 
+                               class="btn btn-outline-green text-center" 
+                               style="padding: 0.7rem;">
+                                Solicitar Auditoría Pre-IPEN
+                            </a>
+                        </div>
+
+                        <!-- Ruta C -->
+                        <div class="funnel-route-card">
+                            <div>
+                                <div class="funnel-route-title">🚪 Ruta C · Control de EPP y Dosimetría</div>
+                                <div class="funnel-route-desc">¿Deseas digitalizar el control de mandiles o necesitas dosimetría para tus OPRs?</div>
+                            </div>
+                            <a href="https://api.whatsapp.com/send?phone=51933666362&text=Hola%20UF%20Corp%2C%20deseo%20conocer%20el%20Software%20UF%20Shield%20Pass%20para%20control%20de%20EPP%20y%20dosimetr%C3%ADa." 
+                               target="_blank" 
+                               class="btn btn-outline-green text-center" 
+                               style="padding: 0.7rem;">
+                                Conocer Software UF Shield Pass
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOQUE 4: PRUEBA SOCIAL, EL VILLANO COMÚN Y LA SOLUCIÓN UF -->
+        <section id="respaldo" class="section-dark" style="padding: 5rem 0;">
+            <div class="container">
+                <div style="max-width: 900px; margin: 0 auto;">
+                    
+                    <!-- El Villano Común / El Problema del Mercado -->
+                    <div style="margin-bottom: 4rem;">
+                        <h2 style="font-size: 2.2rem; color: #ffffff; margin-bottom: 1.5rem;">El Peligro de las Obras Civiles Convencionales</h2>
+                        <div class="glass-card" style="border-left: 4px solid var(--color-critical); padding: 2rem; background: rgba(239, 68, 68, 0.03); border-radius: 8px;">
+                            <p style="font-size: 1.1rem; line-height: 1.7; color: var(--text-primary); margin-bottom: 1rem;">
+                                Recientes auditorías del sector salud peruano demuestran que <strong>más del 70% de las salas construidas por contratistas convencionales fallan la primera inspección radiométrica del IPEN</strong>.
+                            </p>
+                            <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.6;">
+                                Las clínicas y hospitales sufren pérdidas de millones de soles, retrasos de meses e incluso demoliciones forzadas por operar con blindajes sin sustento de cálculo técnico, discontinuidad de plomo en esquinas y traslapes inexistentes.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- La Solución UF: Estándar de 3 Fases -->
+                    <div style="margin-bottom: 4rem;">
+                        <h2 style="font-size: 2.2rem; color: #ffffff; margin-bottom: 1.5rem;">La Solución UF: Nuestro Estándar Técnico Certificado</h2>
+                        <p style="color: var(--text-secondary); margin-bottom: 2.5rem; font-size: 1.1rem;">Garantizamos la aprobación de tu sala desde el diseño inicial hasta la visita de inspección con nuestro protocolo de tres fases:</p>
+                        
+                        <div>
+                            <div class="phase-step">
+                                <div class="phase-number">1</div>
+                                <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: #ffffff;">Fase 1: Memoria de Cálculo y Simulación Dosimétrica</h3>
+                                <p style="color: var(--text-secondary); font-size: 1rem;">
+                                    Determinamos el blindaje exacto en milímetros de plomo o espesor de baritina analizando la carga de trabajo semanal (mA·min/semana), tensión del tubo (kVp), factores de uso y ocupación de las áreas colindantes.
+                                </p>
+                            </div>
+
+                            <div class="phase-step">
+                                <div class="phase-number">2</div>
+                                <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: #ffffff;">Fase 2: Supervisión Técnica en Obra y Traslapes Certificados</h3>
+                                <p style="color: var(--text-secondary); font-size: 1rem;">
+                                    Inspeccionamos la correcta aplicación de la baritina, verificando su densidad uniforme, y supervisamos que el plomado mantenga la continuidad absoluta, evitando filtraciones en cajas de luz, marcos de puertas y juntas.
+                                </p>
+                            </div>
+
+                            <div class="phase-step">
+                                <div class="phase-number">3</div>
+                                <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: #ffffff;">Fase 3: Levantamiento Radiométrico y Control Físico Médico</h3>
+                                <p style="color: var(--text-secondary); font-size: 1rem;">
+                                    Antes de que el inspector del IPEN visite tus instalaciones, realizamos mediciones con detectores de radiación calibrados para validar la atenuación del blindaje, asegurando un expediente sin observaciones.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Casos de Estudio y Regulatory Backing -->
+                    <div>
+                        <h2 style="font-size: 2.2rem; color: #ffffff; margin-bottom: 1.5rem; text-align: center;">Casos de Éxito de UF Corporation</h2>
+                        <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">Hospitales y Clínicas que evitaron multas de 40 UIT y operan con licencias 100% conformes.</p>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                            <div class="glass-card" style="padding: 1.5rem; border-radius: 8px;">
+                                <h4 style="color: var(--color-primary); font-size: 1.15rem; margin-bottom: 0.5rem;">Centro Odontológico San Isidro</h4>
+                                <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                                    "Acondicionamos tres salas de rayos X panorámicos. La auditoría previa de UF Corp detectó fugas en los paneles de Drywall plomado a tiempo, evitando una sanción inminente en la inspección."
+                                </p>
+                                <div style="font-weight: 600; font-size: 0.85rem; color: #ffffff;">Licencia IPEN obtenida sin observaciones en 2026.</div>
+                            </div>
+
+                            <div class="glass-card" style="padding: 1.5rem; border-radius: 8px;">
+                                <h4 style="color: var(--color-primary); font-size: 1.15rem; margin-bottom: 0.5rem;">Clínica de Traumatología Arequipa</h4>
+                                <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                                    "Recibimos una notificación de suspensión de servicios por operar un tomógrafo multicorte con licencia vencida. UF Corporation redactó la memoria técnica y gestionó la renovación en tiempo récord."
+                                </p>
+                                <div style="font-weight: 600; font-size: 0.85rem; color: #ffffff;">Operatividad restablecida en 72 horas.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#" class="logo"><span class="logo-accent">UF</span> Corp</a>
+                <p>Protección Radiológica Integral y Blindaje de Alta Tecnología para Centros Médicos, Dentales y Veterinarios en todo el Perú.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navegación</h4>
+                <a href="#inicio">Inicio</a>
+                <a href="#oferta-entrada">Kit Oficial</a>
+                <a href="#dual-hub">Recursos y Embudos</a>
+                <a href="#respaldo">Fases y Casos</a>
+            </div>
+            <div class="footer-legal">
+                <h4>Respaldo Legal</h4>
+                <p>Nuestras memorias descriptivas y cálculos dosimétricos están avalados por Oficiales de Protección Radiológica autorizados por la OTAN e IPEN bajo la Ley N° 28028.</p>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <p>&copy; 2026 UF Corporation (web-uf.vercel.app). Todos los derechos reservados. Diseñado bajo normativas de protección radiológica.</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://api.whatsapp.com/send?phone=51933666362&text=Hola%20UF%20Corp%2C%20deseo%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20Funnel%20Hub%20de%20protecci%C3%B3n%20radiol%C3%B3gica." 
+       class="whatsapp-float-btn" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 11.966.01c3.178.001 6.169 1.24 8.424 3.496 2.254 2.256 3.491 5.252 3.491 8.43 0 6.613-5.338 11.952-11.907 11.952-2.005-.001-3.973-.507-5.729-1.476L0 24zm6.59-4.846c1.6.95 2.72 1.48 4.793 1.48 5.4 0 9.79-4.386 9.79-9.774 0-5.388-4.39-9.774-9.79-9.774-5.402 0-9.792 4.386-9.792 9.774 0 2.222.569 3.87 1.637 5.634l-.993 3.634 3.755-.974zM17.15 14.18c-.287-.144-1.696-.838-1.958-.934-.262-.096-.453-.144-.644.144-.191.288-.74.934-.906 1.127-.167.192-.334.216-.62.072-.288-.143-1.21-.446-2.308-1.428-.854-.763-1.432-1.704-1.6-1.99-.166-.288-.018-.444.126-.587.13-.13.287-.336.43-.504.143-.168.19-.288.286-.48.096-.192.048-.36-.024-.504-.072-.144-.644-1.554-.882-2.13-.232-.559-.467-.483-.64-.492-.167-.008-.36-.01-.553-.01-.193 0-.507.072-.77.36-.264.288-1.008.986-1.008 2.404 0 1.417 1.031 2.784 1.175 2.976.144.192 2.03 3.1 4.916 4.347.686.297 1.222.474 1.639.607.69.219 1.319.188 1.815.114.553-.082 1.696-.694 1.934-1.365.238-.671.238-1.246.167-1.366-.07-.12-.262-.192-.549-.336z"/>
+        </svg>
+    </a>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>
